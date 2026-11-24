@@ -6105,7 +6105,9 @@ function playMovieInCinema(actKey) {
   openNetflixBlackPlayer(actKey);
 }
 window.playMovieInCinema = playMovieInCinema;
-window.filterMoviesCatalog = filterMoviesCatalog;
+if (typeof filterMoviesCatalog !== 'undefined') {
+  window.filterMoviesCatalog = filterMoviesCatalog;
+}
 
 /* ==========================================================================
    NETFLIX ROW CAROUSEL SMOOTH SLIDER & INFINITE LOOP CONTROLS
@@ -6253,6 +6255,93 @@ function playTrailerInNetflixPlayer(startSec) {
 }
 window.playTrailerInNetflixPlayer = playTrailerInNetflixPlayer;
 
+const SANDFLIX_EMBED_MOVIES = {
+  // --- ROW 9: FEATURED PREMIERES & BLOCKBUSTERS ---
+  'verity': { title: 'Verity (2026)', tmdb: '1283515' },
+  'devil_wears_prada_2': { title: 'The Devil Wears Prada 2 (2026)', tmdb: '1314481' },
+  'minions_monsters': { title: 'Minions & Monsters (2026)', tmdb: '1315772' },
+  'obsession': { title: 'Obsession (2026)', tmdb: '1339713' },
+  'resident_evil_2026': { title: 'Resident Evil (2026)', tmdb: '1423191' },
+  'backrooms': { title: 'Backrooms (2026)', tmdb: '1083381' },
+  'mandalorian_and_grogu': { title: 'Star Wars: The Mandalorian and Grogu (2026)', tmdb: '1228710' },
+  'moana': { title: 'Moana (2026)', tmdb: '1108427' },
+  'disclosure_day': { title: 'Disclosure Day (2026)', tmdb: '1275779' },
+  'wuthering_heights': { title: 'Wuthering Heights (2026)', tmdb: '1316092' },
+  'scream_7': { title: 'Scream 7 (2026)', tmdb: '1159559' },
+
+  // --- ROWS 1-8 & GLOBAL CATALOG MOVIES ---
+  'ranabaali': { title: 'Ranabaali (2026)', tmdb: '1389379' },
+  'never_surrender': { title: 'Never Surrender (2026) • A Netflix Original Film', tmdb: '1616687' },
+  'never-surrender': { title: 'Never Surrender (2026) • A Netflix Original Film', tmdb: '1616687' },
+  'paradise': { title: 'The Paradise (2026)', tmdb: '1376856' },
+  'alpha': { title: 'Alpha (YRF Spy Universe)', tmdb: '1122030' },
+  'tereishkmein': { title: 'Tere Ishk Mein', tmdb: '1142921' },
+  'pushpa2': { title: 'Pushpa 2: The Rule', tmdb: '857598' },
+  'dorothy': { title: 'Dorothy', tmdb: '1578079' },
+  'dogs_christmas': { title: "A Dog's Perfect Christmas", tmdb: '1570488' },
+  'jurassic_rebirth': { title: 'Jurassic World Rebirth', tmdb: '1234821' },
+  'adipurush': { title: 'Adipurush', tmdb: '734253' },
+  'dont_trouble': { title: "Don't Trouble the Trouble", tmdb: '1261763' },
+  'maharaj': { title: 'Maharaj', tmdb: '1171099' },
+  'with_love': { title: 'With Love', tmdb: '1508564' },
+  'made_in_korea': { title: 'Made in Korea', tmdb: '1561687' },
+  'peddi': { title: 'Peddi • Ram Charan', tmdb: '1057265' },
+  'cocktail2': { title: 'Cocktail 2 • Shahid Kapoor', tmdb: '1392469' },
+  'avarachan': { title: 'Avaraachan & Sons • Biju Menon', tmdb: '1290035' },
+  'reporting_live': { title: 'Reporting Live • Parineeti Chopra', tmdb: '1389172' },
+  'heartland': { title: 'Heartland • Jessica Chastain', tmdb: '1543469' },
+  'one_year_to_live': { title: 'One Year to Live, Buy a Man • Ko Shibasaki', tmdb: '1654940' },
+  'allen': { title: 'Allen • T.J. Power', tmdb: '1518204' },
+  'jolly_llb_3': { title: 'Jolly LLB 3 • Akshay Kumar & Arshad Warsi', tmdb: '1015981' },
+  'saiyaara': { title: 'Saiyaara • Ahaan Panday & Aneet Padda', tmdb: '1241634' },
+  'the_last_house': { title: 'The Last House • Greta Lee & Wagner Moura', tmdb: '1284041' },
+  'brawlers': { title: 'Brawlers (Bagarre) • Nassim Lyes', tmdb: '1418709' },
+  'dhadak2': { title: 'Dhadak 2 • Siddhant Chaturvedi & Triptii Dimri', tmdb: '1213777', embedUrl: 'https://api.codespecters.com/embed/movie/1213777?apikey=DEMO_36da8c77' },
+  'demon_slayer': { title: 'Demon Slayer: Kimetsu no Yaiba – Infinity Castle', tmdb: '1311031' },
+  'hi_papa': { title: 'Hi Papa • Nani & Mrunal Thakur', tmdb: '1068452' },
+  'dragon': { title: 'Dragon • Pradeep Ranganathan', tmdb: '1273049' },
+  'youth': { title: 'Youth (2026) • Ken Karunas', tmdb: '1542352' },
+  'chhaava': { title: 'Chhaava (2025) • Vicky Kaushal & Rashmika Mandanna', tmdb: '1196943' },
+  'maa': { title: 'Maa (2025) • Kajol & Ronit Roy', tmdb: '1389158' },
+  'retro': { title: 'Retro (Suriya 44) (2025) • Suriya & Pooja Hegde', tmdb: '1265827' },
+  'hanuman_ansh': { title: 'Hanuman Ansh (2026)', tmdb: '1709391' },
+  'kon_city': { title: 'KON CITY (2026)', tmdb: '1596008' },
+  'baththa': { title: 'Baththa (2026) (Vijay Sethupathi)', tmdb: '1515692' },
+  'haiku': { title: 'Haiku (2026)', tmdb: '1593350' },
+  'gdn': { title: 'G.D.N (2026) (R. Madhavan)', tmdb: '1489543' },
+  'movie_418': { title: '418 (2026)', tmdb: '1606527' },
+  'steps': { title: 'Steps (2026) (Ali Wong)', tmdb: '1595124' },
+  'the_odyssey': { title: 'The Odyssey (2026) (Christopher Nolan)', tmdb: '1368337' },
+  'goat': { title: 'GOAT (2026) (Sony Pictures Animation)', tmdb: '1297842' },
+  'scary_movie_6': { title: 'Scary Movie 6 (2026) (Wayans Brothers)', tmdb: '1273221' },
+  'coolie': { title: 'Coolie (2025) (Superstar Rajinikanth / Lokesh Kanagaraj)', tmdb: '1153399' },
+  'dhurandhar': { title: 'Dhurandhar (2025) (Ranveer Singh / Aditya Dhar)', tmdb: '1291608' },
+  'jailer_2': { title: 'Jailer 2 (2026) (Superstar Rajinikanth / Nelson)', tmdb: '1234139' },
+  'mario_galaxy': { title: 'The Super Mario Galaxy Movie (2026) (Nintendo / Illumination)', tmdb: '1226863' },
+  'mortal_kombat_2': { title: 'Mortal Kombat II (2026) (New Line Cinema / Warner Bros)', tmdb: '931285' },
+  'kartavya': { title: 'Kartavya (2026) (Saif Ali Khan & Red Chillies)', tmdb: '1628367' },
+  'gandhari': { title: 'Gandhari (2026) (Taapsee Pannu & Kanika Dhillon)', tmdb: '1355228' },
+  'toaster': { title: 'Toaster (2026) (Rajkummar Rao & Sanya Malhotra)', tmdb: '1416391' },
+  'spiderman_brand_new_day': { title: 'Spider-Man: Brand New Day (2026)', tmdb: '969681' },
+  'clayface': { title: 'Clayface (2026)', tmdb: '1400940' },
+  'street_fighter': { title: 'Street Fighter (2026)', tmdb: '1153576' },
+  'toy_story_5': { title: 'Toy Story 5 (2026)', tmdb: '1084244' },
+  'supergirl_woman_of_tomorrow': { title: 'Supergirl: Woman of Tomorrow (2026)', tmdb: '1081003' },
+  'godzilla_minus_zero': { title: 'Godzilla Minus Zero (2026)', tmdb: '1381071' },
+  'project_hail_mary': { title: 'Project Hail Mary (2026)', tmdb: '687163' },
+  'daayra': { title: 'Daayra (2026)', tmdb: '1215889' },
+  'vishwanath_and_sons': { title: 'Vishwanath & Sons (2026)', tmdb: '1408162' },
+  'gajab_raat': { title: 'Gajab Raat (2026)', tmdb: '1453407' },
+  'dilwali_diwali': { title: 'Dilwali Diwali (2026)', tmdb: '1810711' },
+  'mahavatar_narsimha': { title: 'Mahavatar Narsimha (2025)', tmdb: '1383072' },
+  'border_2': { title: 'Border 2 (2026)', tmdb: '1213898' },
+  'ikkis': { title: 'Ikkis (2026)', tmdb: '1196946' },
+  'guarding_stars': { title: 'Guarding Stars (2026)', tmdb: '1551025' },
+  'hoppers': { title: 'Hoppers (2026) (Disney & Pixar Animation)', tmdb: '1327819' },
+  'michael': { title: 'Michael (2026) (Antoine Fuqua / Lionsgate)', tmdb: '936075' }
+};
+window.SANDFLIX_EMBED_MOVIES = SANDFLIX_EMBED_MOVIES;
+
 function openNetflixBlackPlayer(targetTime, fromHistory) {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
@@ -6301,1648 +6390,114 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     }
   }
 
-  // Handle Embed Movie Mode (e.g. Ranabaali. via Peachify)
-  if (targetTime === 'ranabaali' || targetTime === '1389379') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Ranabaali.';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1389379';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original /.)
-  if (targetTime === 'never-surrender' || targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik' || targetTime === 'akka' || targetTime === '243555') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Never Surrender (2026) • A Netflix Original Film';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1616687';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (The Paradise. via Peachify)
-  if (targetTime === 'paradise' || targetTime === 'theparadise' || targetTime === '1376856') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Paradise.';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1376856';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Alpha. via Peachify)
-  if (targetTime === 'alpha' || targetTime === '1122030') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Alpha. (YRF Spy Universe)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1122030';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Tere Ishk Mein. via Peachify)
-  if (targetTime === 'tereishkmein' || targetTime === 'tere_ishk_mein' || targetTime === '1142921') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein.';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1142921';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Pushpa 2: The Rule. via Peachify)
-  if (targetTime === 'pushpa2' || targetTime === 'pushpa_2' || targetTime === 'pushpa' || targetTime === '857598') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Pushpa 2: The Rule.';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/857598';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Dorothy. via Peachify)
-  if (targetTime === 'dorothy' || targetTime === 'dorothi' || targetTime === '1578079') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Dorothy.';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1578079';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (A Dog's Perfect Christmas. via Peachify)
-  if (targetTime === 'dogs_christmas' || targetTime === 'dogschristmas' || targetTime === '1570488' || targetTime === 'adogsperfectchristmas') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "A Dog's Perfect Christmas.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1570488';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Jurassic World Rebirth. via Peachify)
-  if (targetTime === 'jurassic_rebirth' || targetTime === 'jurassicworld' || targetTime === 'jurassic' || targetTime === '1234821' || targetTime === 'jurassicworldrebirth') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Jurassic World Rebirth.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1234821';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Adipurush. via Peachify)
-  if (targetTime === 'adipurush' || targetTime === '734253' || targetTime === 'prabhas_adipurush') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Adipurush.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/734253';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Don't Trouble the Trouble. via Peachify)
-  if (targetTime === 'dont_trouble' || targetTime === 'donttrouble' || targetTime === '1261763' || targetTime === 'donttroublethetrouble') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Don't Trouble the Trouble.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1261763';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Maharaj. via Peachify)
-  if (targetTime === 'maharaj' || targetTime === '1171099' || targetTime === 'junaid_maharaj') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Maharaj.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1171099';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (With Love. via Peachify)
-  if (targetTime === 'with_love' || targetTime === 'withlove' || targetTime === '1508564' || targetTime === 'withlovetamil') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "With Love.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1508564';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Never Surrender. via Peachify)
-  if (targetTime === 'never_surrender' || targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Never Surrender (2026) • A Netflix Original Film';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1616687';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Made in Korea IMDb tt38674977 / Peachify Ad-Free)
-  if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Made in Korea • Priyanka Arul Mohan • IMDb tt38674977";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1561687';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Peddi. / Peachify)
-  if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'tt23865918' || targetTime === 'ramcharan_peddi') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1057265';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Cocktail 2. / Peachify)
-  if (targetTime === 'cocktail2' || targetTime === 'cocktail_2' || targetTime === '1392469' || targetTime === 'shahid_cocktail2') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1392469';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Avaraachan & Sons. / Peachify)
-  if (targetTime === 'avarachan' || targetTime === 'avarachan_sons' || targetTime === '1290035' || targetTime === 'bijumenon_avarachan') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1290035';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Reporting Live. / Peachify)
-  if (targetTime === 'reporting_live' || targetTime === 'reportinglive' || targetTime === '1389172' || targetTime === 'parineeti_reporting') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Reporting Live • Parineeti Chopra.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1389172';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Heartland. / Peachify)
-  if (targetTime === 'heartland' || targetTime === '1543469' || targetTime === 'jessica_heartland') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Heartland • Jessica Chastain.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1543469';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (One Year to Live, Buy a Man. / Peachify)
-  if (targetTime === 'one_year_to_live' || targetTime === 'oneyeartolive' || targetTime === '1654940' || targetTime === 'buy_a_man') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "One Year to Live, Buy a Man • Ko Shibasaki.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1654940';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Allen. / Peachify)
-  if (targetTime === 'allen' || targetTime === '1518204' || targetTime === 'allen_alien') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Allen • T.J. Power.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1518204';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Jolly LLB 3. / Peachify)
-  if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1015981';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Saiyaara. / Peachify)
-  if (targetTime === 'saiyaara' || targetTime === '1241634' || targetTime === 'ahaan_saiyaara') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1241634';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (The Last House. / Peachify)
-  if (targetTime === 'the_last_house' || targetTime === 'thelasthouse' || targetTime === '1284041' || targetTime === 'greta_lasthouse') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1284041';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Brawlers. / Peachify)
-  if (targetTime === 'brawlers' || targetTime === 'bagarre' || targetTime === '1418709' || targetTime === 'nassim_brawlers') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Brawlers (Bagarre) • Nassim Lyes.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1418709';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Dhadak 2. / CodeSpecters API DEMO_36da8c77)
-  if (targetTime === 'dhadak2' || targetTime === 'dhadak_2' || targetTime === '1213777' || targetTime === 'tt13451410' || targetTime === 'siddhant_dhadak2') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Dhadak 2 • Siddhant Chaturvedi & Triptii Dimri • CodeSpecters 1213777";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://api.codespecters.com/embed/movie/1213777?apikey=DEMO_36da8c77';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Demon Slayer: Kimetsu no Yaiba – Infinity Castle.)
-  if (targetTime === 'demon_slayer' || targetTime === 'demonslayer' || targetTime === 'infinity_castle' || targetTime === '1311031' || targetTime === 'kimetsu_no_yaiba') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Demon Slayer: Kimetsu no Yaiba – Infinity Castle (2025).";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1311031';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Hi Papa. / Peachify)
-  if (targetTime === 'hi_papa' || targetTime === 'hipapa' || targetTime === 'hi_nanna' || targetTime === 'hinanna' || targetTime === '1068452' || targetTime === 'nani_hipapa') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Hi Papa • Nani & Mrunal Thakur.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1068452';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Dragon. / Peachify)
-  if (targetTime === 'dragon' || targetTime === 'dragon_2025' || targetTime === '1273049' || targetTime === 'pradeep_dragon') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Dragon • Pradeep Ranganathan.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1273049';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Youth. / Peachify)
-  if (targetTime === 'youth' || targetTime === 'youth_2026' || targetTime === '1542352' || targetTime === 'ken_youth' || targetTime === 'ken_karunas') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Youth (2026) • Ken Karunas.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1542352';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Chhaava. / Peachify)
-  if (targetTime === 'chhaava' || targetTime === 'chhava' || targetTime === '1196943' || targetTime === 'vicky_chhaava') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Chhaava (2025) • Vicky Kaushal & Rashmika Mandanna.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1196943';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Maa. / Peachify)
-  if (targetTime === 'maa' || targetTime === 'maa_2025' || targetTime === '1389158' || targetTime === 'kajol_maa') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Maa (2025) • Kajol & Ronit Roy.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1389158';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Retro. / Peachify)
-  if (targetTime === 'retro' || targetTime === 'retro_2025' || targetTime === '1265827' || targetTime === 'suriya_retro' || targetTime === 'suriya44') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Retro (Suriya 44) (2025) • Suriya & Pooja Hegde.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://peachify.net/movie/1265827';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-      // Handle Embed Movie Mode (Hanuman Ansh. via Peachify)
-  if (targetTime === 'hanuman_ansh' || targetTime === '1709391') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1709391';
-    }
-    if (titleDisplay) titleDisplay.textContent = "Hanuman Ansh (2026).";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (KON CITY. via Peachify)
-  if (targetTime === 'kon_city' || targetTime === 'con_city' || targetTime === '1596008') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1596008';
-    }
-    if (titleDisplay) titleDisplay.textContent = "KON CITY (2026).";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Baththa. via Peachify)
-  if (targetTime === 'baththa' || targetTime === '1515692') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1515692';
-    }
-    if (titleDisplay) titleDisplay.textContent = "Baththa (2026). (Vijay Sethupathi)";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Haiku. via Peachify)
-  if (targetTime === 'haiku' || targetTime === '1593350') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1593350';
-    }
-    if (titleDisplay) titleDisplay.textContent = "Haiku (2026).";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (G.D.N. via Peachify)
-  if (targetTime === 'gdn' || targetTime === 'g.d.n' || targetTime === '1489543') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1489543';
-    }
-    if (titleDisplay) titleDisplay.textContent = "G.D.N (2026). (R. Madhavan)";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (418. via Peachify)
-  if (targetTime === 'movie_418' || targetTime === '418' || targetTime === '1606527') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1606527';
-    }
-    if (titleDisplay) titleDisplay.textContent = "418 (2026).";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Steps. via Peachify)
-  if (targetTime === 'steps' || targetTime === '1595124') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      embedIframe.src = 'https://peachify.net/movie/1595124';
-    }
-    if (titleDisplay) titleDisplay.textContent = "Steps (2026). (Ali Wong)";
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (The Odyssey. via Peachify)
-  if (targetTime === 'the_odyssey' || targetTime === 'odyssey' || targetTime === '1368337') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Odyssey (2026). (Christopher Nolan)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1368337';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (GOAT. via Peachify)
-  if (targetTime === 'goat' || targetTime === 'goat_2026' || targetTime === '1297842') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'GOAT (2026). (Sony Pictures Animation)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1297842';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Scary Movie 6. via Peachify)
-  if (targetTime === 'scary_movie_6' || targetTime === 'scarymovie6' || targetTime === '1273221') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Scary Movie 6 (2026). (Wayans Brothers)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1273221';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Coolie. via Peachify)
-  if (targetTime === 'coolie' || targetTime === '1153399') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Coolie (2025). (Superstar Rajinikanth / Lokesh Kanagaraj)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1153399';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Dhurandhar. via Peachify)
-  if (targetTime === 'dhurandhar' || targetTime === '1291608') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Dhurandhar (2025). (Ranveer Singh / Aditya Dhar)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1291608';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Jailer 2. via Peachify)
-  if (targetTime === 'jailer_2' || targetTime === 'jailer2' || targetTime === '1234139') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Jailer 2 (2026). (Superstar Rajinikanth / Nelson)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1234139';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Disclosure Day. via Peachify)
-  if (targetTime === 'disclosure_day' || targetTime === 'disclosureday' || targetTime === '1275779') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Disclosure Day (2026). (Steven Spielberg / Universal)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1275779';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Wuthering Heights. via Peachify)
-  if (targetTime === 'wuthering_heights' || targetTime === 'wutheringheights' || targetTime === '1316092') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Wuthering Heights (2026). (Emerald Fennell / Warner Bros)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1316092';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Hoppers. via Peachify)
-  if (targetTime === 'hoppers' || targetTime === '1327819') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Hoppers (2026). (Disney & Pixar Animation)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1327819';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Michael. via Peachify)
-  if (targetTime === 'michael' || targetTime === '936075') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Michael (2026). (Antoine Fuqua / Lionsgate)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/936075';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (The Super Mario Galaxy Movie. via Peachify)
-  if (targetTime === 'mario_galaxy' || targetTime === 'super_mario' || targetTime === '1226863') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Super Mario Galaxy Movie (2026). (Nintendo / Illumination)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1226863';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Minions & Monsters. via Peachify)
-  if (targetTime === 'minions_monsters' || targetTime === 'minions' || targetTime === '1315772') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Minions & Monsters (2026). (Illumination / Universal)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1315772';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Mortal Kombat II. via Peachify)
-  if (targetTime === 'mortal_kombat_2' || targetTime === 'mortalkombat2' || targetTime === '931285') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Mortal Kombat II (2026). (New Line Cinema / Warner Bros)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/931285';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Kartavya. via Peachify)
-  if (targetTime === 'kartavya' || targetTime === 'kartavya_2026' || targetTime === '1628367') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Kartavya (2026). (Saif Ali Khan & Red Chillies)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1628367';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Gandhari. via Peachify)
-  if (targetTime === 'gandhari' || targetTime === 'gandhari_2026' || targetTime === '1355228') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Gandhari (2026). (Taapsee Pannu & Kanika Dhillon)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1355228';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Toaster. via Peachify)
-  if (targetTime === 'toaster' || targetTime === 'toaster_2026' || targetTime === '1416391') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Toaster (2026). (Rajkummar Rao & Sanya Malhotra)';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1416391';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // =========================================================================
-  // EMBED MOVIE HANDLERS: ROW 7 (MOST ANTICIPATED 2026 FRANCHISE BLOCKBUSTERS)
-  // =========================================================================
-
-  // Spider-Man: Brand New Day (. via Peachify)
-  if (targetTime === 'spiderman_brand_new_day' || targetTime === 'spiderman' || targetTime === 'spiderman_2026' || targetTime === '969681') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Spider-Man: Brand New Day (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/969681';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Clayface (. via Peachify)
-  if (targetTime === 'clayface' || targetTime === 'clay_face' || targetTime === 'clayface_2026' || targetTime === '1400940') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Clayface (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1400940';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Resident Evil (. via Peachify)
-  if (targetTime === 'resident_evil_2026' || targetTime === 'resident_evil' || targetTime === 'residentevil' || targetTime === '1423191') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Resident Evil (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1423191';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Street Fighter (. via Peachify)
-  if (targetTime === 'street_fighter' || targetTime === 'streetfighter' || targetTime === 'street_fighter_2026' || targetTime === '1153576') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Street Fighter (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1153576';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Toy Story 5 (. via Peachify)
-  if (targetTime === 'toy_story_5' || targetTime === 'toystory5' || targetTime === 'toy_story' || targetTime === '1084244') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Toy Story 5 (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1084244';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Supergirl: Woman of Tomorrow (. via Peachify)
-  if (targetTime === 'supergirl_woman_of_tomorrow' || targetTime === 'supergirl' || targetTime === 'supergirl_2026' || targetTime === '1081003') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Supergirl: Woman of Tomorrow (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1081003';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Star Wars: The Mandalorian and Grogu (. via Peachify)
-  if (targetTime === 'mandalorian_and_grogu' || targetTime === 'mandalorian' || targetTime === 'the_mandalorian' || targetTime === '1228710') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Star Wars: The Mandalorian & Grogu (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1228710';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Godzilla Minus Zero (. via Peachify)
-  if (targetTime === 'godzilla_minus_zero' || targetTime === 'godzilla' || targetTime === 'godzilla_2026' || targetTime === '1381071') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Godzilla Minus Zero (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1381071';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Project Hail Mary (. via Peachify)
-  if (targetTime === 'project_hail_mary' || targetTime === 'projecthailmary' || targetTime === 'project_hail_mary_2026' || targetTime === '687163') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Project Hail Mary (2026).';
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/687163';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Daayra. via Peachify)
-  if (targetTime === 'daayra' || targetTime === '1215889') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Daayra.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1215889';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Vishwanath & Sons. via Peachify)
-  if (targetTime === 'vishwanath_and_sons' || targetTime === '1408162') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Vishwanath & Sons.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1408162';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Gajab Raat. via Peachify)
-  if (targetTime === 'gajab_raat' || targetTime === '1453407') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Gajab Raat.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1453407';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Dilwali Diwali. via Peachify)
-  if (targetTime === 'dilwali_diwali' || targetTime === '1810711') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Dilwali Diwali.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1810711';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Mahavatar Narsimha. via Peachify)
-  if (targetTime === 'mahavatar_narsimha' || targetTime === '1383072') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Mahavatar Narsimha.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1383072';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Border 2. via Peachify)
-  if (targetTime === 'border_2' || targetTime === '1213898') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Border 2.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1213898';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Ikkis. via Peachify)
-  if (targetTime === 'ikkis' || targetTime === '1196946') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Ikkis.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1196946';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Guarding Stars. via Peachify)
-  if (targetTime === 'guarding_stars' || targetTime === '1551025') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Guarding Stars.";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1551025';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-
-
-  // Generalized CodeSpecters / Custom Embed Routing
-  if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const rawId = targetTime.replace(/^(codespecters:|cs:)/, '').trim();
-    const targetUrl = targetTime.startsWith('https://') ? targetTime : `https://api.codespecters.com/embed/movie/${rawId}?apikey=DEMO_36da8c77`;
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = `Streaming via CodeSpecters • ${rawId}`;
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      if (embedIframe.src !== targetUrl) {
-        embedIframe.src = targetUrl;
-      }
+  // 1. Strict Ramayana Identification: Ramayana plays ONLY when explicitly requested!
+  const isExplicitRamayana = (
+    targetTime === 'part1' ||
+    targetTime === 'ramayana' ||
+    targetTime === 'act1' ||
+    targetTime === 'act2' ||
+    targetTime === 'act3' ||
+    targetTime === 'act4' ||
+    targetTime === 'act5' ||
+    (!targetTime && !fromHistory) ||
+    (typeof targetTime === 'number' && !nbpIsEmbedMode)
+  );
+
+  if (isExplicitRamayana) {
+    if (nbpIsEmbedMode) {
+      nbpIsEmbedMode = false;
+      modal.classList.remove('is-embed-active');
+      if (embedIframe) {
+        embedIframe.style.display = 'none';
+        embedIframe.removeAttribute('src');
+      }
+      if (video) video.style.display = 'block';
     }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  if (nbpIsEmbedMode) {
-    nbpIsEmbedMode = false;
-    modal.classList.remove('is-embed-active');
-    if (embedIframe) {
-      embedIframe.style.display = 'none';
-      embedIframe.removeAttribute('src');
-    }
-    if (video) video.style.display = 'block';
-  }
-
-  // Handle trailer mode
-  if (targetTime === 'trailer' || (typeof targetTime === 'number' && nbpIsTrailerMode)) {
-    nbpIsTrailerMode = true;
-    const offset = (typeof targetTime === 'number') ? targetTime : 0;
-    loadAndPlayTrailerInNbp(offset);
-  } else {
     nbpIsTrailerMode = false;
     const titleDisplay = document.getElementById('nbpCenterTitle');
     if (titleDisplay) titleDisplay.textContent = 'Ramayana: Part One';
     const startSec = (typeof targetTime === 'number') ? targetTime : 0;
     loadAndPlayContinuous(startSec);
+    startSubtitleEngine();
+    resetNbpIdleTimer();
+    return;
   }
 
-  startSubtitleEngine();
+  // 2. Trailer Mode
+  if (targetTime === 'trailer') {
+    if (nbpIsEmbedMode) {
+      nbpIsEmbedMode = false;
+      modal.classList.remove('is-embed-active');
+      if (embedIframe) {
+        embedIframe.style.display = 'none';
+        embedIframe.removeAttribute('src');
+      }
+      if (video) video.style.display = 'block';
+    }
+    nbpIsTrailerMode = true;
+    loadAndPlayTrailerInNbp(0);
+    startSubtitleEngine();
+    resetNbpIdleTimer();
+    return;
+  }
+
+  // 3. Movie Embed Mode: For ALL other movies (Row 9, Rows 1-8, future movies, TMDB IDs)
+  // NEVER PLAY RAMAYANA BEHIND ANY OTHER MOVIE!
+  nbpIsEmbedMode = true;
+  nbpIsTrailerMode = false;
+  modal.classList.add('is-embed-active');
+  if (video && !video.paused) video.pause();
+  if (video) video.style.display = 'none';
+
+  const titleDisplay = document.getElementById('nbpCenterTitle');
+  let movieTitle = '';
+  let targetEmbedUrl = '';
+
+  const cleanKey = String(targetTime).trim().toLowerCase();
+  let movieInfo = SANDFLIX_EMBED_MOVIES[cleanKey] || SANDFLIX_EMBED_MOVIES[targetTime];
+
+  if (!movieInfo && typeof sandflixCatalog !== 'undefined') {
+    const catalogItem = sandflixCatalog.find(c => c.key === targetTime || c.key.toLowerCase() === cleanKey);
+    if (catalogItem) {
+      movieInfo = {
+        title: catalogItem.title,
+        tmdb: catalogItem.tmdbId || cleanKey
+      };
+    }
+  }
+
+  if (movieInfo) {
+    movieTitle = movieInfo.title;
+    targetEmbedUrl = movieInfo.embedUrl || `https://peachify.net/movie/${movieInfo.tmdb || movieInfo.tmdbId || cleanKey}`;
+  } else if (/^\d{4,9}$/.test(String(targetTime).trim())) {
+    movieTitle = `Movie (TMDB ${targetTime})`;
+    targetEmbedUrl = `https://peachify.net/movie/${String(targetTime).trim()}`;
+  } else if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:'))) {
+    const rawId = targetTime.replace(/^(codespecters:|cs:)/, '').trim();
+    movieTitle = `Streaming via CodeSpecters • ${rawId}`;
+    targetEmbedUrl = `https://api.codespecters.com/embed/movie/${rawId}?apikey=DEMO_36da8c77`;
+  } else if (typeof targetTime === 'string' && targetTime.startsWith('https://')) {
+    movieTitle = 'Movie Stream';
+    targetEmbedUrl = targetTime;
+  } else {
+    // Graceful future-proof fallback for any new movies added by the user
+    movieTitle = String(targetTime).replace(/[_-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    targetEmbedUrl = `https://peachify.net/movie/${encodeURIComponent(cleanKey)}`;
+  }
+
+  if (titleDisplay) titleDisplay.textContent = movieTitle;
+
+  if (embedIframe) {
+    embedIframe.style.display = 'block';
+    if (embedIframe.src !== targetEmbedUrl) {
+      embedIframe.src = targetEmbedUrl;
+    }
+  }
+
+  if (spinner) spinner.classList.remove('active');
   resetNbpIdleTimer();
 }
+window.openNetflixBlackPlayer = openNetflixBlackPlayer;
 
 function closeNetflixBlackPlayer(fromHistory) {
   const modal = document.getElementById('netflixBlackPlayerModal');
@@ -9510,7 +8065,27 @@ function openMovieDetailsModal(movieKey, fromHistory) {
         },
   };
 
-  const item = data[movieKey] || data['part1'];
+  let item = data[movieKey];
+  if (!item && typeof sandflixCatalog !== 'undefined') {
+    const cat = sandflixCatalog.find(c => c.key === movieKey || c.key === String(movieKey).toLowerCase());
+    if (cat) {
+      item = {
+        title: cat.title,
+        hero: cat.hero,
+        poster: cat.poster,
+        year: cat.year,
+        age: cat.age,
+        dur: cat.dur,
+        desc: cat.desc,
+        genres: Array.isArray(cat.genres) ? cat.genres.join(', ') : cat.genres,
+        cast: 'Ensemble Cast',
+        director: 'Acclaimed Director'
+      };
+    }
+  }
+  if (!item) {
+    item = data['part1'];
+  }
   const titleEl = document.getElementById('nModalTitle');
   const heroImg = document.getElementById('nModalHeroImg');
   const yearEl = document.getElementById('nModalYear');
