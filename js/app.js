@@ -1070,8 +1070,7 @@ const OST_TRACKS = [
     artist: "A.R. Rahman &times; Shankar Mahadevan &times; Sukhwinder Singh",
     duration: "06:58",
     durationSec: 418,
-    src: "audio/07_hanuman_chalisa_divine.mp3",
-    fallbackSrc: "audio/07_hanuman_chalisa_divine.m4a",
+    src: "audio/07_hanuman_chalisa_divine.m4a",
     banner: "assets/images/tracks/track_07.jpg",
     desc: "Divine Sanskrit and Awadhi recitations of Sri Hanuman Chalisa invoking cosmic strength, devotion, and protection."
   },
@@ -1084,8 +1083,7 @@ const OST_TRACKS = [
     artist: "JAM8 • Sachet Tandon • Kumar Vishwas",
     duration: "03:41",
     durationSec: 221,
-    src: "audio/08_main_ram_dasharath_suta.mp3",
-    fallbackSrc: "audio/08_main_ram_dasharath_suta.m4a",
+    src: "audio/08_main_ram_dasharath_suta.m4a",
     banner: "assets/images/tracks/track_08.jpg",
     desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
   },
@@ -4530,7 +4528,6 @@ const OST_TRACKS = [
     duration: "03:01",
     durationSec: 181,
     src: "sidhu%20moose%20wala%20songs/01_never_fold.m4a",
-    fallbackSrc: "audio/254_never_fold.m4a",
     banner: "assets/images/tracks/track_254.jpg",
     desc: "The legendary anthem of grit and integrity by Sidhu Moose Wala featuring Sunny Malton."
   },
@@ -4545,7 +4542,6 @@ const OST_TRACKS = [
     duration: "03:49",
     durationSec: 229,
     src: "sidhu%20moose%20wala%20songs/02_love_sick.m4a",
-    fallbackSrc: "audio/255_love_sick.m4a",
     banner: "assets/images/tracks/track_255.jpg",
     desc: "Soul-stirring lyrical storytelling uniting Sidhu Moose Wala and Canadian rapper AR Paisley."
   },
@@ -4560,7 +4556,6 @@ const OST_TRACKS = [
     duration: "02:51",
     durationSec: 171,
     src: "sidhu%20moose%20wala%20songs/03_everybody_hurts.m4a",
-    fallbackSrc: "audio/256_everybody_hurts.m4a",
     banner: "assets/images/tracks/track_256.jpg",
     desc: "Deeply reflective and honest verses shedding light on fame, loneliness, and emotional pain."
   },
@@ -4575,7 +4570,6 @@ const OST_TRACKS = [
     duration: "01:49",
     durationSec: 109,
     src: "sidhu%20moose%20wala%20songs/04_0_to_100.m4a",
-    fallbackSrc: "audio/257_0_to_100.m4a",
     banner: "assets/images/tracks/track_257.jpg",
     desc: "Blistering high-speed flow and uncompromising confidence clocking in from 0 to 100."
   },
@@ -4590,7 +4584,6 @@ const OST_TRACKS = [
     duration: "02:39",
     durationSec: 159,
     src: "sidhu%20moose%20wala%20songs/05_bloodlust.m4a",
-    fallbackSrc: "audio/258_bloodlust.m4a",
     banner: "assets/images/tracks/track_258.jpg",
     desc: "Cross-continental gangster anthem linking Punjab with American West Coast rap icon Mr. Capone-E."
   },
@@ -4605,7 +4598,6 @@ const OST_TRACKS = [
     duration: "00:31",
     durationSec: 31,
     src: "sidhu%20moose%20wala%20songs/pbx1_01_intro.m4a",
-    fallbackSrc: "audio/259_pbx1_intro.m4a",
     banner: "assets/images/tracks/track_259.jpg",
     desc: "The atmospheric and grand opening sequence heralding Sidhu Moose Wala's debut studio album PBX 1."
   },
@@ -4620,7 +4612,6 @@ const OST_TRACKS = [
     duration: "03:24",
     durationSec: 204,
     src: "sidhu%20moose%20wala%20songs/pbx1_02_jatt_da_muqabala.m4a",
-    fallbackSrc: "audio/260_pbx1_jatt_da_muqabala.m4a",
     banner: "assets/images/tracks/track_260.jpg",
     desc: "The historic, record-shattering anthem that firmly established Sidhu Moose Wala as a worldwide icon."
   },
@@ -4635,7 +4626,6 @@ const OST_TRACKS = [
     duration: "03:57",
     durationSec: 237,
     src: "sidhu%20moose%20wala%20songs/pbx1_03_death_route.m4a",
-    fallbackSrc: "audio/261_pbx1_death_route.m4a",
     banner: "assets/images/tracks/track_261.jpg",
     desc: "Hard-hitting trap beats and fearless verses describing life lived boldly on the edge."
   },
@@ -4650,7 +4640,6 @@ const OST_TRACKS = [
     duration: "03:17",
     durationSec: 197,
     src: "sidhu%20moose%20wala%20songs/pbx1_04_dawood.m4a",
-    fallbackSrc: "audio/262_pbx1_dawood.m4a",
     banner: "assets/images/tracks/track_262.jpg",
     desc: "Heavyweight basslines and unyielding swagger capturing outlaw charisma and prestige."
   },
@@ -4665,7 +4654,6 @@ const OST_TRACKS = [
     duration: "03:41",
     durationSec: 221,
     src: "sidhu%20moose%20wala%20songs/pbx1_05_badfella.m4a",
-    fallbackSrc: "audio/263_pbx1_badfella.m4a",
     banner: "assets/images/tracks/track_263.jpg",
     desc: "Harj Nagra's polished western beats paired with Sidhu's quintessential street narrative."
   },
@@ -4680,7 +4668,6 @@ const OST_TRACKS = [
     duration: "00:25",
     durationSec: 25,
     src: "sidhu%20moose%20wala%20songs/pbx1_06_kala_chashma_skit.m4a",
-    fallbackSrc: "audio/264_pbx1_kala_chashma_skit.m4a",
     banner: "assets/images/tracks/track_264.jpg",
     desc: "An authentic cultural Punjabi comedy skit providing cinematic transitions across PBX 1."
   },
@@ -4695,7 +4682,6 @@ const OST_TRACKS = [
     duration: "04:23",
     durationSec: 263,
     src: "sidhu%20moose%20wala%20songs/pbx1_07_devil_ft_raja_kumari.m4a",
-    fallbackSrc: "audio/265_pbx1_devil_ft_raja_kumari.m4a",
     banner: "assets/images/tracks/track_265.jpg",
     desc: "Iconic rap collaboration bridging American hip-hop flow by Raja Kumari with Punjabi dominance."
   },
@@ -4710,7 +4696,6 @@ const OST_TRACKS = [
     duration: "01:19",
     durationSec: 79,
     src: "sidhu%20moose%20wala%20songs/pbx1_08_devil_skit.m4a",
-    fallbackSrc: "audio/266_pbx1_devil_skit.m4a",
     banner: "assets/images/tracks/track_266.jpg",
     desc: "Atmospheric dramatic narrative monologue paving the mood for the album's next chapter."
   },
@@ -4725,7 +4710,6 @@ const OST_TRACKS = [
     duration: "04:26",
     durationSec: 266,
     src: "sidhu%20moose%20wala%20songs/pbx1_09_im_better_now.m4a",
-    fallbackSrc: "audio/267_pbx1_im_better_now.m4a",
     banner: "assets/images/tracks/track_267.jpg",
     desc: "Snappy's smooth synths and Sidhu's emotive vocals creating a timeless romantic resilience classic."
   },
@@ -4740,7 +4724,6 @@ const OST_TRACKS = [
     duration: "03:00",
     durationSec: 180,
     src: "sidhu%20moose%20wala%20songs/pbx1_10_selfmade_chaache_maame.m4a",
-    fallbackSrc: "audio/268_pbx1_selfmade_chaache_maame.m4a",
     banner: "assets/images/tracks/track_268.jpg",
     desc: "The raw anthem dedicated to self-made glory and staying true to one's roots despite fake friends."
   },
@@ -4755,7 +4738,6 @@ const OST_TRACKS = [
     duration: "04:00",
     durationSec: 240,
     src: "sidhu%20moose%20wala%20songs/pbx1_11_trend.m4a",
-    fallbackSrc: "audio/269_pbx1_trend.m4a",
     banner: "assets/images/tracks/track_269.jpg",
     desc: "Sidhu declaring himself the undisputed trendsetter of the Punjabi music industry."
   },
@@ -4770,7 +4752,6 @@ const OST_TRACKS = [
     duration: "00:32",
     durationSec: 32,
     src: "sidhu%20moose%20wala%20songs/pbx1_12_outro.m4a",
-    fallbackSrc: "audio/270_pbx1_outro.m4a",
     banner: "assets/images/tracks/track_270.jpg",
     desc: "The triumphant concluding statement closing the legendary PBX 1 studio album."
   },
@@ -4785,7 +4766,6 @@ const OST_TRACKS = [
     duration: "04:48",
     durationSec: 288,
     src: "sidhu%20moose%20wala%20songs/pbx1_13_pbx_special_track.m4a",
-    fallbackSrc: "audio/271_pbx1_pbx_special_track.m4a",
     banner: "assets/images/tracks/track_271.jpg",
     desc: "An unreleased heavyweight extended groove honoring the signature PBX sound."
   },
@@ -4800,7 +4780,6 @@ const OST_TRACKS = [
     duration: "04:31",
     durationSec: 271,
     src: "sidhu%20moose%20wala%20songs/pbx1_14_pbx_kaali_mozzy.m4a",
-    fallbackSrc: "audio/272_pbx1_pbx_kaali_mozzy.m4a",
     banner: "assets/images/tracks/track_272.jpg",
     desc: "Cross-border hard underground street connection between Punjab and California rap icon Mozzy."
   },
@@ -4815,7 +4794,6 @@ const OST_TRACKS = [
     duration: "04:34",
     durationSec: 274,
     src: "sidhu%20moose%20wala%20songs/pbx1_15_im_better_now_video.m4a",
-    fallbackSrc: "audio/273_pbx1_im_better_now_video.m4a",
     banner: "assets/images/tracks/track_273.jpg",
     desc: "The full official soundtrack version featured in the official T-Series music video."
   },
@@ -4830,7 +4808,6 @@ const OST_TRACKS = [
     duration: "03:14",
     durationSec: 194,
     src: "sidhu%20moose%20wala%20songs/singles_01_47_feat_stefflon_don.m4a",
-    fallbackSrc: "audio/274_singles_47_feat_stefflon_don.m4a",
     banner: "assets/images/tracks/track_274.jpg",
     desc: "International breakthrough UK drill anthem pairing Sidhu Moose Wala with British rap heavyweights Stefflon Don, MIST, and Steel Banglez."
   },
@@ -4845,7 +4822,6 @@ const OST_TRACKS = [
     duration: "03:42",
     durationSec: 222,
     src: "sidhu%20moose%20wala%20songs/singles_02_tochan.m4a",
-    fallbackSrc: "audio/275_singles_tochan.m4a",
     banner: "assets/images/tracks/track_275.jpg",
     desc: "The timeless village anthem immortalizing rural Punjabi tractor-pulling pride with Byg Byrd's monstrous West Coast groove."
   },
@@ -4860,7 +4836,6 @@ const OST_TRACKS = [
     duration: "02:38",
     durationSec: 158,
     src: "sidhu%20moose%20wala%20songs/singles_03_dollar.m4a",
-    fallbackSrc: "audio/276_singles_dollar.m4a",
     banner: "assets/images/tracks/track_276.jpg",
     desc: "The high-voltage blockbuster song from Dakuaan Da Munda that swept every club and wedding worldwide."
   },
@@ -4875,7 +4850,6 @@ const OST_TRACKS = [
     duration: "04:24",
     durationSec: 264,
     src: "sidhu%20moose%20wala%20songs/singles_04_chosen.m4a",
-    fallbackSrc: "audio/277_singles_chosen.m4a",
     banner: "assets/images/tracks/track_277.jpg",
     desc: "Smooth lyrical romance meeting honest street loyalty as Sidhu and Sunny Malton craft an unforgettable tribute to real devotion."
   },
@@ -4890,7 +4864,6 @@ const OST_TRACKS = [
     duration: "04:35",
     durationSec: 275,
     src: "sidhu%20moose%20wala%20songs/singles_05_game.m4a",
-    fallbackSrc: "audio/278_singles_game.m4a",
     banner: "assets/images/tracks/track_278.jpg",
     desc: "Fierce lyrics and unforgiving delivery cementing the immortal brotherhood between Sidhu Moose Wala and Shooter Kahlon."
   },
@@ -4905,7 +4878,6 @@ const OST_TRACKS = [
     duration: "04:41",
     durationSec: 281,
     src: "sidhu%20moose%20wala%20songs/singles_06_satisfy.m4a",
-    fallbackSrc: "audio/279_singles_satisfy.m4a",
     banner: "assets/images/tracks/track_279.jpg",
     desc: "A deeply philosophical and reflective masterpiece encouraging contentment, gratitude, and staying humble in the face of success."
   },
@@ -4920,7 +4892,6 @@ const OST_TRACKS = [
     duration: "03:18",
     durationSec: 198,
     src: "sidhu%20moose%20wala%20songs/singles_07_dear_mama.m4a",
-    fallbackSrc: "audio/280_singles_dear_mama.m4a",
     banner: "assets/images/tracks/track_280.jpg",
     desc: "Sidhu's most deeply personal and emotional song dedicated entirely to his mother on her birthday."
   },
@@ -4935,7 +4906,6 @@ const OST_TRACKS = [
     duration: "03:52",
     durationSec: 232,
     src: "sidhu%20moose%20wala%20songs/singles_08_dark_love.m4a",
-    fallbackSrc: "audio/281_singles_dark_love.m4a",
     banner: "assets/images/tracks/track_281.jpg",
     desc: "Intense's dark trap synth production backing Sidhu's gritty romantic storytelling."
   },
@@ -4950,7 +4920,6 @@ const OST_TRACKS = [
     duration: "03:56",
     durationSec: 236,
     src: "sidhu%20moose%20wala%20songs/singles_09_forget_about_it.m4a",
-    fallbackSrc: "audio/282_singles_forget_about_it.m4a",
     banner: "assets/images/tracks/track_282.jpg",
     desc: "Electrifying bass drops and razor-sharp flows warning detractors to forget about ever matching his stature."
   },
@@ -4965,7 +4934,6 @@ const OST_TRACKS = [
     duration: "03:33",
     durationSec: 213,
     src: "sidhu%20moose%20wala%20songs/singles_10_homicide_video.m4a",
-    fallbackSrc: "audio/283_singles_homicide_video.m4a",
     banner: "assets/images/tracks/track_283.jpg",
     desc: "The raw extended video soundtrack uniting Canadian diaspora rap with Sidhu's thunderous vocals."
   },
@@ -4980,7 +4948,6 @@ const OST_TRACKS = [
     duration: "03:36",
     durationSec: 216,
     src: "sidhu%20moose%20wala%20songs/singles_11_hauli_hauli.m4a",
-    fallbackSrc: "audio/284_singles_hauli_hauli.m4a",
     banner: "assets/images/tracks/track_284.jpg",
     desc: "Catchy road-trip cruising beats describing driving slowly with head held high."
   },
@@ -4995,7 +4962,6 @@ const OST_TRACKS = [
     duration: "02:12",
     durationSec: 132,
     src: "sidhu%20moose%20wala%20songs/singles_12_0008.m4a",
-    fallbackSrc: "audio/285_singles_0008.m4a",
     banner: "assets/images/tracks/track_285.jpg",
     desc: "Fiery lyrical exchange between Jenny Johal and Sidhu Moose Wala over The Kidd's bouncy production."
   },
@@ -5010,7 +4976,6 @@ const OST_TRACKS = [
     duration: "03:20",
     durationSec: 200,
     src: "sidhu%20moose%20wala%20songs/singles_13_neal.m4a",
-    fallbackSrc: "audio/286_singles_neal.m4a",
     banner: "assets/images/tracks/track_286.jpg",
     desc: "Mxrci's punchy percussion and Sidhu's commanding delivery creating an instant playlist staple."
   },
@@ -5025,7 +4990,6 @@ const OST_TRACKS = [
     duration: "04:37",
     durationSec: 277,
     src: "sidhu%20moose%20wala%20songs/singles_14_phantom_ferrari.m4a",
-    fallbackSrc: "audio/287_singles_phantom_ferrari.m4a",
     banner: "assets/images/tracks/track_287.jpg",
     desc: "Heavy subwoofer bass remix blending high luxury supercar motifs with Sidhu's iconic vocals."
   },
@@ -5040,7 +5004,6 @@ const OST_TRACKS = [
     duration: "04:24",
     durationSec: 264,
     src: "sidhu%20moose%20wala%20songs/singles_15_dark_love_8d.m4a",
-    fallbackSrc: "audio/288_singles_dark_love_8d.m4a",
     banner: "assets/images/tracks/track_288.jpg",
     desc: "Hypnotic 8D spatial audio mix swirling across headphone soundstages with slowed reverb aesthetics."
   },
@@ -5055,7 +5018,6 @@ const OST_TRACKS = [
     duration: "03:23",
     durationSec: 203,
     src: "sidhu%20moose%20wala%20songs/singles_16_gaddi_meri_chaldi.m4a",
-    fallbackSrc: "audio/289_singles_gaddi_meri_chaldi.m4a",
     banner: "assets/images/tracks/track_289.jpg",
     desc: "An alternate energetic club-ready cut of the popular Hauli Hauli cruising anthem."
   },
@@ -5070,7 +5032,6 @@ const OST_TRACKS = [
     duration: "03:31",
     durationSec: 211,
     src: "sidhu%20moose%20wala%20songs/singles_17_homicide_studio.m4a",
-    fallbackSrc: "audio/290_singles_homicide_studio.m4a",
     banner: "assets/images/tracks/track_290.jpg",
     desc: "Crisp studio mastering delivering direct vocal clarity and heavy kicks for pure audio purists."
   },
@@ -5085,7 +5046,6 @@ const OST_TRACKS = [
     duration: "08:55",
     durationSec: 535,
     src: "sidhu%20moose%20wala%20songs/singles_18_moose_print_ep.m4a",
-    fallbackSrc: "audio/291_singles_moose_print_ep.m4a",
     banner: "assets/images/tracks/track_291.jpg",
     desc: "A continuous seamless 9-minute compilation of tracks from the legendary Moose Print EP sessions."
   },
@@ -5094,7 +5054,6 @@ const OST_TRACKS = [
     title: 'Mentally Fragile to Mentally Strong',
     artist: 'Your World Within • Eddie Pinero',
     src: 'Stronger%20Soul%20Motivation/01_mentally_fragile_to_mentally_strong.m4a',
-    fallbackSrc: 'audio/292_soul_mentally_fragile_to_strong.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '10:58',
     category: 'soundtrack',
@@ -5106,7 +5065,6 @@ const OST_TRACKS = [
     title: 'Listen to This Every Day',
     artist: 'Marcus Taylor • Motiversity',
     src: 'Stronger%20Soul%20Motivation/02_listen_to_this_every_day.m4a',
-    fallbackSrc: 'audio/293_soul_listen_to_this_every_day.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '08:22',
     category: 'soundtrack',
@@ -5118,7 +5076,6 @@ const OST_TRACKS = [
     title: 'Work Hard in Silence',
     artist: 'Motiversity & Marcus Taylor',
     src: 'Stronger%20Soul%20Motivation/03_work_hard_in_silence.m4a',
-    fallbackSrc: 'audio/294_soul_work_hard_in_silence.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '08:16',
     category: 'soundtrack',
@@ -5130,7 +5087,6 @@ const OST_TRACKS = [
     title: 'How to Stop Caring What People Think',
     artist: 'Wisdom National',
     src: 'Stronger%20Soul%20Motivation/04_how_to_stop_caring_what_people_think.m4a',
-    fallbackSrc: 'audio/295_soul_stop_caring_what_people_think.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '00:56',
     category: 'soundtrack',
@@ -5142,7 +5098,6 @@ const OST_TRACKS = [
     title: '10 Teachings of Krishna to Solve Every Problem',
     artist: 'Apurva Krishna',
     src: 'Stronger%20Soul%20Motivation/05_10_teachings_of_krishna.m4a',
-    fallbackSrc: 'audio/296_soul_10_teachings_of_krishna.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '10:06',
     category: 'soundtrack',
@@ -5154,7 +5109,6 @@ const OST_TRACKS = [
     title: 'If You Have These Habits, Your Mind Is Sharp',
     artist: 'The Stoic',
     src: 'Stronger%20Soul%20Motivation/06_if_you_have_these_habits_mind_sharp.m4a',
-    fallbackSrc: 'audio/297_soul_sharp_mind_stoic_habits.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '44:57',
     category: 'soundtrack',
@@ -5166,7 +5120,6 @@ const OST_TRACKS = [
     title: 'How To Get Rich: 5 Rules Every Rich Person Knows',
     artist: 'Sonu Sharma • Dipjay Studio',
     src: 'Stronger%20Soul%20Motivation/07_how_to_get_rich_5_rules.m4a',
-    fallbackSrc: 'audio/298_soul_how_to_get_rich_5_rules.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '14:09',
     category: 'soundtrack',
@@ -5178,7 +5131,6 @@ const OST_TRACKS = [
     title: 'Manifest with Law of Attraction',
     artist: 'Supernatural Brainwave Power',
     src: 'Stronger%20Soul%20Motivation/08_manifest_with_law_of_attraction.m4a',
-    fallbackSrc: 'audio/299_soul_manifest_law_of_attraction.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '48:53',
     category: 'soundtrack',
@@ -5190,7 +5142,6 @@ const OST_TRACKS = [
     title: 'Study Without Distractions Tonight',
     artist: 'Focus Study Academy',
     src: 'Stronger%20Soul%20Motivation/09_study_without_distractions.m4a',
-    fallbackSrc: 'audio/300_soul_study_without_distractions.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '02:17',
     category: 'soundtrack',
@@ -5202,7 +5153,6 @@ const OST_TRACKS = [
     title: 'Shivam',
     artist: 'Rawal • Spy Boi',
     src: 'Stronger%20Soul%20Motivation/10_shivam_rawal_spy_boi.m4a',
-    fallbackSrc: 'audio/301_soul_shivam_rawal_spy_boi.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '01:59',
     category: 'soundtrack',
@@ -5214,7 +5164,6 @@ const OST_TRACKS = [
     title: 'Nobody (feat. Matthew West)',
     artist: 'Casting Crowns • Matthew West',
     src: 'Stronger%20Soul%20Motivation/11_nobody_casting_crowns.m4a',
-    fallbackSrc: 'audio/302_soul_nobody_casting_crowns.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '03:26',
     category: 'soundtrack',
@@ -5226,7 +5175,6 @@ const OST_TRACKS = [
     title: 'Dubai: Stand-Up Comedy Special',
     artist: 'Anubhav Singh Bassi',
     src: 'Stronger%20Soul%20Motivation/12_dubai_standup_bassi.m4a',
-    fallbackSrc: 'audio/303_soul_dubai_standup_bassi.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '08:33',
     category: 'soundtrack',
@@ -5238,7 +5186,6 @@ const OST_TRACKS = [
     title: 'The Facts About Intimacy & Health',
     artist: 'Dear Doctor • The Sexologist Podcast',
     src: 'Stronger%20Soul%20Motivation/13_the_sexologist_podcast.m4a',
-    fallbackSrc: 'audio/304_soul_the_sexologist_podcast.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '05:29',
     category: 'soundtrack',
@@ -5250,7 +5197,6 @@ const OST_TRACKS = [
     title: 'Kesariya X Apna Bana Le (Acoustic Cover)',
     artist: 'Jemimah Rodrigues',
     src: 'Stronger%20Soul%20Motivation/14_kesariya_x_apna_bana_le_jemimah.m4a',
-    fallbackSrc: 'audio/305_soul_kesariya_x_apna_bana_le_jemimah.m4a',
     banner: 'assets/images/stronger_soul_album.jpg',
     duration: '01:28',
     category: 'soundtrack',

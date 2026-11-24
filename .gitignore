@@ -24,3 +24,16 @@ server.py
 start_player.bat
 *.log
 *.zip
+
+# Internal temporary and agent framework files
+scratch/
+scripts/
+.agents/
+.agent/
+.gemini/
+.gsd/
+adapters/
+GSD-STYLE.md
+PROJECT_RULES.md
+model_capabilities.yaml
+VERSION
