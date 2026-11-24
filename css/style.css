@@ -8585,14 +8585,14 @@ video {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* Large 1.5x Netflix Pop-Out (Triggered strictly after 0.5-second continuous hover dwell) */
+/* Large 1.52x Netflix Pop-Out (Triggered strictly after 0.5-second continuous hover dwell) */
 @media (min-width: 769px) {
 
   .n-card.compact.is-hovered {
-    transform: scale(1.48) translateY(-14%) !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 32px rgba(0, 0, 0, 0.9) !important;
-    z-index: 99999 !important;
+    transform: scale(1.52) translateY(-14%) !important;
+    border-color: rgba(255, 255, 255, 0.32) !important;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.98), 0 0 36px rgba(0, 0, 0, 0.92) !important;
+    z-index: 999999 !important;
     border-bottom: none !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -9640,14 +9640,14 @@ video {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Triggered strictly after 0.5-second continuous hover dwell) */
+/* Authentic Netflix 1.52x Hover Pop-Out Expansion (Triggered strictly after 0.5-second continuous hover dwell) */
 @media (min-width: 769px) {
 
   .single-movie-track .n-card.official-master-card.is-hovered {
-    transform: scale(1.48) translateY(-14%) !important;
-    border-color: rgba(255, 255, 255, 0.28) !important;
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 35px rgba(0, 0, 0, 0.9) !important;
-    z-index: 99999 !important;
+    transform: scale(1.52) translateY(-14%) !important;
+    border-color: rgba(255, 255, 255, 0.32) !important;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.98), 0 0 36px rgba(0, 0, 0, 0.92) !important;
+    z-index: 999999 !important;
     border-bottom: none !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -11904,50 +11904,51 @@ video {
 
 
 /* ==========================================================================
-   NETFLIX-GRADE HYPER-PERFORMANCE ENGINE
-   content-visibility, GPU hardware compositing & silky smooth scroll physics
+   NETFLIX-GRADE HYPER-PERFORMANCE ENGINE (OPTIMIZED - ZERO HOVER CLIPPING)
+   Fluid hardware compositing, silky smooth scroll & unconstrained movie hover pop-out
    ========================================================================== */
 
-/* 1. Virtualized Off-Screen Rendering: Skips layout calculations for off-screen rows */
+/* 1. Ensure all movie rows, carousels, and tracks allow full unconstrained hover pop-out */
 .n-row-wrap,
 .netflix-row,
-.gallery-section,
-.custom-carousel-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 280px;
+.n-carousel-wrap,
+.netflix-slider-track,
+.single-movie-track {
+  overflow: visible !important;
+  contain: none !important;
+  content-visibility: visible !important;
 }
 
+.n-row-wrap:hover,
+.netflix-row:hover,
+.n-carousel-wrap:hover,
+.netflix-slider-track:hover,
+.single-movie-track:hover {
+  z-index: 500 !important;
+}
+
+/* 2. Virtualized Off-Screen Rendering: ONLY on non-expanding list items */
 .spotify-tracks-list .spotify-row {
   content-visibility: auto;
   contain-intrinsic-size: 0 60px;
 }
 
-/* 2. GPU Layer Compositing & Fluid Scroll Physics */
+/* 3. GPU Layer Compositing & Fluid Scroll Physics for Horizontal Tracks */
 .netflix-slider-track,
 .n-row-slider,
 .spotify-albums-scroll,
 .spotify-tracks-list,
 .gallery-scroll-container,
 .netflix-top10-slider {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   will-change: scroll-position;
 }
 
-.n-card,
 .spotify-card,
 .spotify-music-card,
-.n-card-thumb,
 .n-btn-circle {
   will-change: transform, opacity;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-}
-
-img {
-  content-visibility: auto;
 }
