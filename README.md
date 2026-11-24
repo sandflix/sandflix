@@ -29,7 +29,7 @@
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=sandflix&show_icons=true&locale=en" alt="sandflix" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=sandflix&" alt="sandflix" /></p>
-                                                                                                                                                                    # Sandflix 🎬
+                                                                                                                                                                                                                                                                                                 # Sandflix 🎬
 
 Aapki local video file ke liye ek modern, full-featured OTT/Cinema style web player ready hai!
 
