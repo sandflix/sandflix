@@ -8489,6 +8489,7 @@ video {
 /* ==========================================================================
    AUTHENTIC NETFLIX HOVER POP-OUT EXPANSION (1:1 PIXEL-PERFECT CLONE)
    ========================================================================== */
+/* Authentic Netflix Row Container & Smart Floating Stacking */
 .netflix-row {
   position: relative;
   width: 100%;
@@ -8496,15 +8497,16 @@ video {
   min-width: 0;
   box-sizing: border-box;
   padding: 0;
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 18px 0 !important;
   overflow: visible !important;
-  z-index: 1;
-  transition: z-index 0.2s ease;
+  z-index: 5;
+  transition: z-index 0.15s ease;
 }
 
-.netflix-row:hover {
-  z-index: 250 !important;
-  /* Ensure hovered row floats above subsequent rows */
+/* Row floats above other rows strictly when a movie card inside is hovered or expanded */
+.netflix-row:hover:has(.n-card:hover),
+.netflix-row:hover:has(.n-card.is-hovered) {
+  z-index: 600 !important;
 }
 
 .n-carousel-wrap {
@@ -8516,19 +8518,26 @@ video {
   overflow: visible !important;
 }
 
-/* Slider Track (Ample vertical headroom so 1.5x scaled card never clips) */
+/* Slider Track: Optimized headroom with pass-through pointer-events (Zero Row Freezing) */
 .netflix-slider-track.compact-row {
   display: flex;
   gap: 12px;
   overflow-x: auto;
   overflow-y: visible !important;
-  padding: 40px 10px 220px 10px !important;
+  padding: 40px 10px 85px 10px !important;
   margin-top: -30px !important;
-  margin-bottom: -190px !important;
+  margin-bottom: -65px !important;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+  pointer-events: none !important;
+}
+
+.netflix-slider-track.compact-row > *,
+.netflix-slider-track.compact-row .n-card,
+.netflix-slider-track.compact-row .n-slider-btn {
+  pointer-events: auto !important;
 }
 
 .netflix-slider-track.compact-row::-webkit-scrollbar {
@@ -8813,7 +8822,7 @@ video {
   text-overflow: ellipsis;
 }
 
-/* Carousel Slider Buttons (Left & Right Chevrons - Premium Glass & Netflix Red Theme) */
+/* Carousel Slider Buttons - Matches Navbar Home Button Theme (Frosted Obsidian Glass) */
 .n-slider-btn {
   position: absolute;
   top: calc(40px + (clamp(200px, 17.5vw, 260px) * 9 / 32)) !important;
@@ -8821,9 +8830,9 @@ video {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(18, 18, 18, 0.88);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
-  color: #ffffff;
+  background: rgba(20, 20, 20, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
   cursor: pointer;
   z-index: 1000 !important;
   display: flex;
@@ -8832,8 +8841,8 @@ video {
   padding: 0;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -8859,20 +8868,24 @@ video {
   right: 8px;
 }
 
+/* Hover state: matches navbar tab-link hover with frosted glass lift */
 .n-slider-btn:hover {
-  background: rgba(229, 9, 20, 0.95);
-  border-color: rgba(255, 255, 255, 0.6);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
   transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.55), 0 0 16px rgba(255, 255, 255, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 255, 255, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
   backdrop-filter: blur(20px) saturate(200%);
   -webkit-backdrop-filter: blur(20px) saturate(200%);
-  opacity: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .n-slider-btn svg {
   width: 20px;
   height: 20px;
+  stroke: #ffffff;
   stroke-width: 3;
   transition: transform 0.2s ease;
   pointer-events: none;
@@ -8888,7 +8901,8 @@ video {
 
 .n-slider-btn:active {
   transform: translateY(-50%) scale(0.92);
-  background: #b20710;
+  background: rgba(20, 20, 20, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ==========================================================================
@@ -9597,9 +9611,9 @@ video {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 40px 10px 220px 10px !important;
+  padding: 40px 10px 85px 10px !important;
   margin-top: -30px !important;
-  margin-bottom: -220px !important;
+  margin-bottom: -65px !important;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -9610,6 +9624,13 @@ video {
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+  pointer-events: none !important;
+}
+
+.single-movie-track > *,
+.single-movie-track .n-card,
+.single-movie-track .n-slider-btn {
+  pointer-events: auto !important;
 }
 
 .single-movie-track::-webkit-scrollbar {
@@ -11963,12 +11984,10 @@ video {
   height: 0 !important;
 }
 
-.n-row-wrap:hover,
-.netflix-row:hover,
-.n-carousel-wrap:hover,
-.netflix-slider-track:hover,
-.single-movie-track:hover {
-  z-index: 500 !important;
+/* Zero row freezing: Elevate row stacking strictly when a card inside is actively hovered or expanded */
+.netflix-row:hover:has(.n-card:hover),
+.netflix-row:hover:has(.n-card.is-hovered) {
+  z-index: 600 !important;
 }
 
 /* 2. Virtualized Off-Screen Rendering: ONLY on non-expanding list items */

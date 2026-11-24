@@ -8363,7 +8363,7 @@ if (document.readyState === 'loading') {
 // AUTHENTIC NETFLIX HOVER EXPANSION (0.5-SECOND INTENTIONAL DWELL DELAY)
 // Hovering a movie card waits exactly 0.5 seconds (500ms) before expanding.
 // Moving cursor away before 0.5s cancels expansion immediately.
-// When moving away after expansion, the card smoothly collapses.
+// Zero row freezing: seamlessly transitions between rows without layout thrashing.
 // =========================================================================
 (function initNetflixHover05sDelay() {
   let hoverTimer = null;
@@ -8374,7 +8374,7 @@ if (document.readyState === 'loading') {
     if (!card) return;
     try {
       const rect = card.getBoundingClientRect();
-      const windowWidth = window.innerWidth;
+      const windowWidth = window.innerWidth || document.documentElement.clientWidth;
       if (rect.left < 140) {
         card.style.transformOrigin = 'left center';
       } else if (windowWidth - rect.right < 140) {
@@ -8387,13 +8387,22 @@ if (document.readyState === 'loading') {
 
   document.addEventListener('mouseover', function(e) {
     const card = e.target.closest && e.target.closest('.n-card.compact, .n-card.official-master-card');
-    if (!card) return;
+    
+    // If moving outside of any card, cancel pending hover timer and collapse lingering cards
+    if (!card) {
+      if (hoverTimer) {
+        clearTimeout(hoverTimer);
+        hoverTimer = null;
+      }
+      if (activeExpandedCard && (!e.target || !e.target.closest || !e.target.closest('.n-card.is-hovered'))) {
+        activeExpandedCard.classList.remove('is-hovered');
+        activeExpandedCard = null;
+      }
+      return;
+    }
 
-    // If mouse is already within the expanded card, keep it active
+    // If mouse is already within the currently expanded card, keep it active
     if (activeExpandedCard === card) return;
-
-    // Set origin early so any transition uses the correct focal point
-    updateTransformOrigin(card);
 
     // If moving between different cards, cancel pending timer for previous card
     if (hoverTimer) {
@@ -8401,22 +8410,25 @@ if (document.readyState === 'loading') {
       hoverTimer = null;
     }
 
-    // Collapse any previously expanded card when moving onto a new one
+    // Immediately collapse any previously expanded card across any row
     if (activeExpandedCard && activeExpandedCard !== card) {
       activeExpandedCard.classList.remove('is-hovered');
       activeExpandedCard = null;
     }
+    // Safety check to ensure no other card across rows stays stuck
+    document.querySelectorAll('.n-card.is-hovered').forEach(function(c) {
+      if (c !== card) c.classList.remove('is-hovered');
+    });
 
-    // Start 3-second intentional hover countdown
+    // Start 0.5-second intentional hover countdown (zero layout thrashing during mouse move)
     hoverTimer = setTimeout(function() {
-      // Confirm the cursor is still hovering this card after 3 seconds
-      if (card.matches(':hover')) {
+      if (card && card.matches(':hover')) {
         updateTransformOrigin(card);
         card.classList.add('is-hovered');
         activeExpandedCard = card;
       }
     }, HOVER_DELAY_MS);
-  });
+  }, { passive: true });
 
   document.addEventListener('mouseout', function(e) {
     const card = e.target.closest && e.target.closest('.n-card.compact, .n-card.official-master-card');
@@ -8427,28 +8439,39 @@ if (document.readyState === 'loading') {
       return;
     }
 
-    // Cursor exited card boundary: cancel pending 3s timer
+    // Cursor exited card boundary: cancel pending timer
     if (hoverTimer) {
       clearTimeout(hoverTimer);
       hoverTimer = null;
     }
 
-    // If card was expanded, collapse it back to normal immediately
+    // Collapse card immediately
     if (card.classList.contains('is-hovered')) {
       card.classList.remove('is-hovered');
     }
     if (activeExpandedCard === card) {
       activeExpandedCard = null;
     }
-  });
+  }, { passive: true });
 
-  // Cancel pending timers when user scrolls so cards don't pop open while scrolling
+  // Cancel pending timers & collapse when scrolling or losing window focus
   window.addEventListener('scroll', function() {
     if (hoverTimer) {
       clearTimeout(hoverTimer);
       hoverTimer = null;
     }
   }, { passive: true });
+
+  window.addEventListener('blur', function() {
+    if (hoverTimer) {
+      clearTimeout(hoverTimer);
+      hoverTimer = null;
+    }
+    if (activeExpandedCard) {
+      activeExpandedCard.classList.remove('is-hovered');
+      activeExpandedCard = null;
+    }
+  });
 })();
 
 
