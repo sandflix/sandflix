@@ -3,7 +3,14 @@
   Built from the original profile README.
   Original technology hyperlink destinations are preserved.
   Third-party badge and statistics images require their providers to be online.
---><div align="center"><h1>Hey, I'm Sandflix 👋</h1><h3>AI &amp; ML Developer · Creator · Builder</h3><p><em>Exploring ideas, building useful things, and learning every day.</em></p><p>
+--><div align="center"><h1>Hey, I'm Sandflix 👋</h1><p align="center">
+  <a href="https://git.io/typing-svg">
+    <img
+      src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=600&amp;size=22&amp;pause=1000&amp;color=A78BFA&amp;center=true&amp;vCenter=true&amp;width=820&amp;height=55&amp;duration=2800&amp;repeat=true&amp;lines=AI+%26+Machine+Learning+Developer%3BAI+%26+ML+Enthusiast%3BContent+Creator+%7C+Tech+Enthusiast%3BDeveloper+%7C+Creator+%7C+Builder%3BBuilding+and+Growing+Sandflix"
+      alt="Typing animation: AI and Machine Learning Developer, AI and ML Enthusiast, Content Creator, Developer, Creator, Builder"
+    />
+  </a>
+</p><p><em>Exploring ideas, building useful things, and learning every day.</em></p><p>
   <a href="https://sandflix.github.io/sandflix/">
     <img src="https://img.shields.io/badge/Explore-Sandflix-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Explore Sandflix" />
   </a>
@@ -15,15 +22,17 @@
   </a>
 </p><p>
   <img src="https://komarev.com/ghpvc/?username=sandflix&label=PROFILE%20VIEWS&color=7C3AED&style=for-the-badge" alt="Sandflix profile views" />
-</p></div>✦ About Me
-I'm a developer from India with a passion for Artificial Intelligence and Machine Learning. I enjoy exploring technology, learning new skills, and turning ideas into practical projects.
+</p></div>✦ 01 — About Me
+I'm passionate about Artificial Intelligence and Machine Learning, curious about emerging technology, and motivated by turning ideas into practical projects.
+
+I'm a developer from India who enjoys exploring technology, learning new skills, and building with purpose.
 - 🔭 Currently working on: Sandflix
 - 🌱 Currently learning: Content creation
 - 🤝 Looking for help with: Sandflix
 - 💬 Ask me about: AI & ML
 - 📫 Reach me at: sandflix.officials@gmail.com
 - ⚡ Fun fact: I'm a content creator.
-✦ Connect With Me
+✦ 02 — Connect With Me
 <div align="center"><a href="https://github.com/sandflix">
   <img src="https://img.shields.io/badge/GitHub-sandflix-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" />
 </a>
@@ -32,14 +41,14 @@ I'm a developer from India with a passion for Artificial Intelligence and Machin
 </a>
 <a href="mailto:sandflix.officials@gmail.com">
   <img src="https://img.shields.io/badge/Gmail-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Sandflix" />
-</a></div>✦ Featured Project
+</a></div>✦ 03 — Featured Project
 <div align="center"><h3><a href="https://sandflix.github.io/sandflix/">Sandflix</a></h3><p>My current project — explore the website and follow along as it grows.</p><a href="https://sandflix.github.io/sandflix/">
   <img src="https://img.shields.io/badge/OPEN%20PROJECT-Visit%20Sandflix-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Open Sandflix project" />
 </a></div><!-- Add additional real projects here when ready:
 ### Project Name
 One-line description of the problem it solves.
 [Repository](YOUR_REPOSITORY_URL) · [Live Demo](YOUR_DEMO_URL)
--->✦ Languages & Tools
+-->✦ 04 — Languages & Tools
 The badges below are clickable and retain the original destinations from your first README. They're grouped by category for easier scanning.
 Languages
 <p align="center">
@@ -84,8 +93,8 @@ Languages
 </p>
 ### Game & Interactive<p align="center">
 <a href="https://unity.com/"><img src="https://img.shields.io/badge/Unity-222C37?style=flat-square&logo=unity&logoColor=white" alt="Unity" height="28" /></a>
-</p>✦ GitHub Analytics
-<div align="center"><a href="https://github.com/ryo-ma/github-profile-trophy">
+</p>✦ 05 — GitHub Analytics
+<p align="center"><em>A snapshot of my open-source journey and GitHub activity.</em></p><div align="center"><a href="https://github.com/ryo-ma/github-profile-trophy">
   <img src="https://github-profile-trophy.vercel.app/?username=sandflix&theme=tokyonight&no-frame=true&no-bg=true&column=7" alt="Sandflix GitHub profile trophies" />
 </a>
 
@@ -97,7 +106,7 @@ Languages
 <img width="70%" src="https://streak-stats.demolab.com?user=sandflix&theme=tokyonight&hide_border=true&background=1a1b27" alt="Sandflix GitHub contribution streak" />
 
 
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=sandflix&bg_color=1a1b27&color=a9b1d6&line=7aa2f7&point=bb9af7&area=true&hide_border=true" alt="Sandflix GitHub contribution activity graph" /></div>✦ A Little More
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=sandflix&bg_color=1a1b27&color=a9b1d6&line=7aa2f7&point=bb9af7&area=true&hide_border=true" alt="Sandflix GitHub contribution activity graph" /></div>✦ 06 — A Little More
 <div align="center">Currently	Details
 Building	Sandflix
 Learning	Content creation
@@ -105,7 +114,7 @@ Interested in	AI, Machine Learning & technology
 Beyond coding	Content creation
 
 
-</div>✦ Let's Build Something
+</div>✦ 07 — Let's Build Something
 Have an interesting idea, want to talk about AI & ML, or collaborate on Sandflix? I'd be happy to connect.
 <div align="center"><a href="mailto:sandflix.officials@gmail.com">
   <img src="https://img.shields.io/badge/LET'S%20TALK-Send%20an%20Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Send Sandflix an email" />
@@ -116,9 +125,6 @@ Have an interesting idea, want to talk about AI & ML, or collaborate on Sandflix
 
 
 <strong>Thanks for visiting my profile!</strong>
-
-<em>Build with curiosity. Learn with purpose. Create with passion.</em>
-</div>
                                                                                                                                                                                                                                                                                                  # Sandflix 🎬
 
 Aapki local video file ke liye ek modern, full-featured OTT/Cinema style web player ready hai!
