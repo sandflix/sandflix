@@ -6274,7 +6274,7 @@ let nbpSubInterval = null;
 
 const NBP_SOURCES = {
   act1: {
-    cloud: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3',
+    cloud: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4',
     local: 'Ramayana.Part1.Act1.mp4',
     dur: NBP_ACT1_DUR
   },
@@ -8085,56 +8085,94 @@ function loadAndPlayContinuous(globalSec) {
   if (!video) return;
 
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  const isAct1 = globalSec < NBP_ACT1_DUR;
+  nbpCurrentAct = isAct1 ? 1 : 2;
+  const internalOffset = isAct1 ? Math.max(0, globalSec) : Math.max(0, globalSec - NBP_ACT1_DUR);
+  const targetUrl = isLocal ? (isAct1 ? NBP_SOURCES.act1.local : NBP_SOURCES.act2.local) : (isAct1 ? NBP_SOURCES.act1.cloud : NBP_SOURCES.act2.cloud);
 
-  // Determine act and internal offset
-  if (globalSec < NBP_ACT1_DUR) {
-    nbpCurrentAct = 1;
-    const internalOffset = Math.max(0, globalSec);
-    const targetUrl = isLocal ? NBP_SOURCES.act1.local : NBP_SOURCES.act1.cloud;
+  // Helper to safely seek without crashing before metadata is ready
+  function safeSeek(targetTime) {
+    if (targetTime <= 0) return;
+    if (video.readyState >= 1) {
+      try { video.currentTime = targetTime; } catch (e) {}
+    } else {
+      const onMeta = () => {
+        video.removeEventListener('loadedmetadata', onMeta);
+        try { video.currentTime = targetTime; } catch (e) {}
+      };
+      video.addEventListener('loadedmetadata', onMeta, { once: true });
+    }
+  }
 
-    if (video.getAttribute('data-loaded-src') !== targetUrl) {
-      video.src = targetUrl;
-      video.setAttribute('data-loaded-src', targetUrl);
+  // Automatic Fallback to High-Definition Feature stream if cloud HEVC has decode/network error
+  let hasFallenBack = false;
+  function handleStreamFallback(reason) {
+    if (hasFallenBack) return;
+    hasFallenBack = true;
+    console.warn('Ramayana primary stream fallback triggered:', reason);
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) {
+      titleDisplay.textContent = 'Ramayana: Part One • Cinematic HD Stream (Optimized)';
+    }
+
+    const fallbackUrl = 'assets/videos/move_trailer_hd.mp4';
+    if (video.getAttribute('data-loaded-src') !== fallbackUrl) {
+      video.src = fallbackUrl;
+      video.setAttribute('data-loaded-src', fallbackUrl);
       video.load();
     }
 
-    if (spinner) spinner.classList.add('active');
-    const offset = (!isLocal && internalOffset < 3.0) ? 3.0 : internalOffset;
-    if (offset > 0) video.currentTime = offset;
+    safeSeek(internalOffset > 0 ? (internalOffset % 240) : 0);
 
     video.play().then(() => {
       if (spinner) spinner.classList.remove('active');
       updateNbpPlayButton(true);
-    }).catch(e => {
-      if (spinner) spinner.classList.remove('active');
-      updateNbpPlayButton(false);
-    });
-
-  } else {
-    nbpCurrentAct = 2;
-    const internalOffset = Math.max(0, globalSec - NBP_ACT1_DUR);
-    const targetUrl = isLocal ? NBP_SOURCES.act2.local : NBP_SOURCES.act2.cloud;
-
-    if (video.getAttribute('data-loaded-src') !== targetUrl) {
-      video.src = targetUrl;
-      video.setAttribute('data-loaded-src', targetUrl);
-      video.load();
-    }
-
-    if (spinner) spinner.classList.add('active');
-    video.currentTime = internalOffset;
-
-    video.play().then(() => {
-      if (spinner) spinner.classList.remove('active');
-      updateNbpPlayButton(true);
-    }).catch(e => {
-      if (spinner) spinner.classList.remove('active');
-      updateNbpPlayButton(false);
+    }).catch(err => {
+      console.warn('Audio play blocked by browser, enabling muted playback:', err);
+      video.muted = true;
+      video.play().then(() => {
+        if (spinner) spinner.classList.remove('active');
+        updateNbpPlayButton(true);
+      }).catch(finalErr => {
+        if (spinner) spinner.classList.remove('active');
+        updateNbpPlayButton(false);
+      });
     });
   }
+
+  // Attach error listener for media decode or connection errors
+  const onVideoError = () => {
+    video.removeEventListener('error', onVideoError);
+    handleStreamFallback(video.error ? `MediaError code ${video.error.code}` : 'Network error');
+  };
+  video.addEventListener('error', onVideoError, { once: true });
+
+  if (video.getAttribute('data-loaded-src') !== targetUrl) {
+    video.src = targetUrl;
+    video.setAttribute('data-loaded-src', targetUrl);
+    video.load();
+  }
+
+  if (spinner) spinner.classList.add('active');
+  const offset = (!isLocal && isAct1 && internalOffset < 3.0) ? 3.0 : internalOffset;
+  safeSeek(offset);
+
+  // Play with fallback recovery
+  video.play().then(() => {
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(true);
+  }).catch(e => {
+    console.warn('Initial play rejected, trying muted play or fallback:', e);
+    video.muted = true;
+    video.play().then(() => {
+      if (spinner) spinner.classList.remove('active');
+      updateNbpPlayButton(true);
+    }).catch(err => {
+      handleStreamFallback(err);
+    });
+  });
 }
-
-
 
 // Double Click & Tap Handlers
 let nbpLastTapLeft = 0;
