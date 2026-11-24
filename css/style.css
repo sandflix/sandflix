@@ -11901,3 +11901,53 @@ video {
     margin-bottom: 0 !important;
   }
 }
+
+
+/* ==========================================================================
+   NETFLIX-GRADE HYPER-PERFORMANCE ENGINE
+   content-visibility, GPU hardware compositing & silky smooth scroll physics
+   ========================================================================== */
+
+/* 1. Virtualized Off-Screen Rendering: Skips layout calculations for off-screen rows */
+.n-row-wrap,
+.netflix-row,
+.gallery-section,
+.custom-carousel-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 280px;
+}
+
+.spotify-tracks-list .spotify-row {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 60px;
+}
+
+/* 2. GPU Layer Compositing & Fluid Scroll Physics */
+.netflix-slider-track,
+.n-row-slider,
+.spotify-albums-scroll,
+.spotify-tracks-list,
+.gallery-scroll-container,
+.netflix-top10-slider {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}
+
+.n-card,
+.spotify-card,
+.spotify-music-card,
+.n-card-thumb,
+.n-btn-circle {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+img {
+  content-visibility: auto;
+}

@@ -8642,7 +8642,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mouse Movement
   if (modal) {
     modal.addEventListener('mousemove', resetNbpIdleTimer);
-    modal.addEventListener('touchstart', resetNbpIdleTimer);
+    modal.addEventListener('touchstart', resetNbpIdleTimer, { passive: true });
   }
 
   // Keyboard Shortcuts
