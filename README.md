@@ -218,14 +218,7 @@ Learn continuously. Build thoughtfully. Share generously.
 
 Thanks for visiting my profile. Feel free to explore my work and say hello!
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:7c3aed,55:312e81,100:111827&height=120&section=footer" width="100%" alt="Decorative purple gradient footer" /></div><!--
-PROFILE POLISH CHECKLIST (outside this README):
-- Use a consistent avatar and username identity.
-- Keep the profile bio short and specific.
-- Add the website and public social links in GitHub profile settings.
-- Pin up to six of your strongest repositories.
-- Give each pinned repository a clear description, topics, README, and screenshots.
-- Keep repository names, banners, and project branding consistent.
--->
+
                                                                                                                                                                                                                                                                                                  # Sandflix 🎬
 
 Aapki local video file ke liye ek modern, full-featured OTT/Cinema style web player ready hai!
