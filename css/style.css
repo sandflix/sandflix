@@ -8813,79 +8813,78 @@ video {
   text-overflow: ellipsis;
 }
 
-/* Carousel Slider Buttons (Left & Right Chevrons - Compact Arrow Size Glass Theme) */
+/* Carousel Slider Buttons (Left & Right Chevrons - Premium Glass & Netflix Red Theme) */
 .n-slider-btn {
   position: absolute;
   top: calc(40px + (clamp(200px, 17.5vw, 260px) * 9 / 32)) !important;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(12, 12, 12, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(18, 18, 18, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
   color: #ffffff;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000 !important;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0.85;
+  visibility: visible;
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-/* Show arrows ONLY when hovering over the row or the carousel wrapper */
+/* Highlight arrows when hovering over the row or the carousel wrapper */
 .netflix-row:hover .n-slider-btn,
 .n-carousel-wrap:hover .n-slider-btn {
   opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
 }
 
 .n-slider-btn.prev {
-  left: 6px;
+  left: 8px;
 }
 
 .n-slider-btn.next {
-  right: 6px;
+  right: 8px;
 }
 
 .n-slider-btn:hover {
-  background: rgba(24, 24, 24, 0.95);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(229, 9, 20, 0.95);
+  border-color: rgba(255, 255, 255, 0.6);
   color: #ffffff;
   transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.55), 0 0 16px rgba(255, 255, 255, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px) saturate(200%);
   -webkit-backdrop-filter: blur(20px) saturate(200%);
   opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
 }
 
 .n-slider-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   stroke-width: 3;
   transition: transform 0.2s ease;
+  pointer-events: none;
 }
 
 .n-slider-btn.prev:hover svg {
-  transform: translateX(-1.5px);
+  transform: translateX(-2px);
 }
 
 .n-slider-btn.next:hover svg {
-  transform: translateX(1.5px);
+  transform: translateX(2px);
 }
 
 .n-slider-btn:active {
-  transform: translateY(-50%) scale(0.94);
-  background: rgba(5, 5, 5, 0.95);
+  transform: translateY(-50%) scale(0.92);
+  background: #b20710;
 }
 
 /* ==========================================================================
@@ -9156,11 +9155,31 @@ video {
   }
 }
 
-/* Mobile Devices: Android & iOS (768px and below) */
+/* Mobile Devices: Android & iOS (768px and below) - Responsive & Touch Controls */
 @media screen and (max-width: 768px) {
   .n-slider-btn {
-    display: none !important;
-    /* Touch swipe on mobile screens */
+    display: flex !important;
+    width: 36px;
+    height: 36px;
+    opacity: 0.92 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    top: calc(10px + (clamp(160px, 45vw, 220px) * 9 / 32)) !important;
+    z-index: 1000 !important;
+    background: rgba(18, 18, 18, 0.92);
+  }
+
+  .n-slider-btn.prev {
+    left: 4px !important;
+  }
+
+  .n-slider-btn.next {
+    right: 4px !important;
+  }
+
+  .n-slider-btn svg {
+    width: 16px;
+    height: 16px;
   }
 
   .netflix-billboard.home-billboard {
@@ -11908,15 +11927,32 @@ video {
    Fluid hardware compositing, silky smooth scroll & unconstrained movie hover pop-out
    ========================================================================== */
 
-/* 1. Ensure all movie rows, carousels, and tracks allow full unconstrained hover pop-out */
+/* 1. Ensure rows and carousel wrappers allow full unconstrained hover pop-out */
 .n-row-wrap,
 .netflix-row,
-.n-carousel-wrap,
-.netflix-slider-track,
-.single-movie-track {
+.n-carousel-wrap {
   overflow: visible !important;
   contain: none !important;
   content-visibility: visible !important;
+}
+
+/* 2. Netflix Slider Tracks: Silky smooth horizontal scroll with full card hover headroom */
+.netflix-slider-track,
+.single-movie-track {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  contain: none !important;
+  content-visibility: visible !important;
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+}
+
+.netflix-slider-track::-webkit-scrollbar,
+.single-movie-track::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .n-row-wrap:hover,

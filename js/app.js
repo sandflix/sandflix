@@ -6113,29 +6113,51 @@ if (typeof filterMoviesCatalog !== 'undefined') {
    NETFLIX ROW CAROUSEL SMOOTH SLIDER & INFINITE LOOP CONTROLS
    ========================================================================== */
 function slideNetflixRow(trackId, direction) {
-  const track = document.getElementById(trackId);
-  if (!track) return;
-  const firstCard = track.querySelector('.n-card') || track.firstElementChild;
-  const cardWidth = firstCard ? firstCard.offsetWidth : 240;
-  const gap = 6;
-  const visibleCards = Math.max(1, Math.floor(track.clientWidth / (cardWidth + gap))) || 2;
-  const scrollDistance = (cardWidth + gap) * Math.min(visibleCards, 3);
-  const maxScroll = track.scrollWidth - track.clientWidth;
+  try {
+    const track = document.getElementById(trackId);
+    if (!track) {
+      console.warn('slideNetflixRow: track element not found for id:', trackId);
+      return;
+    }
 
-  if (direction > 0) {
-    // Scroll Right: if at or near the end, loop smoothly to start
-    if (track.scrollLeft >= maxScroll - 20) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
+    // Dynamic card width and gap detection
+    const firstCard = track.querySelector('.n-card') || track.firstElementChild;
+    const cardRect = firstCard ? firstCard.getBoundingClientRect() : null;
+    const cardWidth = cardRect && cardRect.width > 50 ? cardRect.width : 250;
+    const gap = 12;
+    const step = cardWidth + gap;
+
+    // Viewport-based pagination (smoothly slide visible items minus one, or minimum 1 full card)
+    const visibleCards = Math.max(1, Math.floor(track.clientWidth / step));
+    const cardsToScroll = Math.max(1, visibleCards - 1);
+    const scrollAmount = Math.max(step, cardsToScroll * step);
+
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    if (maxScroll <= 5) return; // Row fits completely on screen, no slide needed
+
+    const currentScroll = track.scrollLeft;
+
+    if (direction > 0) {
+      // Scroll Right (Next Titles)
+      if (currentScroll >= maxScroll - 20) {
+        // Near or at end: loop smoothly back to beginning
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        const target = Math.min(maxScroll, currentScroll + scrollAmount);
+        track.scrollTo({ left: target, behavior: 'smooth' });
+      }
     } else {
-      track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+      // Scroll Left (Previous Titles)
+      if (currentScroll <= 20) {
+        // Near or at start: loop smoothly around to the end
+        track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        const target = Math.max(0, currentScroll - scrollAmount);
+        track.scrollTo({ left: target, behavior: 'smooth' });
+      }
     }
-  } else {
-    // Scroll Left: if at start, loop smoothly to the very end
-    if (track.scrollLeft <= 20) {
-      track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
-    }
+  } catch (err) {
+    console.error('slideNetflixRow encountered an error:', err);
   }
 }
 window.slideNetflixRow = slideNetflixRow;
