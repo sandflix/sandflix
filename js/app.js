@@ -7675,14 +7675,12 @@ function initHomeBillboard() {
     }
   }
 
-  // 1. Jab banner par cursor hover ho, tabhi video play ho
+  // Play HD video immediately on load/return (muted autoplay supported across PC, Laptop & Mobile)
+  playBillboardPreview();
+
+  // Keep hover play on desktop if paused
   billboard.addEventListener('mouseenter', () => {
     playBillboardPreview();
-  });
-
-  // 2. Jab banner par se cursor hate, tab video turant ruk jaye (pause)
-  billboard.addEventListener('mouseleave', () => {
-    pauseBillboardPreview();
   });
 }
 
