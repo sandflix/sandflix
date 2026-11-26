@@ -6179,29 +6179,96 @@ function toggleGenreDropdown() {
   if (menu) menu.classList.toggle('show');
 }
 
+const NETFLIX_GENRE_KEYWORDS = {
+  'action': ['action', 'adventure', 'battle', 'war', 'mass', 'martial', 'spy', 'crime'],
+  'anime': ['anime', 'demon slayer', 'jujutsu', 'one piece', 'attack on titan', 'naruto', 'chainsaw', 'animation'],
+  'award-winning': ['acclaimed', 'oscar', 'award', 'epic', 'odyssey', 'dune', 'oppenheimer', 'interstellar'],
+  'children-family': ['family', 'animation', 'minions', 'moana', 'toy story', 'kids', 'adventure'],
+  'classics': ['classic', 'ramayana', 'godfather', 'sholay', 'mughal'],
+  'comedies': ['comedy', 'comedies', 'humour', 'satire', 'minions', 'prada'],
+  'documentaries': ['documentary', 'docuseries', 'biography', 'biopic'],
+  'dramas': ['drama', 'historical', 'biographical', 'courtroom', 'social'],
+  'fantasy': ['fantasy', 'mytholog', 'magic', 'supernatural', 'dark fantasy'],
+  'hollywood': ['hollywood', '4k', 'imax', 'english'],
+  'horror': ['horror', 'slasher', 'ghostface', 'scream', 'resident evil', 'backrooms', 'zombie', 'supernatural'],
+  'independent': ['indie', 'independent', 'arthouse'],
+  'indian': ['hindi', 'tamil', 'telugu', 'bollywood', 'indian', 'tollywood', 'kollywood', 'ramayana', 'chhaava', 'coolie', 'dhurandhar', 'jailer'],
+  'international': ['korean', 'japanese', 'anime', 'indonesian', 'spanish', 'international', 'foreign'],
+  'musicals': ['music', 'musical', 'moana', 'soundtrack'],
+  'romance': ['romance', 'romantic', 'love', 'wuthering'],
+  'sci-fi': ['sci-fi', 'space', 'cyberpunk', 'futuristic', 'alien', 'disclosure', 'mandalorian'],
+  'shorts': ['short', 'teaser', 'preview'],
+  'sports': ['sports', 'cricket', 'football', 'racing'],
+  'stand-up': ['stand-up', 'standup'],
+  'thrillers': ['thriller', 'mystery', 'crime', 'suspense', 'psychological', 'verity', 'obsession']
+};
+
 function selectMovieGenre(catKey, catLabel) {
-  // Update dropdown label
   const labelEl = document.getElementById('currentGenreLabel');
-  if (labelEl && catLabel) labelEl.textContent = catLabel;
+  if (labelEl) labelEl.textContent = (catKey === 'all') ? 'Genres' : (catLabel || 'Genres');
 
   const menu = document.getElementById('genreDropdownMenu');
   if (menu) menu.classList.remove('show');
 
-  // Filter or scroll rows inside Movies view only
-  const rows = document.querySelectorAll('#movies-view .netflix-rows-container .netflix-row');
+  const container = document.querySelector('#movies-view .netflix-rows-container');
+  if (!container) return;
+
+  const existingEmpty = document.getElementById('moviesGenreEmptyState');
+  if (existingEmpty) existingEmpty.remove();
+
+  const rows = container.querySelectorAll('.netflix-row');
   let firstVisibleRow = null;
+  let totalVisibleCards = 0;
+  const keywords = NETFLIX_GENRE_KEYWORDS[catKey] || [catKey];
+
   rows.forEach(row => {
-    const rowCat = row.getAttribute('data-genre-category');
-    if (catKey === 'all' || rowCat === catKey) {
+    const cards = row.querySelectorAll('.n-card');
+    if (catKey === 'all') {
       row.style.display = 'block';
+      cards.forEach(c => { c.style.display = ''; });
+      totalVisibleCards += cards.length;
+      if (!firstVisibleRow) firstVisibleRow = row;
+      return;
+    }
+
+    const rowTitle = (row.querySelector('.row-title') ? row.querySelector('.row-title').textContent : '').toLowerCase();
+    const rowCatMatches = (catKey === 'hollywood' && rowTitle.includes('hollywood')) ||
+                          (catKey === 'anime' && rowTitle.includes('anime')) ||
+                          (catKey === 'action' && rowTitle.includes('action')) ||
+                          (catKey === 'sci-fi' && rowTitle.includes('sci-fi')) ||
+                          (catKey === 'award-winning' && rowTitle.includes('acclaimed'));
+
+    let rowMatchesCount = 0;
+    cards.forEach(card => {
+      const cardText = card.textContent.toLowerCase();
+      const matches = rowCatMatches || keywords.some(kw => cardText.includes(kw));
+      if (matches) {
+        card.style.display = '';
+        rowMatchesCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (rowMatchesCount > 0) {
+      row.style.display = 'block';
+      totalVisibleCards += rowMatchesCount;
       if (!firstVisibleRow) firstVisibleRow = row;
     } else {
       row.style.display = 'none';
     }
   });
 
-  // Smooth scroll down to first matching row if a specific genre picked
-  if (catKey !== 'all' && firstVisibleRow) {
+  if (catKey !== 'all' && totalVisibleCards === 0) {
+    const emptyEl = document.createElement('div');
+    emptyEl.id = 'moviesGenreEmptyState';
+    emptyEl.className = 'movies-genre-empty-state';
+    emptyEl.innerHTML =
+      '<h3>No titles in "' + (catLabel || catKey) + '" yet</h3>' +
+      '<p>More titles for this Netflix genre are being added soon.</p>' +
+      '<button class="btn-n-play" onclick="selectMovieGenre(\'all\', \'All Movies\')"><span>Show All Movies</span></button>';
+    container.appendChild(emptyEl);
+  } else if (catKey !== 'all' && firstVisibleRow) {
     firstVisibleRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

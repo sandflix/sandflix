@@ -5884,30 +5884,86 @@ body.ott-platform {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
-  min-width: 220px;
-  background: rgba(0, 0, 0, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 470px;
+  max-width: calc(100vw - 32px);
+  background: rgba(8, 8, 8, 0.94);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 6px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
-  padding: 8px 0;
-  z-index: 100;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.92);
+  padding: 12px 14px;
+  z-index: 200;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .genre-dropdown-menu.show {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 2px 12px;
 }
 
 .genre-dropdown-menu a {
   display: block;
-  padding: 10px 18px;
-  color: #fff;
+  padding: 7px 10px;
+  color: rgba(255, 255, 255, 0.88);
   font-size: 13px;
+  font-weight: 500;
   text-decoration: none;
-  transition: background 0.2s;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.genre-dropdown-menu a.genre-all-link {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 4px;
+  padding-bottom: 9px;
 }
 
 .genre-dropdown-menu a:hover {
-  background: rgba(255, 42, 68, 0.3);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .genre-dropdown-menu {
+    min-width: 280px;
+    width: calc(100vw - 28px);
+    padding: 10px;
+  }
+
+  .genre-dropdown-menu.show {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 2px 8px;
+  }
+}
+
+.movies-genre-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  margin: 20px auto;
+  max-width: 520px;
+  background: rgba(24, 24, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+}
+
+.movies-genre-empty-state h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.movies-genre-empty-state p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 18px;
 }
 
 .netflix-genre-pills {
