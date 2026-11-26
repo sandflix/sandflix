@@ -14013,9 +14013,9 @@ video {
   display: block !important;
   max-width: 1380px !important;
   width: calc(100% - 64px) !important;
-  height: clamp(600px, calc(100vh - 90px), 840px) !important;
-  min-height: 600px !important;
-  max-height: 840px !important;
+  height: clamp(660px, calc(100vh - 60px), 900px) !important;
+  min-height: 660px !important;
+  max-height: 900px !important;
   margin: 10px auto 26px !important;
   padding: 0 !important;
   border-radius: 16px !important;
@@ -14219,9 +14219,9 @@ video {
 @media (max-width: 1024px) {
   #homeHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
-    height: clamp(490px, calc(100vh - 100px), 640px) !important;
-    min-height: 490px !important;
-    max-height: 640px !important;
+    height: clamp(540px, calc(100vh - 70px), 700px) !important;
+    min-height: 540px !important;
+    max-height: 700px !important;
   }
 
   .netflix-bb-bottom-right {
