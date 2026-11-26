@@ -5783,6 +5783,43 @@ function toggleSpotifyHeart(btn) {
 }
 window.toggleSpotifyHeart = toggleSpotifyHeart;
 
+async function shareSandifyMusic() {
+  const shareUrl = window.location.origin + window.location.pathname + '#sandify-music';
+  const shareData = {
+    title: 'Sandify Music — Sandflix',
+    text: 'Listen to curated albums, iconic soundtracks, and soulful hits on Sandify Music!',
+    url: shareUrl
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      return;
+    } catch (err) {
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(shareUrl);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = shareUrl;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    showToast('Music link copied! Ready to share anywhere.');
+  } catch (e) {
+    showToast('Share link: ' + shareUrl);
+  }
+}
+window.shareSandifyMusic = shareSandifyMusic;
+
 function toggleFpHeart(btn) {
   if (!btn) return;
   btn.classList.toggle('active');
