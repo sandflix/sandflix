@@ -6177,20 +6177,13 @@ function toggleGenreDropdown() {
   if (menu) menu.classList.toggle('show');
 }
 
-function selectMovieGenre(catKey, catLabel, pillBtn) {
+function selectMovieGenre(catKey, catLabel) {
   // Update dropdown label
   const labelEl = document.getElementById('currentGenreLabel');
   if (labelEl && catLabel) labelEl.textContent = catLabel;
 
   const menu = document.getElementById('genreDropdownMenu');
   if (menu) menu.classList.remove('show');
-
-  // Update pills
-  const pills = document.querySelectorAll('.netflix-genre-pills .n-pill');
-  pills.forEach(p => p.classList.remove('active'));
-  if (pillBtn) {
-    pillBtn.classList.add('active');
-  }
 
   // Filter or scroll rows
   const rows = document.querySelectorAll('.netflix-rows-container .netflix-row');
