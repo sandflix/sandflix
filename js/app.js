@@ -5573,6 +5573,198 @@ function filterSandifyTracks(category, btn) {
 }
 window.filterSandifyTracks = filterSandifyTracks;
 
+/* ==========================================================================
+   SANDIFY TRACKS: SPOTIFY-GRADE SEARCH ENGINE (SONGS & ALBUMS)
+   ========================================================================== */
+let sandifySearchQuery = '';
+let sandifySearchType = 'all';
+
+function escapeSandifyHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function handleSandifySearchInput(val) {
+  sandifySearchQuery = (val || '').trim();
+  const clearBtn = document.getElementById('sandifySearchClear');
+  const chipsEl = document.getElementById('sandifySearchChips');
+  const resultsEl = document.getElementById('sandifySearchResults');
+  const albumsHeader = document.getElementById('sandifyAlbumsHeader');
+  const albumsGrid = document.getElementById('sandifyAlbumsGrid');
+
+  if (clearBtn) clearBtn.style.display = sandifySearchQuery.length > 0 ? 'flex' : 'none';
+
+  if (!sandifySearchQuery) {
+    if (chipsEl) chipsEl.style.display = 'none';
+    if (resultsEl) {
+      resultsEl.style.display = 'none';
+      resultsEl.innerHTML = '';
+    }
+    if (albumsHeader) albumsHeader.style.display = '';
+    if (albumsGrid) albumsGrid.style.display = '';
+    return;
+  }
+
+  if (chipsEl) chipsEl.style.display = 'flex';
+  if (albumsHeader) albumsHeader.style.display = 'none';
+  if (albumsGrid) albumsGrid.style.display = 'none';
+  if (resultsEl) resultsEl.style.display = 'block';
+
+  renderSandifySearchResults(sandifySearchQuery);
+}
+
+function clearSandifySearch() {
+  const input = document.getElementById('sandifySearchInput');
+  if (input) {
+    input.value = '';
+    input.focus();
+  }
+  handleSandifySearchInput('');
+}
+
+function setSandifySearchFilter(type, btn) {
+  sandifySearchType = type || 'all';
+  document.querySelectorAll('.sandify-s-chip').forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (sandifySearchQuery) renderSandifySearchResults(sandifySearchQuery);
+}
+
+function renderSandifySearchResults(query) {
+  const resultsEl = document.getElementById('sandifySearchResults');
+  if (!resultsEl) return;
+
+  const q = query.toLowerCase();
+  const albumEntries = Object.keys(SANDIFY_ALBUMS).map(key => ({
+    key,
+    ...SANDIFY_ALBUMS[key]
+  }));
+
+  const matchedAlbums = albumEntries.filter(alb => {
+    const hay = `${alb.title} ${alb.artist1} ${alb.artist2} ${alb.subtitle}`.toLowerCase();
+    return hay.includes(q);
+  });
+
+  const matchedSongs = (typeof OST_TRACKS !== 'undefined' ? OST_TRACKS : []).filter(t => {
+    const hay = `${t.title} ${t.artist} ${t.subtitle} ${t.tag || ''} ${t.desc || ''}`.toLowerCase();
+    return hay.includes(q);
+  });
+
+  const showSongs = sandifySearchType === 'all' || sandifySearchType === 'songs';
+  const showAlbums = sandifySearchType === 'all' || sandifySearchType === 'albums';
+
+  if ((showSongs && matchedSongs.length === 0 && !showAlbums) ||
+      (showAlbums && matchedAlbums.length === 0 && !showSongs) ||
+      (matchedSongs.length === 0 && matchedAlbums.length === 0)) {
+    resultsEl.innerHTML =
+      `<div class="sandify-search-empty">` +
+        `<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8"><circle cx="11" cy="11" r="7.5"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>` +
+        `<h3>No results found for "${escapeSandifyHtml(query)}"</h3>` +
+        `<p>Try searching another song title, album name, or artist (e.g. Arijit Singh, Sidhu Moose Wala, Nusrat, Ramayana).</p>` +
+        `<button class="sandify-empty-reset" onclick="clearSandifySearch()">Clear Search</button>` +
+      `</div>`;
+    return;
+  }
+
+  let html = '';
+
+  // Classic Spotify Top Result + Songs Split (when All is selected and we have at least one match)
+  if (sandifySearchType === 'all' && (matchedAlbums.length > 0 || matchedSongs.length > 0)) {
+    const topIsAlbum = matchedAlbums.length > 0 && (matchedAlbums[0].title.toLowerCase().startsWith(q) || matchedSongs.length === 0);
+    let topCardHtml = '';
+    if (topIsAlbum) {
+      const a = matchedAlbums[0];
+      topCardHtml =
+        `<div class="sandify-top-result-card" onclick="openSandifySubpage('${escapeSandifyHtml(a.key)}')">` +
+          `<img src="${escapeSandifyHtml(a.cover)}" alt="${escapeSandifyHtml(a.title)}" class="sandify-top-art">` +
+          `<h3 class="sandify-top-title">${escapeSandifyHtml(a.title)}</h3>` +
+          `<div class="sandify-top-meta"><span class="sandify-type-badge">ALBUM</span><span>${escapeSandifyHtml(a.artist1)}</span></div>` +
+          `<button class="sandify-green-play" onclick="event.stopPropagation(); playOSTTrack(${a.startTrack || 1});" title="Play Album">` +
+            `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>` +
+          `</button>` +
+        `</div>`;
+    } else {
+      const s = matchedSongs[0];
+      topCardHtml =
+        `<div class="sandify-top-result-card" onclick="playOSTTrack(${s.id})">` +
+          `<img src="${escapeSandifyHtml(s.banner)}" alt="${escapeSandifyHtml(s.title)}" class="sandify-top-art">` +
+          `<h3 class="sandify-top-title">${escapeSandifyHtml(s.title)}</h3>` +
+          `<div class="sandify-top-meta"><span class="sandify-type-badge">SONG</span><span>${escapeSandifyHtml(s.artist)}</span></div>` +
+          `<button class="sandify-green-play" onclick="event.stopPropagation(); playOSTTrack(${s.id});" title="Play Song">` +
+            `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>` +
+          `</button>` +
+        `</div>`;
+    }
+
+    const songsSlice = matchedSongs.slice(0, 6);
+    const songsRowsHtml = songsSlice.length > 0
+      ? songsSlice.map(s =>
+          `<div class="sandify-song-result-row" onclick="playOSTTrack(${s.id})">` +
+            `<div class="sandify-song-left">` +
+              `<div class="sandify-song-thumb-wrap">` +
+                `<img src="${escapeSandifyHtml(s.banner)}" alt="${escapeSandifyHtml(s.title)}" loading="lazy" decoding="async">` +
+                `<span class="sandify-song-hover-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>` +
+              `</div>` +
+              `<div class="sandify-song-meta">` +
+                `<div class="sandify-song-title">${escapeSandifyHtml(s.title)}</div>` +
+                `<div class="sandify-song-artist">${escapeSandifyHtml(s.artist)}</div>` +
+              `</div>` +
+            `</div>` +
+            `<div class="sandify-song-dur">${escapeSandifyHtml(s.duration || '')}</div>` +
+          `</div>`
+        ).join('')
+      : `<p class="sandify-no-songs-note">No matching songs — see matching albums below.</p>`;
+
+    html +=
+      `<div class="sandify-top-songs-grid">` +
+        `<div class="sandify-top-col"><h3 class="sandify-res-heading">Top result</h3>${topCardHtml}</div>` +
+        `<div class="sandify-songs-col"><h3 class="sandify-res-heading">Songs ${matchedSongs.length > 6 ? `<span class="sandify-res-count">(${matchedSongs.length} found)</span>` : ''}</h3><div class="sandify-songs-list">${songsRowsHtml}</div></div>` +
+      `</div>`;
+  } else if (showSongs && matchedSongs.length > 0) {
+    const songsList = matchedSongs.slice(0, 60).map(s =>
+      `<div class="sandify-song-result-row" onclick="playOSTTrack(${s.id})">` +
+        `<div class="sandify-song-left">` +
+          `<div class="sandify-song-thumb-wrap">` +
+            `<img src="${escapeSandifyHtml(s.banner)}" alt="${escapeSandifyHtml(s.title)}" loading="lazy" decoding="async">` +
+            `<span class="sandify-song-hover-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>` +
+          `</div>` +
+          `<div class="sandify-song-meta">` +
+            `<div class="sandify-song-title">${escapeSandifyHtml(s.title)}</div>` +
+            `<div class="sandify-song-artist">${escapeSandifyHtml(s.artist)}</div>` +
+          `</div>` +
+        `</div>` +
+        `<div class="sandify-song-dur">${escapeSandifyHtml(s.duration || '')}</div>` +
+      `</div>`
+    ).join('');
+    html += `<div class="sandify-songs-only-wrap"><h3 class="sandify-res-heading">Songs <span class="sandify-res-count">(${matchedSongs.length})</span></h3><div class="sandify-songs-list">${songsList}</div></div>`;
+  }
+
+  if (showAlbums && matchedAlbums.length > 0) {
+    const albumsHtml = matchedAlbums.map(a =>
+      `<article class="spotify-music-card" onclick="openSandifySubpage('${escapeSandifyHtml(a.key)}')" title="${escapeSandifyHtml(a.title)}">` +
+        `<div class="spotify-card-art-box">` +
+          `<img src="${escapeSandifyHtml(a.cover)}" alt="${escapeSandifyHtml(a.title)}" class="spotify-card-img" loading="lazy" decoding="async">` +
+          `<button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(${a.startTrack || 1});" title="Play Album">` +
+            `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>` +
+          `</button>` +
+        `</div>` +
+        `<h3 class="spotify-card-name">${escapeSandifyHtml(a.title)}</h3>` +
+        `<p class="spotify-card-artists">${escapeSandifyHtml(a.artist1)}${a.artist2 ? ' • ' + escapeSandifyHtml(a.artist2) : ''}</p>` +
+      `</article>`
+    ).join('');
+    html += `<div class="sandify-albums-results-wrap"><h3 class="sandify-res-heading">Albums <span class="sandify-res-count">(${matchedAlbums.length})</span></h3><div class="spotify-card-grid">${albumsHtml}</div></div>`;
+  }
+
+  resultsEl.innerHTML = html;
+}
+
+window.handleSandifySearchInput = handleSandifySearchInput;
+window.clearSandifySearch = clearSandifySearch;
+window.setSandifySearchFilter = setSandifySearchFilter;
+
 function toggleSpotifyHeart(btn) {
   if (!btn) return;
   btn.classList.toggle('active');

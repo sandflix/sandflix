@@ -12357,3 +12357,377 @@ video {
         height: 8px !important;
       }
     }
+
+/* ==========================================================================
+   SANDIFY TRACKS: CLASSIC SPOTIFY SEARCH ENGINE (PC, LAPTOP & MOBILE)
+   ========================================================================== */
+.sandify-search-bar-wrap {
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sandify-search-pill-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 560px;
+  height: 48px;
+  background: rgba(36, 36, 36, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 0 16px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sandify-search-pill-box:focus-within {
+  background: rgba(46, 46, 46, 0.98);
+  border-color: #ffffff;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65), 0 0 0 2px rgba(255, 255, 255, 0.14);
+}
+
+.sandify-search-icon {
+  color: #b3b3b3;
+  flex-shrink: 0;
+  margin-right: 12px;
+  transition: color 0.2s ease;
+}
+
+.sandify-search-pill-box:focus-within .sandify-search-icon {
+  color: #ffffff;
+}
+
+.sandify-search-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-ui);
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.sandify-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sandify-search-clear {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 8px;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+
+.sandify-search-clear:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.06);
+}
+
+.sandify-search-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sandify-s-chip {
+  padding: 7px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(35, 35, 35, 0.85);
+  color: #e5e5e5;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.sandify-s-chip:hover {
+  background: rgba(58, 58, 58, 0.92);
+  color: #ffffff;
+}
+
+.sandify-s-chip.active {
+  background: #ffffff;
+  color: #121212;
+  border-color: #ffffff;
+  font-weight: 700;
+}
+
+.sandify-search-results {
+  margin-bottom: 36px;
+}
+
+.sandify-res-heading {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 14px;
+  letter-spacing: -0.2px;
+}
+
+.sandify-res-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  margin-left: 6px;
+}
+
+.sandify-top-songs-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 370px) 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+  align-items: start;
+}
+
+.sandify-top-result-card {
+  position: relative;
+  background: #181818;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.2s ease, border-color 0.22s ease;
+}
+
+.sandify-top-result-card:hover {
+  background: #282828;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.sandify-top-art {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.sandify-top-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sandify-top-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #b3b3b3;
+  flex-wrap: wrap;
+}
+
+.sandify-type-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+.sandify-green-play {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #1db954;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.sandify-green-play:hover {
+  background: #1ed760;
+  transform: scale(1.06);
+}
+
+.sandify-songs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sandify-song-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+
+.sandify-song-result-row:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sandify-song-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sandify-song-thumb-wrap {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #222;
+}
+
+.sandify-song-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sandify-song-hover-play {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+
+.sandify-song-result-row:hover .sandify-song-hover-play {
+  opacity: 1;
+}
+
+.sandify-song-meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.sandify-song-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sandify-song-artist {
+  font-size: 12.5px;
+  color: #a7a7a7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.sandify-song-dur {
+  font-size: 13px;
+  color: #a7a7a7;
+  flex-shrink: 0;
+}
+
+.sandify-albums-results-wrap {
+  margin-top: 12px;
+}
+
+.sandify-search-empty {
+  text-align: center;
+  padding: 46px 20px;
+  background: rgba(24, 24, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.sandify-search-empty h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 12px 0 6px;
+}
+
+.sandify-search-empty p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 18px;
+}
+
+.sandify-empty-reset {
+  padding: 9px 22px;
+  border-radius: 9999px;
+  border: none;
+  background: #ffffff;
+  color: #121212;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .sandify-search-bar-wrap {
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .sandify-search-pill-box {
+    max-width: 100%;
+    height: 44px;
+    padding: 0 14px;
+  }
+
+  .sandify-search-input {
+    font-size: 13.5px;
+  }
+
+  .sandify-top-songs-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sandify-top-title {
+    font-size: 20px;
+  }
+
+  .sandify-song-result-row {
+    padding: 8px 6px;
+  }
+}

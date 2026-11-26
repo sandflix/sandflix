@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v152_mobile_buttons_home_only">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v153_sandify_spotify_search">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -904,17 +904,43 @@
         </div>
       </div>
 
-      <!-- Below Banner: Spotify Style Album Cards Section -->
+      <!-- Below Banner: Spotify Style Search Engine + Album Cards Section -->
       <div class="sandify-cards-section">
-        <div class="sandify-cards-header">
+        <!-- Classic Spotify Search Engine Bar -->
+        <div class="sandify-search-bar-wrap" id="sandifySearchWrap">
+          <div class="sandify-search-pill-box">
+            <svg class="sandify-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7.5"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="sandifySearchInput" class="sandify-search-input" placeholder="What do you want to listen to? Search songs, albums, artists..." autocomplete="off" oninput="handleSandifySearchInput(this.value)" />
+            <button class="sandify-search-clear" id="sandifySearchClear" onclick="clearSandifySearch()" title="Clear search" aria-label="Clear search" style="display: none;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="sandify-search-chips" id="sandifySearchChips" style="display: none;">
+            <button class="sandify-s-chip active" onclick="setSandifySearchFilter('all', this)">All</button>
+            <button class="sandify-s-chip" onclick="setSandifySearchFilter('songs', this)">Songs</button>
+            <button class="sandify-s-chip" onclick="setSandifySearchFilter('albums', this)">Albums</button>
+          </div>
+        </div>
+
+        <!-- Live Spotify Search Results Container -->
+        <div class="sandify-search-results" id="sandifySearchResults" style="display: none;"></div>
+
+        <div class="sandify-cards-header" id="sandifyAlbumsHeader">
           <div class="sandify-header-left">
             <h2 class="sandify-section-title">Albums &amp; Soundtracks</h2>
             <p class="sandify-section-desc">Click any card to open its dedicated tracklist</p>
           </div>
-          <span class="sandify-badge-count">6 Master Albums</span>
+          <span class="sandify-badge-count">10 Master Albums</span>
         </div>
 
-        <div class="spotify-card-grid">
+        <div class="spotify-card-grid" id="sandifyAlbumsGrid">
           <!-- Card 1: Master Album (Ramayana: The Divine Symphony) -->
           <article class="spotify-music-card" onclick="openSandifySubpage('divine-symphony')" title="Ramayana: The Divine Symphony">
             <div class="spotify-card-art-box">
@@ -1681,9 +1707,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v152_mobile_buttons_home_only"></script>
-  <script src="js/tracks-data.js?v=20261126_v152_mobile_buttons_home_only"></script>
-  <script src="js/app.js?v=20261126_v152_mobile_buttons_home_only"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v153_sandify_spotify_search"></script>
+  <script src="js/tracks-data.js?v=20261126_v153_sandify_spotify_search"></script>
+  <script src="js/app.js?v=20261126_v153_sandify_spotify_search"></script>
 </body>
 
 </html>
