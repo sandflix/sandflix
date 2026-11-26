@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v167_home_banner_tall_clear_hd">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v168_home_banner_seamless_tall">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -121,11 +121,12 @@
       <!-- Backdrop Image (Crisp fallback & initial display) -->
       <div class="billboard-backdrop" id="homeBillboardBackdrop" style="background-image: url('assets/images/hero_banner_hd.jpg');"></div>
       
-      <!-- Full-Bleed Multi-Scene HD Video Preview Layer -->
+      <!-- Full-Bleed Multi-Scene HD Video Preview Layer (Dual-Buffer Seamless Crossfade) -->
       <div class="billboard-video-wrap" id="homeBillboardVideoWrap">
-        <video id="homeBillboardVideo" preload="auto" autoplay muted playsinline poster="assets/images/hero_banner_hd.jpg">
+        <video id="homeBillboardVideo" class="bb-video-layer is-front" preload="auto" autoplay muted playsinline poster="assets/images/hero_banner_hd.jpg">
           <source src="assets/videos/banner_preview_hd.mp4" type="video/mp4">
         </video>
+        <video id="homeBillboardVideoNext" class="bb-video-layer" preload="auto" muted playsinline></video>
       </div>
 
       <!-- Cinematic Vignettes -->
@@ -2136,9 +2137,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v167_home_banner_tall_clear_hd"></script>
-  <script src="js/tracks-data.js?v=20261126_v167_home_banner_tall_clear_hd"></script>
-  <script src="js/app.js?v=20261126_v167_home_banner_tall_clear_hd"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v168_home_banner_seamless_tall"></script>
+  <script src="js/tracks-data.js?v=20261126_v168_home_banner_seamless_tall"></script>
+  <script src="js/app.js?v=20261126_v168_home_banner_seamless_tall"></script>
 </body>
 
 </html>

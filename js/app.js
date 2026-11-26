@@ -7650,99 +7650,138 @@ let isHomeBillboardAudioEnabled = false;
 
 function initHomeBillboard() {
   const billboard = document.getElementById('homeHeroBillboard');
-  const video = document.getElementById('homeBillboardVideo');
+  const videoA = document.getElementById('homeBillboardVideo');
+  const videoB = document.getElementById('homeBillboardVideoNext');
   const videoWrap = document.getElementById('homeBillboardVideoWrap');
 
-  if (!billboard || !video || !videoWrap) return;
+  if (!billboard || !videoA || !videoWrap) return;
 
-  // Multi-scene playlist cycling through distinct epic movie scenes in HD
+  // Multi-scene playlist cycling through distinct epic movie scenes seamlessly (zero poster flash)
   const billboardScenes = [
-    { src: 'assets/videos/banner_preview_hd.mp4', start: 0, durationMs: 11000 },
-    { src: 'assets/videos/move_trailer_hd.mp4', start: 10, durationMs: 11000 },
-    { src: 'assets/videos/move_trailer_hd.mp4', start: 34, durationMs: 11000 },
-    { src: 'assets/videos/move_trailer_hd.mp4', start: 62, durationMs: 11000 },
-    { src: 'assets/videos/move_trailer_hd.mp4', start: 92, durationMs: 11000 }
+    { src: 'assets/videos/banner_preview_hd.mp4', start: 0, durationMs: 12000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 10, durationMs: 12000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 34, durationMs: 12000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 62, durationMs: 12000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 92, durationMs: 12000 }
   ];
   let sceneIdx = 0;
   let sceneTimer = null;
+  let activeVid = videoA;
+  let standbyVid = videoB || null;
 
-  function playBillboardPreview() {
-    video.muted = !isHomeBillboardAudioEnabled;
-    video.volume = 1.0;
-    const playPromise = video.play();
+  function playActiveVideo() {
+    activeVid.muted = !isHomeBillboardAudioEnabled;
+    activeVid.volume = 1.0;
+    const playPromise = activeVid.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
         videoWrap.classList.add('playing');
+        activeVid.classList.add('is-front');
       }).catch(err => {
         console.log('Billboard preview waiting for user interaction:', err);
       });
     }
   }
 
+  function transitionToNextScene() {
+    const homeView = document.getElementById('home-view');
+    if (!homeView || !homeView.classList.contains('active')) {
+      scheduleNextScene();
+      return;
+    }
+
+    sceneIdx = (sceneIdx + 1) % billboardScenes.length;
+    const nextScene = billboardScenes[sceneIdx];
+
+    if (!standbyVid) {
+      // Single-video fallback without hiding videoWrap
+      activeVid.src = nextScene.src;
+      activeVid.addEventListener('loadedmetadata', () => {
+        try {
+          if (isFinite(activeVid.duration) && activeVid.duration > 2) {
+            activeVid.currentTime = Math.min(nextScene.start, Math.max(0, activeVid.duration - 4));
+          }
+        } catch (e) {}
+        playActiveVideo();
+      }, { once: true });
+      scheduleNextScene();
+      return;
+    }
+
+    // Prepare standby video invisibly while active video keeps playing
+    const standbySrc = standbyVid.getAttribute('src') || '';
+    const needsLoad = !standbySrc.endsWith(nextScene.src);
+    if (needsLoad) {
+      standbyVid.src = nextScene.src;
+      standbyVid.load();
+    }
+
+    const startStandbyAndSwap = () => {
+      try {
+        if (isFinite(standbyVid.duration) && standbyVid.duration > 2) {
+          standbyVid.currentTime = Math.min(nextScene.start, Math.max(0, standbyVid.duration - 4));
+        }
+      } catch (e) {}
+
+      const onReady = () => {
+        standbyVid.muted = !isHomeBillboardAudioEnabled;
+        standbyVid.volume = 1.0;
+        const p = standbyVid.play();
+        const finalizeSwap = () => {
+          standbyVid.classList.add('is-front');
+          activeVid.classList.remove('is-front');
+          videoWrap.classList.add('playing');
+          const prev = activeVid;
+          activeVid = standbyVid;
+          standbyVid = prev;
+          setTimeout(() => {
+            try { if (standbyVid && !standbyVid.paused) standbyVid.pause(); } catch (e) {}
+          }, 700);
+          scheduleNextScene();
+        };
+        if (p !== undefined) {
+          p.then(finalizeSwap).catch(() => scheduleNextScene());
+        } else {
+          finalizeSwap();
+        }
+      };
+
+      if (standbyVid.seeking) {
+        standbyVid.addEventListener('seeked', onReady, { once: true });
+      } else {
+        onReady();
+      }
+    };
+
+    if (needsLoad || standbyVid.readyState < 2) {
+      standbyVid.addEventListener('canplay', startStandbyAndSwap, { once: true });
+    } else {
+      startStandbyAndSwap();
+    }
+  }
+
   function scheduleNextScene() {
     if (sceneTimer) clearTimeout(sceneTimer);
-    const currentScene = billboardScenes[sceneIdx];
-    sceneTimer = setTimeout(() => {
-      const homeView = document.getElementById('home-view');
-      if (!homeView || !homeView.classList.contains('active')) {
-        scheduleNextScene();
-        return;
-      }
-      sceneIdx = (sceneIdx + 1) % billboardScenes.length;
-      const nextScene = billboardScenes[sceneIdx];
-      videoWrap.classList.remove('playing');
-
-      setTimeout(() => {
-        const currentSrcAttr = video.getAttribute('src') || '';
-        const needsSrcChange = !currentSrcAttr.endsWith(nextScene.src);
-        if (needsSrcChange) {
-          video.src = nextScene.src;
-          video.load();
-        }
-        const seekAndPlay = () => {
-          try {
-            if (isFinite(video.duration) && video.duration > 2) {
-              video.currentTime = Math.min(nextScene.start, Math.max(0, video.duration - 4));
-            }
-          } catch (e) {}
-          playBillboardPreview();
-        };
-        if (needsSrcChange || video.readyState < 1) {
-          video.addEventListener('loadedmetadata', seekAndPlay, { once: true });
-        } else {
-          seekAndPlay();
-        }
-        scheduleNextScene();
-      }, 350);
-    }, currentScene.durationMs);
+    sceneTimer = setTimeout(transitionToNextScene, billboardScenes[sceneIdx].durationMs);
   }
 
   if (!billboard.dataset.scenesInitialized) {
     billboard.dataset.scenesInitialized = 'true';
-    video.src = billboardScenes[0].src;
-    video.addEventListener('ended', () => {
-      sceneIdx = (sceneIdx + 1) % billboardScenes.length;
-      const nextScene = billboardScenes[sceneIdx];
-      video.src = nextScene.src;
-      video.addEventListener('loadedmetadata', () => {
-        try {
-          if (isFinite(video.duration) && video.duration > 2) {
-            video.currentTime = Math.min(nextScene.start, Math.max(0, video.duration - 4));
-          }
-        } catch (e) {}
-        playBillboardPreview();
-      }, { once: true });
-    });
-    billboard.addEventListener('mouseenter', playBillboardPreview);
+    videoA.src = billboardScenes[0].src;
+    videoA.addEventListener('ended', transitionToNextScene);
+    if (videoB) videoB.addEventListener('ended', transitionToNextScene);
+    billboard.addEventListener('mouseenter', playActiveVideo);
   }
 
-  playBillboardPreview();
+  playActiveVideo();
   scheduleNextScene();
 }
 
 function toggleBillboardAudio(event) {
   if (event) event.stopPropagation();
-  const video = document.getElementById('homeBillboardVideo');
+  const videoA = document.getElementById('homeBillboardVideo');
+  const videoB = document.getElementById('homeBillboardVideoNext');
+  const video = document.querySelector('#homeBillboardVideoWrap video.is-front') || videoA;
   const muteIcon = document.getElementById('homeBBAudioMute');
   const unmuteIcon = document.getElementById('homeBBAudioUnmute');
   const videoWrap = document.getElementById('homeBillboardVideoWrap');
@@ -7750,8 +7789,8 @@ function toggleBillboardAudio(event) {
   if (!video) return;
 
   isHomeBillboardAudioEnabled = !isHomeBillboardAudioEnabled;
-  video.muted = !isHomeBillboardAudioEnabled;
-  video.volume = 1.0;
+  if (videoA) { videoA.muted = !isHomeBillboardAudioEnabled; videoA.volume = 1.0; }
+  if (videoB) { videoB.muted = !isHomeBillboardAudioEnabled; videoB.volume = 1.0; }
 
   if (video.paused) {
     const playPromise = video.play();

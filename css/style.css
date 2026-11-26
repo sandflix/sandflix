@@ -14013,9 +14013,9 @@ video {
   display: block !important;
   max-width: 1380px !important;
   width: calc(100% - 64px) !important;
-  height: clamp(580px, 80vh, 760px) !important;
-  min-height: 580px !important;
-  max-height: 760px !important;
+  height: clamp(820px, 110vh, 1080px) !important;
+  min-height: 820px !important;
+  max-height: 1080px !important;
   margin: 14px auto 28px !important;
   padding: 0 !important;
   border-radius: 16px !important;
@@ -14048,11 +14048,21 @@ video {
 }
 
 #homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
   filter: none !important;
+  opacity: 0;
+  transition: opacity 0.65s ease;
+  z-index: 1;
+}
+
+#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video.is-front {
+  opacity: 1;
+  z-index: 2;
 }
 
 .netflix-bb-scrim {
@@ -14170,9 +14180,9 @@ video {
 @media (max-width: 1024px) {
   #homeHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
-    height: clamp(480px, 66vh, 600px) !important;
-    min-height: 480px !important;
-    max-height: 600px !important;
+    height: clamp(680px, 92vh, 880px) !important;
+    min-height: 680px !important;
+    max-height: 880px !important;
   }
 
   .netflix-bb-bottom-right {
