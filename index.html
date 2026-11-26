@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v171_netflix_logo_above_meta">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v172_netflix_logo_detail_align">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -149,27 +149,36 @@
       <!-- BOTTOM-LEFT: Clean Luxury Gold Ramayana Logo Just Above Metadata & Bottom Action Buttons -->
       <div class="netflix-bb-bottom-left">
         <div class="netflix-movie-logo-wrap" aria-label="Ramayana">
-          <svg class="netflix-movie-crest-logo" viewBox="0 0 560 130" role="img" aria-label="Ramayana">
+          <svg class="netflix-movie-crest-logo" viewBox="0 0 500 120" role="img" aria-label="Ramayana">
             <defs>
               <linearGradient id="ramayanaCleanGold" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stop-color="#fffbe6"/>
-                <stop offset="30%" stop-color="#f6d379"/>
-                <stop offset="58%" stop-color="#c88d25"/>
-                <stop offset="85%" stop-color="#f1cc6b"/>
-                <stop offset="100%" stop-color="#fff3c4"/>
+                <stop offset="32%" stop-color="#f6d379"/>
+                <stop offset="60%" stop-color="#c48922"/>
+                <stop offset="86%" stop-color="#edd07b"/>
+                <stop offset="100%" stop-color="#fff4c8"/>
               </linearGradient>
-              <radialGradient id="ramayanaSunburst" cx="50%" cy="46%" r="48%">
-                <stop offset="0%" stop-color="#fff6c7" stop-opacity="0.88"/>
-                <stop offset="28%" stop-color="#f59e0b" stop-opacity="0.45"/>
-                <stop offset="65%" stop-color="#b45309" stop-opacity="0.12"/>
+              <radialGradient id="ramayanaSunburst" cx="50%" cy="46%" r="50%">
+                <stop offset="0%" stop-color="#fff7cc" stop-opacity="0.9"/>
+                <stop offset="28%" stop-color="#f59e0b" stop-opacity="0.48"/>
+                <stop offset="68%" stop-color="#b45309" stop-opacity="0.12"/>
                 <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
               </radialGradient>
+              <!-- Refined, Clean Engraved Filigree Detailing Inside Letters -->
+              <pattern id="ramayanaFineFiligree" width="22" height="22" patternUnits="userSpaceOnUse">
+                <rect width="22" height="22" fill="url(#ramayanaCleanGold)"/>
+                <path d="M0 11 C5 5, 11 5, 11 11 C11 17, 17 17, 22 11" fill="none" stroke="#6f4809" stroke-width="0.95" opacity="0.48"/>
+                <path d="M11 0 C17 5, 17 11, 11 11 C5 11, 5 17, 11 22" fill="none" stroke="#85580c" stroke-width="0.8" opacity="0.38"/>
+                <circle cx="11" cy="11" r="1.15" fill="#fff9db" opacity="0.65"/>
+                <circle cx="5" cy="5" r="0.85" fill="#5c3804" opacity="0.42"/>
+                <circle cx="17" cy="17" r="0.85" fill="#5c3804" opacity="0.42"/>
+              </pattern>
             </defs>
-            <!-- Subtle Warm Golden Sunburst Behind Center -->
-            <ellipse cx="280" cy="56" rx="200" ry="42" fill="url(#ramayanaSunburst)"/>
-            <line x1="90" y1="56" x2="470" y2="56" stroke="#fde68a" stroke-width="1" opacity="0.42"/>
-            <!-- Clean Sculpted Metallic Gold Wordmark -->
-            <text x="280" y="88" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-weight="800" font-size="76" letter-spacing="3" fill="url(#ramayanaCleanGold)" stroke="#fff8dc" stroke-width="0.6">Ramayana</text>
+            <!-- Warm Golden Sunburst Behind Wordmark -->
+            <ellipse cx="235" cy="52" rx="195" ry="40" fill="url(#ramayanaSunburst)"/>
+            <line x1="6" y1="52" x2="465" y2="52" stroke="#fde68a" stroke-width="1" opacity="0.38"/>
+            <!-- Flush Left-Aligned Engraved Gold Wordmark (Matches Film • Epic Alignment) -->
+            <text x="2" y="84" text-anchor="start" font-family="'Cinzel', Georgia, serif" font-weight="800" font-size="76" letter-spacing="2.5" fill="url(#ramayanaFineFiligree)" stroke="#fff6d1" stroke-width="1.05">Ramayana</text>
           </svg>
         </div>
 
@@ -2145,9 +2154,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v171_netflix_logo_above_meta"></script>
-  <script src="js/tracks-data.js?v=20261126_v171_netflix_logo_above_meta"></script>
-  <script src="js/app.js?v=20261126_v171_netflix_logo_above_meta"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v172_netflix_logo_detail_align"></script>
+  <script src="js/tracks-data.js?v=20261126_v172_netflix_logo_detail_align"></script>
+  <script src="js/app.js?v=20261126_v172_netflix_logo_detail_align"></script>
 </body>
 
 </html>
