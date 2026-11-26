@@ -13089,6 +13089,209 @@ video {
   margin-top: 4px;
 }
 
+/* Unique Audiobooks Hero Stage (Golden-Amber Illuminated Book) */
+.sandify-audiobooks-stage {
+  position: relative;
+  width: 100%;
+  height: 295px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(245, 158, 11, 0.22), rgba(10, 13, 18, 0.98) 72%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sandify-audiobooks-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(245, 158, 11, 0.26), transparent 50%),
+    radial-gradient(circle at 75% 40%, rgba(217, 119, 6, 0.2), transparent 48%),
+    radial-gradient(circle at 50% 80%, rgba(251, 191, 36, 0.14), transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sandify-book-pages-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.book-bg-card {
+  width: 120px;
+  height: 165px;
+  border-radius: 12px;
+  background: linear-gradient(155deg, rgba(251, 191, 36, 0.2), rgba(18, 15, 10, 0.85));
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.65);
+}
+
+.book-bg-card.bcard-1 { transform: rotate(-10deg) translateY(10px); }
+.book-bg-card.bcard-2 { transform: rotate(6deg) translateY(-14px); }
+.book-bg-card.bcard-3 { transform: rotate(-6deg) translateY(-16px); }
+.book-bg-card.bcard-4 { transform: rotate(11deg) translateY(12px); }
+
+.sandify-audiobooks-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sandify-book-emblem {
+  width: 128px;
+  height: 128px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(38, 28, 12, 0.94), rgba(14, 13, 12, 0.96));
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 0 44px rgba(245, 158, 11, 0.34), 0 18px 42px rgba(0, 0, 0, 0.82);
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sandify-book-halo {
+  position: absolute;
+  inset: -10px;
+  border-radius: 34px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  pointer-events: none;
+}
+
+.sandify-book-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 24px;
+}
+
+.sandify-book-waves span {
+  width: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #fbbf24, #d97706);
+  animation: sandifyStageEq 1.2s ease-in-out infinite;
+}
+
+.sandify-book-waves span:nth-child(odd) { height: 12px; animation-delay: 0.2s; }
+.sandify-book-waves span:nth-child(even) { height: 22px; animation-delay: 0.45s; }
+
+.sandify-hero-eyebrow.eyebrow-amber {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.38);
+}
+
+.sandify-wave-bars.wave-amber span {
+  background: #fbbf24;
+}
+
+/* Unique Podcasts Hero Stage (Violet-Cyan Broadcast Studio) */
+.sandify-podcasts-stage {
+  position: relative;
+  width: 100%;
+  height: 295px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(168, 85, 247, 0.24), rgba(10, 13, 18, 0.98) 72%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sandify-podcasts-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 35%, rgba(168, 85, 247, 0.28), transparent 48%),
+    radial-gradient(circle at 78% 35%, rgba(56, 189, 248, 0.18), transparent 46%),
+    radial-gradient(circle at 50% 80%, rgba(192, 132, 252, 0.15), transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sandify-mic-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sandify-mic-rings span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(192, 132, 252, 0.22);
+  animation: sandifyPodPulse 3.2s ease-out infinite;
+}
+
+.sandify-mic-rings span:nth-child(1) { width: 170px; height: 170px; animation-delay: 0s; }
+.sandify-mic-rings span:nth-child(2) { width: 250px; height: 250px; animation-delay: 0.9s; }
+.sandify-mic-rings span:nth-child(3) { width: 330px; height: 330px; animation-delay: 1.8s; }
+
+@keyframes sandifyPodPulse {
+  0% { transform: scale(0.86); opacity: 0.7; }
+  100% { transform: scale(1.16); opacity: 0; }
+}
+
+.sandify-podcasts-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sandify-mic-emblem {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(44, 24, 68, 0.95) 0%, rgba(12, 11, 18, 0.98) 72%);
+  border: 1.5px solid rgba(192, 132, 252, 0.55);
+  box-shadow: 0 0 46px rgba(168, 85, 247, 0.36), 0 18px 42px rgba(0, 0, 0, 0.82);
+  color: #c084fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sandify-pod-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 26px;
+}
+
+.sandify-pod-eq span {
+  width: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #c084fc, #38bdf8);
+  animation: sandifyStageEq 1.05s ease-in-out infinite;
+}
+
+.sandify-pod-eq span:nth-child(odd) { height: 13px; animation-delay: 0.1s; }
+.sandify-pod-eq span:nth-child(even) { height: 24px; animation-delay: 0.35s; }
+.sandify-pod-eq span:nth-child(3n) { height: 18px; animation-delay: 0.6s; }
+
+.sandify-hero-eyebrow.eyebrow-violet {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.sandify-wave-bars.wave-violet span {
+  background: #c084fc;
+}
+
 .sandify-hero-glow {
   position: absolute;
   inset: 0;
@@ -13751,6 +13954,32 @@ video {
     width: 24px;
     height: 24px;
   }
+
+  .sandify-audiobooks-stage,
+  .sandify-podcasts-stage {
+    height: 205px;
+  }
+
+  .sandify-book-emblem,
+  .sandify-mic-emblem {
+    width: 98px;
+    height: 98px;
+  }
+
+  .sandify-book-emblem svg,
+  .sandify-mic-emblem svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .book-bg-card {
+    width: 78px;
+    height: 112px;
+  }
+
+  .sandify-mic-rings span:nth-child(1) { width: 130px; height: 130px; }
+  .sandify-mic-rings span:nth-child(2) { width: 190px; height: 190px; }
+  .sandify-mic-rings span:nth-child(3) { width: 250px; height: 250px; }
 
   .sandify-home-section,
   .sandify-audiobooks-view,
