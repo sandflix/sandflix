@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v145_modular_clean">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v146_mobile_movies_shows_upgrade">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -108,10 +108,10 @@
        ========================================================================= -->
   <main class="page-view active" id="home-view">
 
-    <!-- Mobile-Only Netflix Top Browse Bar (TV Shows & Movies) -->
-    <div class="mobile-top-browse-bar" aria-label="Browse TV Shows and Movies">
-      <button class="mobile-browse-pill" onclick="switchPage('shows')">TV Shows</button>
+    <!-- Mobile-Only Netflix Top Browse Bar (Movies & Shows) -->
+    <div class="mobile-top-browse-bar" aria-label="Browse Movies and Shows">
       <button class="mobile-browse-pill" onclick="switchPage('movies')">Movies</button>
+      <button class="mobile-browse-pill" onclick="switchPage('shows')">Shows</button>
     </div>
 
     <!-- Netflix Hero Billboard with Hover Video Preview & Audio Controls -->
@@ -499,13 +499,10 @@
        ========================================================================= -->
   <section class="page-view" id="movies-view">
 
-    <!-- Mobile-Only Netflix Top Browse Bar (Back to Home, TV Shows, Active Movies) -->
+    <!-- Mobile-Only Netflix Top Browse Bar (Active Movies, Shows) -->
     <div class="mobile-top-browse-bar" aria-label="Browse Categories">
-      <button class="mobile-browse-close" onclick="switchPage('home')" title="Back to Home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      <button class="mobile-browse-pill" onclick="switchPage('shows')">TV Shows</button>
       <button class="mobile-browse-pill active" onclick="switchPage('home')">Movies</button>
+      <button class="mobile-browse-pill" onclick="switchPage('shows')">Shows</button>
     </div>
 
     <!-- Netflix Style Sub-Header / Genre Filter Bar -->
@@ -787,23 +784,20 @@
        ========================================================================= -->
   <section class="page-view" id="shows-view">
     <div class="mobile-top-browse-bar" aria-label="Browse Categories">
-      <button class="mobile-browse-close" onclick="switchPage('home')" title="Back to Home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      <button class="mobile-browse-pill active" onclick="switchPage('home')">TV Shows</button>
       <button class="mobile-browse-pill" onclick="switchPage('movies')">Movies</button>
+      <button class="mobile-browse-pill active" onclick="switchPage('home')">Shows</button>
     </div>
 
     <div class="netflix-genre-header">
       <div class="netflix-genre-left">
-        <h1 class="netflix-genre-title">TV Shows</h1>
+        <h1 class="netflix-genre-title">Shows</h1>
       </div>
     </div>
 
     <div class="shows-coming-soon-wrap">
       <div class="shows-coming-soon-card">
         <span class="shows-badge">SANDFLIX SERIES</span>
-        <h2 class="shows-heading">TV Shows &amp; Web Series</h2>
+        <h2 class="shows-heading">Shows &amp; Web Series</h2>
         <p class="shows-subtext">Curated TV shows and original series are being added here soon. Meanwhile, explore all movies or browse Trending on Home.</p>
         <div class="shows-actions">
           <button class="btn-n-play" onclick="switchPage('movies')">
@@ -1680,9 +1674,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v145_modular_clean"></script>
-  <script src="js/tracks-data.js?v=20261126_v145_modular_clean"></script>
-  <script src="js/app.js?v=20261126_v145_modular_clean"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v146_mobile_movies_shows_upgrade"></script>
+  <script src="js/tracks-data.js?v=20261126_v146_mobile_movies_shows_upgrade"></script>
+  <script src="js/app.js?v=20261126_v146_mobile_movies_shows_upgrade"></script>
 </body>
 
 </html>
