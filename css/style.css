@@ -14249,11 +14249,29 @@ video {
   #moviesHeroBillboard.home-billboard-netflix-card {
     width: auto !important;
     margin: 10px 12px 20px !important;
-    height: auto !important;
-    min-height: 360px !important;
-    max-height: none !important;
-    aspect-ratio: 16 / 10;
+    height: clamp(600px, 74vh, 720px) !important;
+    min-height: 600px !important;
+    max-height: 740px !important;
+    aspect-ratio: auto !important;
     border-radius: 14px !important;
+  }
+
+  #homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap,
+  #moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap,
+  #homeHeroBillboard.home-billboard-netflix-card .billboard-backdrop,
+  #moviesHeroBillboard.home-billboard-netflix-card .billboard-backdrop {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: inherit !important;
+    overflow: hidden !important;
+  }
+
+  #homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video,
+  #moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 
   .netflix-bb-top-audio {
@@ -14273,18 +14291,18 @@ video {
   .netflix-bb-bottom-left {
     left: 16px;
     right: 16px;
-    bottom: 16px;
+    bottom: 18px;
     top: auto;
     transform: none;
-    gap: 8px;
+    gap: 10px;
   }
 
   .netflix-movie-logo-wrap {
-    width: 220px;
+    width: 230px;
   }
 
   .netflix-bb-meta-line {
-    font-size: 11.5px;
+    font-size: 12px;
     gap: 5px;
   }
 
@@ -14298,11 +14316,13 @@ video {
 @media (max-width: 480px) {
   #homeHeroBillboard.home-billboard-netflix-card,
   #moviesHeroBillboard.home-billboard-netflix-card {
-    min-height: 300px !important;
-    aspect-ratio: 4 / 3;
+    height: clamp(560px, 72vh, 660px) !important;
+    min-height: 560px !important;
+    max-height: 660px !important;
+    aspect-ratio: auto !important;
   }
 
   .netflix-movie-logo-wrap {
-    width: 165px;
+    width: 200px;
   }
 }
