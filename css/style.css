@@ -14013,10 +14013,10 @@ video {
   display: block !important;
   max-width: 1380px !important;
   width: calc(100% - 64px) !important;
-  height: clamp(540px, calc(100vh - 115px), 780px) !important;
-  min-height: 540px !important;
-  max-height: 780px !important;
-  margin: 12px auto 26px !important;
+  height: clamp(600px, calc(100vh - 90px), 840px) !important;
+  min-height: 600px !important;
+  max-height: 840px !important;
+  margin: 10px auto 26px !important;
   padding: 0 !important;
   border-radius: 16px !important;
   background: #000000 !important;
@@ -14087,12 +14087,22 @@ video {
   border: 1px solid rgba(255, 255, 255, 0.32) !important;
 }
 
+.netflix-bb-logo-mid {
+  position: absolute;
+  left: 38px;
+  top: 48%;
+  transform: translateY(-50%);
+  z-index: 10;
+  max-width: 540px;
+  pointer-events: none;
+}
+
 .netflix-bb-bottom-left {
   position: absolute;
   left: 38px;
-  top: 50%;
-  transform: translateY(-50%);
-  bottom: auto;
+  bottom: 30px;
+  top: auto;
+  transform: none;
   z-index: 10;
   max-width: 540px;
   display: flex;
@@ -14102,15 +14112,17 @@ video {
 }
 
 .netflix-movie-logo-wrap {
-  width: 340px;
+  width: 360px;
   max-width: 100%;
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.92));
+  overflow: visible;
 }
 
 .netflix-movie-crest-logo {
   width: 100%;
   height: auto;
   display: block;
+  overflow: visible;
 }
 
 .netflix-bb-meta-line {
@@ -14207,9 +14219,9 @@ video {
 @media (max-width: 1024px) {
   #homeHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
-    height: clamp(440px, calc(100vh - 125px), 580px) !important;
-    min-height: 440px !important;
-    max-height: 580px !important;
+    height: clamp(490px, calc(100vh - 100px), 640px) !important;
+    min-height: 490px !important;
+    max-height: 640px !important;
   }
 
   .netflix-bb-bottom-right {
@@ -14222,7 +14234,7 @@ video {
     width: auto !important;
     margin: 10px 12px 20px !important;
     height: auto !important;
-    min-height: 340px !important;
+    min-height: 360px !important;
     max-height: none !important;
     aspect-ratio: 16 / 10;
     border-radius: 14px !important;
@@ -14235,17 +14247,24 @@ video {
     height: 34px !important;
   }
 
+  .netflix-bb-logo-mid {
+    left: 16px;
+    right: 16px;
+    top: 44%;
+    transform: translateY(-50%);
+  }
+
   .netflix-bb-bottom-left {
     left: 16px;
     right: 16px;
-    top: 52%;
-    transform: translateY(-50%);
-    bottom: auto;
+    bottom: 16px;
+    top: auto;
+    transform: none;
     gap: 8px;
   }
 
   .netflix-movie-logo-wrap {
-    width: 210px;
+    width: 220px;
   }
 
   .netflix-bb-meta-line {
