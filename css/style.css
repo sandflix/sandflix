@@ -14274,6 +14274,18 @@ video {
     object-position: center center !important;
   }
 
+  /* Mobile-only Home banner: new Ramayana movie backdrop & crop baked-in trailer letterbox bars */
+  #homeHeroBillboard.home-billboard-netflix-card .billboard-backdrop {
+    background-image: url('../assets/images/movie_poster_hd.jpg') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+
+  #homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
+    transform: scale(1.18) !important;
+    transform-origin: center center !important;
+  }
+
   .netflix-bb-top-audio {
     top: 12px !important;
     right: 12px !important;

@@ -7656,6 +7656,10 @@ function initHomeBillboard() {
 
   if (!billboard || !videoA || !videoWrap) return;
 
+  if (window.innerWidth <= 768) {
+    videoA.setAttribute('poster', 'assets/images/movie_poster_hd.jpg');
+  }
+
   // Multi-scene playlist cycling through distinct epic movie scenes seamlessly (zero poster flash)
   const billboardScenes = [
     { src: 'assets/videos/banner_preview_hd.mp4', start: 0, durationMs: 12000 },
