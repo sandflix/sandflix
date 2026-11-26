@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v161_sandify_subnav_mobile_only">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v162_sandify_music_hero_banner">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1096,73 +1096,69 @@
         <h1 class="sandify-page-title">Music</h1>
       </div>
       
-      <!-- Exact Spotify / YouTube Music Style Album Header (Banner from screenshot) -->
-      <div class="spotify-album-header">
-        <div class="spotify-header-bg"></div>
-        <div class="spotify-header-gradient"></div>
-
-        <div class="spotify-header-content">
-          <!-- 3D Album Artwork with Vinyl Peeking -->
-          <div class="spotify-cover-wrap">
-            <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-cover-img" id="spotifyCoverImg" decoding="async">
-            <div class="spotify-vinyl-peeking" id="spotifyVinylPeeking">
-              <div class="vinyl-groove-circle"></div>
-              <div class="vinyl-center-dot">
-                <img src="assets/images/sandflix_icon.png" alt="SANDFLIX" decoding="async">
+      <!-- Premium Sandify Music Hero Banner (Matches Home Banner Aesthetic, No Counts/Writers) -->
+      <div class="sandify-home-hero sandify-home-hero--with-img sandify-music-hero">
+        <div class="sandify-music-hero-stage">
+          <div class="sandify-music-stage-glow"></div>
+          <div class="sandify-music-stage-mosaic" aria-hidden="true">
+            <div class="sandify-mosaic-tile tile-1"><img src="assets/images/movie_poster_hd.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="sandify-mosaic-tile tile-2"><img src="assets/images/moosetape_cover_hd.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="sandify-mosaic-tile tile-3"><img src="assets/images/arijit_singh_hd.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="sandify-mosaic-tile tile-4"><img src="assets/images/nusrat_fateh_ali_khan_hd.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="sandify-mosaic-tile tile-5"><img src="assets/images/pbx1_album.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="sandify-mosaic-tile tile-6"><img src="assets/images/stronger_soul_album.jpg" alt="" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="sandify-music-stage-center">
+            <div class="sandify-stage-vinyl">
+              <div class="sandify-stage-vinyl-ring"></div>
+              <div class="sandify-stage-vinyl-core">
+                <img src="assets/images/sandflix_icon.png" alt="Sandify Music" decoding="async">
               </div>
             </div>
+            <div class="sandify-stage-eq" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
           </div>
+          <div class="sandify-hero-banner-fade"></div>
+        </div>
 
-          <!-- Album Metadata Stack -->
-          <div class="spotify-meta-stack">
-            <h1 class="spotify-album-title">Ramayana: The Divine Symphony</h1>
-            <p class="spotify-album-desc">
-              The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.
-            </p>
+        <div class="sandify-hero-content-band">
+          <div class="sandify-hero-eyebrow">
+            <span class="sandify-wave-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            <span>SANDIFY MUSIC &bull; STUDIO LOSSLESS</span>
+          </div>
+          <h2 class="sandify-hero-heading">Pure Sound. Endless Rhythm.</h2>
+          <p class="sandify-hero-sub">
+            Stream curated albums, iconic soundtracks, soulful melodies, and high-energy anthems with instant search and seamless playback across PC, Laptop &amp; Mobile.
+          </p>
 
-            <div class="spotify-credits-line">
-              <span class="spotify-artist-credit">A.R. Rahman</span>
-              <span class="spotify-dot">&bull;</span>
-              <span class="spotify-artist-credit">Hans Zimmer</span>
-              <span class="spotify-dot">&bull;</span>
-              <span class="spotify-meta-dim">2026</span>
-              <span class="spotify-dot">&bull;</span>
-              <span class="spotify-meta-dim">8 songs, 28 min 50 sec</span>
-              <span class="spotify-dot">&bull;</span>
-              <span class="spotify-badge-hires">Dolby Atmos</span>
-            </div>
+          <!-- Spotify Action Controls Bar -->
+          <div class="spotify-actions-bar sandify-music-actions">
+            <button class="spotify-btn-play" id="spotifyMasterPlayBtn" onclick="togglePlayAllOST()" title="Play Music">
+              <svg id="spotifyMasterPlayIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+              </svg>
+              <svg id="spotifyMasterPauseIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+            </button>
 
-            <!-- Spotify Action Controls Bar -->
-            <div class="spotify-actions-bar">
-              <!-- Big Spotify Master Play Button -->
-              <button class="spotify-btn-play" id="spotifyMasterPlayBtn" onclick="togglePlayAllOST()" title="Play Album">
-                <svg id="spotifyMasterPlayIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-                <svg id="spotifyMasterPauseIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
-                  <rect x="6" y="4" width="4" height="16"></rect>
-                  <rect x="14" y="4" width="4" height="16"></rect>
-                </svg>
-              </button>
+            <button class="sandify-cta-glass" onclick="shufflePlayOST()" title="Shuffle Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="15" y1="15" x2="21" y2="21"></line>
+              </svg>
+              <span>Shuffle Mix</span>
+            </button>
 
-              <!-- Shuffle Button -->
-              <button class="spotify-btn-action" onclick="shufflePlayOST()" title="Shuffle Play">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="16 3 21 3 21 8"></polyline>
-                  <line x1="4" y1="20" x2="21" y2="3"></line>
-                  <polyline points="21 16 21 21 16 21"></polyline>
-                  <line x1="15" y1="15" x2="21" y2="21"></line>
-                  <line x1="4" y1="4" x2="9" y2="9"></line>
-                </svg>
-              </button>
-
-              <!-- Like / Save to Library Button -->
-              <button class="spotify-btn-action heart" id="spotifyAlbumHeart" onclick="toggleSpotifyHeart(this)" title="Save to Your Library">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </button>
-            </div>
+            <button class="spotify-btn-action heart" id="spotifyAlbumHeart" onclick="toggleSpotifyHeart(this)" title="Save to Your Library">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -1200,7 +1196,7 @@
             <h2 class="sandify-section-title">Albums &amp; Soundtracks</h2>
             <p class="sandify-section-desc">Click any card to open its dedicated tracklist</p>
           </div>
-          <span class="sandify-badge-count">10 Master Albums</span>
+          <span class="sandify-badge-count">Curated Collection</span>
         </div>
 
         <div class="spotify-card-grid" id="sandifyAlbumsGrid">
@@ -2028,9 +2024,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v161_sandify_subnav_mobile_only"></script>
-  <script src="js/tracks-data.js?v=20261126_v161_sandify_subnav_mobile_only"></script>
-  <script src="js/app.js?v=20261126_v161_sandify_subnav_mobile_only"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v162_sandify_music_hero_banner"></script>
+  <script src="js/tracks-data.js?v=20261126_v162_sandify_music_hero_banner"></script>
+  <script src="js/app.js?v=20261126_v162_sandify_music_hero_banner"></script>
 </body>
 
 </html>
