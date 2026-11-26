@@ -14008,7 +14008,8 @@ video {
 /* ==========================================================================
    MAIN HOME BILLBOARD — LARGE ROUNDED NETFLIX CARD + GOLD CREST LOGO
    ========================================================================== */
-.home-billboard-netflix-card {
+#homeHeroBillboard.home-billboard-netflix-card,
+#moviesHeroBillboard.home-billboard-netflix-card {
   position: relative !important;
   display: block !important;
   max-width: 1380px !important;
@@ -14025,13 +14026,16 @@ video {
   overflow: hidden !important;
 }
 
-.home-billboard-netflix-card::before,
-.home-billboard-netflix-card::after {
+#homeHeroBillboard.home-billboard-netflix-card::before,
+#homeHeroBillboard.home-billboard-netflix-card::after,
+#moviesHeroBillboard.home-billboard-netflix-card::before,
+#moviesHeroBillboard.home-billboard-netflix-card::after {
   display: none !important;
   content: none !important;
 }
 
-.home-billboard-netflix-card .billboard-backdrop {
+#homeHeroBillboard.home-billboard-netflix-card .billboard-backdrop,
+#moviesHeroBillboard.home-billboard-netflix-card .billboard-backdrop {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -14040,14 +14044,16 @@ video {
   z-index: 0;
 }
 
-.home-billboard-netflix-card .billboard-video-wrap {
+#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap,
+#moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: #000000;
 }
 
-.home-billboard-netflix-card .billboard-video-wrap video {
+#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video,
+#moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -14060,7 +14066,8 @@ video {
   z-index: 1;
 }
 
-.home-billboard-netflix-card .billboard-video-wrap video.is-front {
+#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video.is-front,
+#moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video.is-front {
   opacity: 1;
   z-index: 2;
 }
@@ -14217,7 +14224,8 @@ video {
 }
 
 @media (max-width: 1024px) {
-  .home-billboard-netflix-card {
+  #homeHeroBillboard.home-billboard-netflix-card,
+  #moviesHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
     height: clamp(540px, calc(100vh - 70px), 700px) !important;
     min-height: 540px !important;
@@ -14230,7 +14238,8 @@ video {
 }
 
 @media (max-width: 768px) {
-  .home-billboard-netflix-card {
+  #homeHeroBillboard.home-billboard-netflix-card,
+  #moviesHeroBillboard.home-billboard-netflix-card {
     width: auto !important;
     margin: 10px 12px 20px !important;
     height: auto !important;
@@ -14280,7 +14289,8 @@ video {
 }
 
 @media (max-width: 480px) {
-  .home-billboard-netflix-card {
+  #homeHeroBillboard.home-billboard-netflix-card,
+  #moviesHeroBillboard.home-billboard-netflix-card {
     min-height: 300px !important;
     aspect-ratio: 4 / 3;
   }
