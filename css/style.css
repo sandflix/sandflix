@@ -173,6 +173,7 @@ body.ott-platform {
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  white-space: nowrap;
 }
 
 .tab-link:hover {
@@ -12139,23 +12140,43 @@ video {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   }
 }
-/* TV Shows Placeholder Hub */
+/* Shared Shows Page (PC, Laptop, Tablet & Mobile) */
 #shows-view {
   background: #141414;
   min-height: 100vh;
+  padding-top: 76px !important;
+  padding-bottom: 90px !important;
+}
+
+@media (max-width: 1024px) {
+  #shows-view {
+    padding-top: 68px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #shows-view {
+    padding-top: 58px !important;
+  }
 }
 
 .shows-coming-soon-wrap {
-  padding: 28px 16px 60px;
-  max-width: 720px;
+  padding: 48px 24px 80px;
+  max-width: 780px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .shows-coming-soon-wrap {
+    padding: 24px 16px 60px;
+  }
 }
 
 .shows-coming-soon-card {
   background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(18, 18, 18, 0.95));
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
-  padding: 28px 22px;
+  padding: 36px 26px;
   text-align: center;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
 }
@@ -12174,17 +12195,17 @@ video {
 }
 
 .shows-heading {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #ffffff;
   margin: 0 0 10px;
 }
 
 .shows-subtext {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.72);
-  margin: 0 0 22px;
+  margin: 0 0 24px;
 }
 
 .shows-actions {
