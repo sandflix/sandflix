@@ -14013,9 +14013,9 @@ video {
   display: block !important;
   max-width: 1380px !important;
   width: calc(100% - 64px) !important;
-  height: clamp(460px, 68vh, 640px) !important;
-  min-height: 460px !important;
-  max-height: 640px !important;
+  height: clamp(580px, 80vh, 760px) !important;
+  min-height: 580px !important;
+  max-height: 760px !important;
   margin: 14px auto 28px !important;
   padding: 0 !important;
   border-radius: 16px !important;
@@ -14025,11 +14025,18 @@ video {
   overflow: hidden !important;
 }
 
+#homeHeroBillboard.home-billboard-netflix-card::before,
+#homeHeroBillboard.home-billboard-netflix-card::after {
+  display: none !important;
+  content: none !important;
+}
+
 #homeHeroBillboard.home-billboard-netflix-card .billboard-backdrop {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center 20%;
+  filter: none !important;
   z-index: 0;
 }
 
@@ -14037,6 +14044,7 @@ video {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background: #000000;
 }
 
 #homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
@@ -14044,7 +14052,7 @@ video {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  filter: contrast(1.04) saturate(1.05);
+  filter: none !important;
 }
 
 .netflix-bb-scrim {
@@ -14052,9 +14060,7 @@ video {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.04) 42%, rgba(0, 0, 0, 0.86) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.34) 42%, rgba(0, 0, 0, 0.05) 75%);
+  background: linear-gradient(180deg, transparent 0%, transparent 62%, rgba(0, 0, 0, 0.72) 100%);
 }
 
 .netflix-bb-top-audio {
@@ -14164,8 +14170,9 @@ video {
 @media (max-width: 1024px) {
   #homeHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
-    height: clamp(380px, 54vh, 480px) !important;
-    min-height: 380px !important;
+    height: clamp(480px, 66vh, 600px) !important;
+    min-height: 480px !important;
+    max-height: 600px !important;
   }
 
   .netflix-bb-bottom-right {
