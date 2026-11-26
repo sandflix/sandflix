@@ -14072,6 +14072,12 @@ video {
   z-index: 2;
 }
 
+#moviesHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #000000;
+}
+
 .netflix-bb-scrim {
   position: absolute;
   inset: 0;
