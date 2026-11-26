@@ -169,6 +169,11 @@ function switchPage(pageKey, fromHistory) {
   // Scroll to top of the page smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  // Reset Sandify Tracks to Home view when navigating to gallery via navbar/tabs
+  if (pageKey === 'gallery' && !fromHistory && typeof switchSandifyTab === 'function') {
+    switchSandifyTab('home', true);
+  }
+
   // Update URL hash & push state if not from history popstate
   if (!fromHistory) {
     const currentState = window.history.state;
@@ -6195,7 +6200,7 @@ const SANDIFY_ALBUMS = {
 
 let currentSandifyTab = 'home';
 
-function switchSandifyTab(tabKey) {
+function switchSandifyTab(tabKey, fromHistory) {
   tabKey = tabKey || 'home';
   currentSandifyTab = tabKey;
 
@@ -6224,6 +6229,23 @@ function switchSandifyTab(tabKey) {
       btn.classList.remove('active');
     }
   });
+
+  if (!fromHistory && window.history) {
+    const curState = window.history.state;
+    if (tabKey === 'home') {
+      if (curState && curState.type === 'sandify-tab') {
+        replaceAppState({ type: 'page', page: 'gallery' }, '#gallery');
+      }
+    } else {
+      const nextState = { type: 'sandify-tab', page: 'gallery', tab: tabKey };
+      const nextHash = `#sandify-${tabKey}`;
+      if (curState && curState.type === 'sandify-tab') {
+        replaceAppState(nextState, nextHash);
+      } else {
+        pushAppState(nextState, nextHash);
+      }
+    }
+  }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -8594,17 +8616,30 @@ window.addEventListener('popstate', function (event) {
     return;
   }
 
-  // 4. Sandify Tracks Sub-page
+  // 4. Sandify Tracks Sub-page (album view or Music/Audiobooks/Podcasts tab)
   const sandifySubpage = document.getElementById('sandifySubpageView');
   if (sandifySubpage && sandifySubpage.style.display !== 'none') {
     if (!state || state.type !== 'sandify-subpage') {
-      closeSandifySubpage(true);
+      sandifySubpage.style.display = 'none';
+      sandifySubpage.classList.remove('fade-in-active');
+      if (state && state.type === 'sandify-tab') {
+        switchPage('gallery', true);
+        switchSandifyTab(state.tab || 'music', true);
+      } else {
+        switchPage('gallery', true);
+        switchSandifyTab('home', true);
+      }
       return;
     }
   }
 
   // 5. If state specifically says open a modal or subpage (Forward navigation or direct pop)
   if (state) {
+    if (state.type === 'sandify-tab') {
+      switchPage('gallery', true);
+      switchSandifyTab(state.tab || 'home', true);
+      return;
+    }
     if (state.type === 'sandify-subpage') {
       switchPage('gallery', true);
       openSandifySubpage(state.albumKey || 'divine-symphony', true);
@@ -8624,6 +8659,9 @@ window.addEventListener('popstate', function (event) {
     }
     if (state.type === 'page' && state.page) {
       switchPage(state.page, true);
+      if (state.page === 'gallery') {
+        switchSandifyTab('home', true);
+      }
       return;
     }
   }
@@ -8632,6 +8670,10 @@ window.addEventListener('popstate', function (event) {
   const hash = (window.location.hash || '').replace('#', '');
   if (hash === 'movies' || hash === 'gallery' || hash === 'home') {
     switchPage(hash, true);
+    if (hash === 'gallery') switchSandifyTab('home', true);
+  } else if (hash === 'sandify-music' || hash === 'sandify-audiobooks' || hash === 'sandify-podcasts') {
+    switchPage('gallery', true);
+    switchSandifyTab(hash.replace('sandify-', ''), true);
   } else if (hash === 'sandify-tracks') {
     switchPage('gallery', true);
     openSandifySubpage('divine-symphony', true);
@@ -8647,6 +8689,9 @@ function initHistoryBaseState() {
     if (hash === 'sandify-tracks') {
       replaceAppState({ type: 'page', page: 'gallery' }, '#gallery');
       pushAppState({ type: 'sandify-subpage', page: 'gallery', albumKey: 'divine-symphony' }, '#sandify-tracks');
+    } else if (hash === 'sandify-music' || hash === 'sandify-audiobooks' || hash === 'sandify-podcasts') {
+      replaceAppState({ type: 'page', page: 'gallery' }, '#gallery');
+      pushAppState({ type: 'sandify-tab', page: 'gallery', tab: hash.replace('sandify-', '') }, '#' + hash);
     } else if (hash === 'movies' || hash === 'gallery') {
       replaceAppState({ type: 'page', page: hash }, '#' + hash);
     } else {

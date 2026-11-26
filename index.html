@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v159_sandify_home_banner_trio">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v160_sandify_banner_img_back">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -856,71 +856,34 @@
          ========================================================================= -->
     <div class="sandify-home-view" id="sandifyHomeView">
       <!-- Custom Cinematic Audio Hero Banner -->
-      <div class="sandify-home-hero">
-        <div class="sandify-hero-glow"></div>
-        <div class="sandify-hero-inner">
-          <div class="sandify-hero-left">
-            <div class="sandify-hero-eyebrow">
-              <span class="sandify-wave-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-              <span>MUSIC &bull; AUDIOBOOKS &bull; PODCASTS</span>
-            </div>
-            <h1 class="sandify-hero-heading">Listen to Music, Audiobooks &amp; Podcasts in One Place.</h1>
-            <p class="sandify-hero-sub">
-              Your all-in-one audio destination — stream studio-quality <strong>Music</strong>, dive into captivating <strong>Audiobooks</strong>, and tune into engaging <strong>Podcasts</strong> seamlessly across PC, Laptop &amp; Mobile.
-            </p>
-            <div class="sandify-hero-ctas">
-              <button class="sandify-cta-green" onclick="playOSTTrack(1)">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-                <span>Start Listening</span>
-              </button>
-              <button class="sandify-cta-glass" onclick="switchSandifyTab('music')">
-                <span>Explore Music</span>
-              </button>
-              <button class="sandify-cta-glass" onclick="shufflePlayOST()">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line></svg>
-                <span>Shuffle Mix</span>
-              </button>
-            </div>
+      <div class="sandify-home-hero sandify-home-hero--with-img">
+        <div class="sandify-hero-banner-media" onclick="switchSandifyTab('music')">
+          <img src="assets/images/sandify_tracks_banner.jpg" alt="Sandify Tracks — Music, Audiobooks and Podcasts" loading="eager" decoding="async">
+          <div class="sandify-hero-banner-fade"></div>
+        </div>
+        <div class="sandify-hero-content-band">
+          <div class="sandify-hero-eyebrow">
+            <span class="sandify-wave-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            <span>MUSIC &bull; AUDIOBOOKS &bull; PODCASTS</span>
           </div>
-
-          <div class="sandify-hero-right">
-            <div class="sandify-hero-trio">
-              <div class="sandify-trio-card trio-music" onclick="switchSandifyTab('music')">
-                <div class="sandify-trio-icon">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                </div>
-                <div class="sandify-trio-text">
-                  <span class="sandify-trio-tag">LISTEN NOW</span>
-                  <strong>Music</strong>
-                  <span>Soundtracks, Albums &amp; Hits</span>
-                </div>
-                <span class="sandify-trio-arrow">&rarr;</span>
-              </div>
-
-              <div class="sandify-trio-card trio-audiobooks" onclick="switchSandifyTab('audiobooks')">
-                <div class="sandify-trio-icon">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                </div>
-                <div class="sandify-trio-text">
-                  <span class="sandify-trio-tag">NARRATE &amp; IMAGINE</span>
-                  <strong>Audiobooks</strong>
-                  <span>Epics, Stories &amp; Biographies</span>
-                </div>
-                <span class="sandify-trio-arrow">&rarr;</span>
-              </div>
-
-              <div class="sandify-trio-card trio-podcasts" onclick="switchSandifyTab('podcasts')">
-                <div class="sandify-trio-icon">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-                </div>
-                <div class="sandify-trio-text">
-                  <span class="sandify-trio-tag">TUNE IN</span>
-                  <strong>Podcasts</strong>
-                  <span>Talks, Cinema &amp; Deep Dives</span>
-                </div>
-                <span class="sandify-trio-arrow">&rarr;</span>
-              </div>
-            </div>
+          <h1 class="sandify-hero-heading">Listen to Music, Audiobooks &amp; Podcasts in One Place.</h1>
+          <p class="sandify-hero-sub">
+            Your all-in-one audio destination — stream studio-quality <strong>Music</strong>, dive into captivating <strong>Audiobooks</strong>, and tune into engaging <strong>Podcasts</strong> seamlessly across PC, Laptop &amp; Mobile.
+          </p>
+          <div class="sandify-hero-ctas">
+            <button class="sandify-cta-green" onclick="playOSTTrack(1)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              <span>Start Listening</span>
+            </button>
+            <button class="sandify-cta-glass" onclick="switchSandifyTab('music')">
+              <span>Explore Music</span>
+            </button>
+            <button class="sandify-cta-glass" onclick="switchSandifyTab('audiobooks')">
+              <span>Audiobooks</span>
+            </button>
+            <button class="sandify-cta-glass" onclick="switchSandifyTab('podcasts')">
+              <span>Podcasts</span>
+            </button>
           </div>
         </div>
       </div>
@@ -944,7 +907,7 @@
             <p class="sandify-stat-desc">Cinema breakdowns, philosophy &amp; deep-focus episodes</p>
           </div>
           <div class="sandify-stat-card">
-            <span class="sandify-stat-num">Ad-Free</span>
+            <span class="sandify-stat-num">Seamless</span>
             <span class="sandify-stat-label">Non-Stop Playback</span>
             <p class="sandify-stat-desc">Persistent bottom dock player while browsing the site</p>
           </div>
@@ -1129,6 +1092,9 @@
          SANDIFY SUB-PAGE 2: MUSIC (Existing 3D Vinyl Banner + Search + 10 Albums)
          ========================================================================= -->
     <div class="sandify-main-view" id="sandifyMainView" style="display: none;">
+      <div class="sandify-page-title-bar">
+        <h1 class="sandify-page-title">Music</h1>
+      </div>
       
       <!-- Exact Spotify / YouTube Music Style Album Header (Banner from screenshot) -->
       <div class="spotify-album-header">
@@ -1475,6 +1441,9 @@
          SANDIFY SUB-PAGE 3: AUDIOBOOKS HUB
          ========================================================================= -->
     <div class="sandify-audiobooks-view" id="sandifyAudiobooksView" style="display: none;">
+      <div class="sandify-page-title-bar">
+        <h1 class="sandify-page-title">Audiobooks</h1>
+      </div>
       <div class="sandify-hub-banner audiobooks-banner">
         <span class="sandify-hub-pill">SANDIFY AUDIOBOOKS</span>
         <h1>Narrated Epics, Biographies &amp; Wisdom</h1>
@@ -1489,7 +1458,7 @@
       </div>
       <div class="sandify-hub-empty-card">
         <h3>Audiobooks Library Ready</h3>
-        <p>Your audiobook titles and chapters will be listed right here. Meanwhile, explore 305+ lossless tracks in Music or return to Sandify Home.</p>
+        <p>Your audiobook titles and chapters will be listed right here. Meanwhile, explore lossless tracks in Music or return to Sandify Home.</p>
         <div class="sandify-hub-actions">
           <button class="sandify-cta-green" onclick="switchSandifyTab('music')">Explore Music</button>
           <button class="sandify-cta-glass" onclick="switchSandifyTab('home')">Back to Sandify Home</button>
@@ -1501,6 +1470,9 @@
          SANDIFY SUB-PAGE 4: PODCASTS HUB
          ========================================================================= -->
     <div class="sandify-podcasts-view" id="sandifyPodcastsView" style="display: none;">
+      <div class="sandify-page-title-bar">
+        <h1 class="sandify-page-title">Podcasts</h1>
+      </div>
       <div class="sandify-hub-banner podcasts-banner">
         <span class="sandify-hub-pill">SANDIFY PODCASTS</span>
         <h1>Cinema, Philosophy &amp; Deep Conversations</h1>
@@ -2056,9 +2028,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v159_sandify_home_banner_trio"></script>
-  <script src="js/tracks-data.js?v=20261126_v159_sandify_home_banner_trio"></script>
-  <script src="js/app.js?v=20261126_v159_sandify_home_banner_trio"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v160_sandify_banner_img_back"></script>
+  <script src="js/tracks-data.js?v=20261126_v160_sandify_banner_img_back"></script>
+  <script src="js/app.js?v=20261126_v160_sandify_banner_img_back"></script>
 </body>
 
 </html>

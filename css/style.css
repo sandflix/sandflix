@@ -12884,6 +12884,64 @@ video {
   overflow: hidden;
 }
 
+.sandify-home-hero--with-img {
+  padding: 0;
+  background: #0a0d12;
+}
+
+.sandify-hero-banner-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  max-height: 410px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.sandify-hero-banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sandify-hero-banner-media:hover img {
+  transform: scale(1.02);
+}
+
+.sandify-hero-banner-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 13, 18, 0.05) 35%, rgba(10, 13, 18, 0.72) 80%, #0a0d12 100%);
+  pointer-events: none;
+}
+
+.sandify-hero-content-band {
+  position: relative;
+  z-index: 2;
+  padding: 6px 36px 32px;
+  margin-top: -28px;
+}
+
+/* Top Page Title Bar for Music, Audiobooks & Podcasts (matches Movies page header) */
+.sandify-page-title-bar {
+  max-width: 1320px;
+  margin: 0 auto 14px;
+  padding: 10px 0 4px;
+  display: flex;
+  align-items: center;
+}
+
+.sandify-page-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
 .sandify-hero-glow {
   position: absolute;
   inset: 0;
@@ -13491,6 +13549,25 @@ video {
     margin: 14px 12px 22px;
     padding: 22px 16px;
     border-radius: 14px;
+  }
+
+  .sandify-home-hero--with-img {
+    padding: 0;
+  }
+
+  .sandify-hero-banner-media {
+    aspect-ratio: 16 / 9;
+    max-height: none;
+  }
+
+  .sandify-hero-content-band {
+    padding: 4px 16px 22px;
+    margin-top: -16px;
+  }
+
+  .sandify-page-title-bar {
+    padding: 6px 12px 2px;
+    margin-bottom: 10px;
   }
 
   .sandify-home-section,
