@@ -286,7 +286,7 @@ body.ott-platform {
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .page-view.active {
@@ -2875,12 +2875,12 @@ body.ott-platform {
    ========================================================================= */
 @media (max-width: 768px) {
 
-  /* Prevent horizontal spill */
+  /* Prevent horizontal spill without creating a second vertical scrollbar */
   html,
   body {
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body.ott-platform {
@@ -5812,7 +5812,7 @@ body.ott-platform {
   padding-top: 76px !important;
   padding-bottom: 100px !important;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: #141414;
 }
 
@@ -7717,7 +7717,7 @@ html,
 body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   -webkit-text-size-adjust: 100%;
 }
 
