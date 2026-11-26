@@ -6204,6 +6204,7 @@ function switchSandifyTab(tabKey, fromHistory) {
   tabKey = tabKey || 'home';
   currentSandifyTab = tabKey;
 
+  const galleryEl = document.getElementById('gallery-view');
   const subNavEl = document.getElementById('sandifySubNav');
   const homeEl = document.getElementById('sandifyHomeView');
   const musicEl = document.getElementById('sandifyMainView');
@@ -6211,8 +6212,9 @@ function switchSandifyTab(tabKey, fromHistory) {
   const audioEl = document.getElementById('sandifyAudiobooksView');
   const podEl = document.getElementById('sandifyPodcastsView');
 
-  // Show Sandify sub-navbar strictly on Sandify Home page only
-  if (subNavEl) subNavEl.style.display = tabKey === 'home' ? '' : 'none';
+  // Hide Sandify sub-navbar on sub-pages strictly on mobile via CSS class (keeps it visible on PC/Laptop)
+  if (subNavEl) subNavEl.style.display = '';
+  if (galleryEl) galleryEl.classList.toggle('sandify-subpage-active', tabKey !== 'home');
   if (homeEl) homeEl.style.display = tabKey === 'home' ? 'block' : 'none';
   if (musicEl) musicEl.style.display = tabKey === 'music' ? 'block' : 'none';
   if (audioEl) audioEl.style.display = tabKey === 'audiobooks' ? 'block' : 'none';
@@ -6298,11 +6300,13 @@ function openSandifySubpage(albumKey, fromHistory) {
     else c.classList.remove('active');
   });
 
+  const galleryEl = document.getElementById('gallery-view');
   const subNavEl = document.getElementById('sandifySubNav');
   const homeEl = document.getElementById('sandifyHomeView');
   const audioEl = document.getElementById('sandifyAudiobooksView');
   const podEl = document.getElementById('sandifyPodcastsView');
-  if (subNavEl) subNavEl.style.display = 'none';
+  if (subNavEl) subNavEl.style.display = '';
+  if (galleryEl) galleryEl.classList.add('sandify-subpage-active');
   if (homeEl) homeEl.style.display = 'none';
   if (audioEl) audioEl.style.display = 'none';
   if (podEl) podEl.style.display = 'none';

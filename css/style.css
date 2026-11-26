@@ -13533,6 +13533,10 @@ video {
 }
 
 @media (max-width: 768px) {
+  #gallery-view.sandify-subpage-active .sandify-subnav {
+    display: none;
+  }
+
   .sandify-subnav {
     padding: 10px 12px 10px 12px;
     margin-top: 0;
