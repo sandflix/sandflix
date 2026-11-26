@@ -6185,23 +6185,22 @@ function selectMovieGenre(catKey, catLabel) {
   const menu = document.getElementById('genreDropdownMenu');
   if (menu) menu.classList.remove('show');
 
-  // Filter or scroll rows
-  const rows = document.querySelectorAll('.netflix-rows-container .netflix-row');
+  // Filter or scroll rows inside Movies view only
+  const rows = document.querySelectorAll('#movies-view .netflix-rows-container .netflix-row');
+  let firstVisibleRow = null;
   rows.forEach(row => {
     const rowCat = row.getAttribute('data-genre-category');
     if (catKey === 'all' || rowCat === catKey) {
       row.style.display = 'block';
+      if (!firstVisibleRow) firstVisibleRow = row;
     } else {
       row.style.display = 'none';
     }
   });
 
-  // Smooth scroll down to rows if a specific genre picked
-  if (catKey !== 'all') {
-    const targetRow = document.getElementById('row-' + catKey);
-    if (targetRow) {
-      targetRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  // Smooth scroll down to first matching row if a specific genre picked
+  if (catKey !== 'all' && firstVisibleRow) {
+    firstVisibleRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
