@@ -6193,6 +6193,39 @@ const SANDIFY_ALBUMS = {
   }
 };
 
+let currentSandifyTab = 'home';
+
+function switchSandifyTab(tabKey) {
+  tabKey = tabKey || 'home';
+  currentSandifyTab = tabKey;
+
+  const homeEl = document.getElementById('sandifyHomeView');
+  const musicEl = document.getElementById('sandifyMainView');
+  const subpageEl = document.getElementById('sandifySubpageView');
+  const audioEl = document.getElementById('sandifyAudiobooksView');
+  const podEl = document.getElementById('sandifyPodcastsView');
+
+  if (homeEl) homeEl.style.display = tabKey === 'home' ? 'block' : 'none';
+  if (musicEl) musicEl.style.display = tabKey === 'music' ? 'block' : 'none';
+  if (audioEl) audioEl.style.display = tabKey === 'audiobooks' ? 'block' : 'none';
+  if (podEl) podEl.style.display = tabKey === 'podcasts' ? 'block' : 'none';
+  if (subpageEl) {
+    subpageEl.style.display = 'none';
+    subpageEl.classList.remove('fade-in-active');
+  }
+
+  document.querySelectorAll('#sandifySubNav .sandify-subnav-pill').forEach(btn => {
+    if (btn.getAttribute('data-sandify-tab') === tabKey) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.switchSandifyTab = switchSandifyTab;
+
 let currentActiveAlbumKey = 'divine-symphony';
 
 function openSandifySubpage(albumKey, fromHistory) {
@@ -6238,6 +6271,17 @@ function openSandifySubpage(albumKey, fromHistory) {
   chips.forEach((c, idx) => {
     if (idx === 0) c.classList.add('active');
     else c.classList.remove('active');
+  });
+
+  const homeEl = document.getElementById('sandifyHomeView');
+  const audioEl = document.getElementById('sandifyAudiobooksView');
+  const podEl = document.getElementById('sandifyPodcastsView');
+  if (homeEl) homeEl.style.display = 'none';
+  if (audioEl) audioEl.style.display = 'none';
+  if (podEl) podEl.style.display = 'none';
+
+  document.querySelectorAll('#sandifySubNav .sandify-subnav-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-sandify-tab') === 'music');
   });
 
   const mainView = document.getElementById('sandifyMainView');

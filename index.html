@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v154_sandify_mobile_card_responsive">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v155_sandify_home_hub">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -826,12 +826,280 @@
        PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
        ========================================================================= -->
   <section class="page-view" id="gallery-view" oncontextmenu="return false;">
-    
+
     <!-- =========================================================================
-         SANDIFY TRACKS: MAIN PAGE VIEW
-         (Exact 3D Vinyl Album Banner from screenshot + Sub-Page Album Card Below)
+         SANDIFY TRACKS: SUB-NAVIGATION BAR (Home, Music, Audiobooks, Podcasts)
          ========================================================================= -->
-    <div class="sandify-main-view" id="sandifyMainView">
+    <nav class="sandify-subnav" id="sandifySubNav" aria-label="Sandify Audio Sections">
+      <div class="sandify-subnav-inner">
+        <button class="sandify-subnav-pill active" data-sandify-tab="home" onclick="switchSandifyTab('home')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0-.29.71V20a2 2 0 0 0 2 2h4.75a1 1 0 0 0 1-1v-5.25h4.5V21a1 1 0 0 0 1 1H20a2 2 0 0 0 2-2v-8a1 1 0 0 0-.29-.71l-9-9z"/></svg>
+          <span>Home</span>
+        </button>
+        <button class="sandify-subnav-pill" data-sandify-tab="music" onclick="switchSandifyTab('music')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+          <span>Music</span>
+        </button>
+        <button class="sandify-subnav-pill" data-sandify-tab="audiobooks" onclick="switchSandifyTab('audiobooks')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Audiobooks</span>
+        </button>
+        <button class="sandify-subnav-pill" data-sandify-tab="podcasts" onclick="switchSandifyTab('podcasts')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <span>Podcasts</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- =========================================================================
+         SANDIFY SUB-PAGE 1: SANDIFY HOME HUB (Premium Overview, Details & Quick Play)
+         ========================================================================= -->
+    <div class="sandify-home-view" id="sandifyHomeView">
+      <!-- Custom Cinematic Audio Hero Banner -->
+      <div class="sandify-home-hero">
+        <div class="sandify-hero-glow"></div>
+        <div class="sandify-hero-inner">
+          <div class="sandify-hero-left">
+            <div class="sandify-hero-eyebrow">
+              <span class="sandify-wave-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+              <span>SANDIFY AUDIO UNIVERSE • HI-RES LOSSLESS</span>
+            </div>
+            <h1 class="sandify-hero-heading">Every Soundtrack, Story &amp; Voice in One Place.</h1>
+            <p class="sandify-hero-sub">
+              Experience <strong>305+ studio-mastered songs</strong>, <strong>10 curated albums</strong>, upcoming <strong>Audiobooks</strong>, and deep-dive <strong>Podcasts</strong> — ad-free with instant background playback across PC, Laptop &amp; Mobile.
+            </p>
+            <div class="sandify-hero-ctas">
+              <button class="sandify-cta-green" onclick="playOSTTrack(1)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+                <span>Play Featured Mix</span>
+              </button>
+              <button class="sandify-cta-glass" onclick="switchSandifyTab('music')">
+                <span>Explore Music (305+)</span>
+              </button>
+              <button class="sandify-cta-glass" onclick="shufflePlayOST()">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line></svg>
+                <span>Shuffle All</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="sandify-hero-right">
+            <div class="sandify-hero-showcase-card" onclick="switchSandifyTab('music')">
+              <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" loading="lazy" decoding="async">
+              <div class="sandify-showcase-meta">
+                <span class="sandify-showcase-tag">FEATURED ALBUM</span>
+                <strong>Ramayana: The Divine Symphony</strong>
+                <span>A.R. Rahman &times; Hans Zimmer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Details & Stats Strip -->
+      <div class="sandify-home-section">
+        <div class="sandify-stats-grid">
+          <div class="sandify-stat-card">
+            <span class="sandify-stat-num">305+</span>
+            <span class="sandify-stat-label">Hi-Res Lossless Songs</span>
+            <p class="sandify-stat-desc">Original OSTs, Qawwalis, Punjabi Anthems &amp; Melodies</p>
+          </div>
+          <div class="sandify-stat-card">
+            <span class="sandify-stat-num">10</span>
+            <span class="sandify-stat-label">Master Albums</span>
+            <p class="sandify-stat-desc">Dedicated album pages with instant track filtering</p>
+          </div>
+          <div class="sandify-stat-card">
+            <span class="sandify-stat-num">3</span>
+            <span class="sandify-stat-label">Audio Worlds</span>
+            <p class="sandify-stat-desc">Music, Audiobooks &amp; Podcasts in one unified hub</p>
+          </div>
+          <div class="sandify-stat-card">
+            <span class="sandify-stat-num">24-Bit</span>
+            <span class="sandify-stat-label">Ad-Free Streaming</span>
+            <p class="sandify-stat-desc">Persistent bottom dock player while browsing the site</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore 3 Audio Worlds: Music, Audiobooks, Podcasts -->
+      <div class="sandify-home-section">
+        <div class="sandify-sec-head">
+          <h2 class="sandify-sec-title">Explore Audio Worlds</h2>
+          <p class="sandify-sec-sub">Jump directly into Music, Audiobooks, or Podcasts</p>
+        </div>
+        <div class="sandify-worlds-grid">
+          <div class="sandify-world-card world-music" onclick="switchSandifyTab('music')">
+            <div class="sandify-world-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            </div>
+            <div class="sandify-world-body">
+              <span class="sandify-world-badge">LIVE NOW • 305 TRACKS</span>
+              <h3>Music</h3>
+              <p>Stream all 10 master albums including Ramayana OST, Arijit Singh, Sidhu Moose Wala, and Nusrat Fateh Ali Khan with live Spotify search.</p>
+            </div>
+            <span class="sandify-world-arrow">&rarr;</span>
+          </div>
+
+          <div class="sandify-world-card world-audiobooks" onclick="switchSandifyTab('audiobooks')">
+            <div class="sandify-world-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div class="sandify-world-body">
+              <span class="sandify-world-badge">DEDICATED HUB</span>
+              <h3>Audiobooks</h3>
+              <p>Immersive narrated epics, mythology, biographies, and self-growth audiobooks with chapter-ready listening.</p>
+            </div>
+            <span class="sandify-world-arrow">&rarr;</span>
+          </div>
+
+          <div class="sandify-world-card world-podcasts" onclick="switchSandifyTab('podcasts')">
+            <div class="sandify-world-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </div>
+            <div class="sandify-world-body">
+              <span class="sandify-world-badge">DEDICATED HUB</span>
+              <h3>Podcasts</h3>
+              <p>Curated storytelling, cinema breakdowns, philosophy, and deep-focus audio episodes built for long sessions.</p>
+            </div>
+            <span class="sandify-world-arrow">&rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instant-Play Spotlight Tracks -->
+      <div class="sandify-home-section">
+        <div class="sandify-sec-head-row">
+          <div>
+            <h2 class="sandify-sec-title">Quick-Play Highlights</h2>
+            <p class="sandify-sec-sub">Tap any track for instant lossless playback</p>
+          </div>
+          <button class="sandify-see-all-btn" onclick="switchSandifyTab('music')">Open All Music &rarr;</button>
+        </div>
+        <div class="sandify-quick-tracks-grid">
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(1)">
+            <img src="assets/images/tracks/track_01.jpg" alt="Dharthi Hai Ambar" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Dharthi Hai Ambar</strong>
+              <span>A.R. Rahman &times; Hans Zimmer</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(9)">
+            <img src="assets/images/tracks/track_09.jpg" alt="Balwan Hanuman" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Balwan Hanuman</strong>
+              <span>Jai Jai Bhajans &bull; Devotional</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(33)">
+            <img src="assets/images/moosetape_cover_hd.jpg" alt="Moosetape" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Moosetape Intro / 295</strong>
+              <span>Sidhu Moose Wala</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(92)">
+            <img src="assets/images/arijit_singh_hd.jpg" alt="Arijit Singh" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Arijit Singh Anthems</strong>
+              <span>Arijit Singh &bull; Pritam</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(216)">
+            <img src="assets/images/nusrat_fateh_ali_khan_hd.jpg" alt="Nusrat Fateh Ali Khan" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Shahenshah-e-Qawwali</strong>
+              <span>Ustad Nusrat Fateh Ali Khan</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+          <div class="sandify-qtrack-card" onclick="playOSTTrack(292)">
+            <img src="assets/images/stronger_soul_album.jpg" alt="Stronger Soul Motivation" loading="lazy" decoding="async">
+            <div class="sandify-qtrack-info">
+              <strong>Stronger Soul Motivation</strong>
+              <span>Eddie Pinero &bull; Focus</span>
+            </div>
+            <span class="sandify-qtrack-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Master Albums Preview -->
+      <div class="sandify-home-section">
+        <div class="sandify-sec-head-row">
+          <div>
+            <h2 class="sandify-sec-title">Featured Albums</h2>
+            <p class="sandify-sec-sub">Open any album directly or browse all 10 in Music</p>
+          </div>
+          <button class="sandify-see-all-btn" onclick="switchSandifyTab('music')">See All 10 Albums &rarr;</button>
+        </div>
+        <div class="spotify-card-grid">
+          <article class="spotify-music-card" onclick="openSandifySubpage('divine-symphony')">
+            <div class="spotify-card-art-box">
+              <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-card-img" loading="lazy" decoding="async">
+              <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Album"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
+            </div>
+            <h3 class="spotify-card-name">Ramayana: The Divine Symphony</h3>
+            <p class="spotify-card-artists">A.R. Rahman, Hans Zimmer</p>
+          </article>
+          <article class="spotify-music-card" onclick="openSandifySubpage('hanuman-divine')">
+            <div class="spotify-card-art-box">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Hanuman &amp; Shiv Shakti" class="spotify-card-img" loading="lazy" decoding="async">
+              <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(9);" title="Play Album"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
+            </div>
+            <h3 class="spotify-card-name">Hanuman &amp; Shiv Shakti: Divine Warriors</h3>
+            <p class="spotify-card-artists">Piyush Mishra, Shankar Mahadevan</p>
+          </article>
+          <article class="spotify-music-card" onclick="openSandifySubpage('arijit-singh')">
+            <div class="spotify-card-art-box">
+              <img src="assets/images/arijit_singh_hd.jpg" alt="Arijit Singh" class="spotify-card-img" loading="lazy" decoding="async">
+              <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(92);" title="Play Album"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
+            </div>
+            <h3 class="spotify-card-name">Arijit Singh: Soulful Melodies</h3>
+            <p class="spotify-card-artists">Arijit Singh, Pritam, Mithoon</p>
+          </article>
+          <article class="spotify-music-card" onclick="openSandifySubpage('moosetape')">
+            <div class="spotify-card-art-box">
+              <img src="assets/images/moosetape_cover_hd.jpg" alt="Moosetape" class="spotify-card-img" loading="lazy" decoding="async">
+              <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(33);" title="Play Album"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
+            </div>
+            <h3 class="spotify-card-name">Moosetape: The Immortal Legacy</h3>
+            <p class="spotify-card-artists">Sidhu Moose Wala, Bohemia, DIVINE</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Platform Features Strip -->
+      <div class="sandify-home-section">
+        <div class="sandify-features-grid">
+          <div class="sandify-feat-box">
+            <h4>Spotify-Grade Live Search</h4>
+            <p>Instantly search all 305+ songs, 10 albums, and artists from the Music tab with Top Result &amp; instant play.</p>
+          </div>
+          <div class="sandify-feat-box">
+            <h4>Persistent Background Player</h4>
+            <p>Keep listening while browsing Movies, Shows, or Home — with Play/Pause, Next/Prev, Loop &amp; Volume dock.</p>
+          </div>
+          <div class="sandify-feat-box">
+            <h4>Shuffle &amp; Mood Filters</h4>
+            <p>Filter by Devotional &amp; Shlokas, Symphonies &amp; Themes, or Tandav &amp; Power inside every album.</p>
+          </div>
+          <div class="sandify-feat-box">
+            <h4>Mobile Touch Seekbar</h4>
+            <p>Smooth touch-scrubbing progress bar along the bottom player engineered specifically for Android &amp; iOS.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         SANDIFY SUB-PAGE 2: MUSIC (Existing 3D Vinyl Banner + Search + 10 Albums)
+         ========================================================================= -->
+    <div class="sandify-main-view" id="sandifyMainView" style="display: none;">
       
       <!-- Exact Spotify / YouTube Music Style Album Header (Banner from screenshot) -->
       <div class="spotify-album-header">
@@ -1170,6 +1438,58 @@
         <!-- Tracks Rows -->
         <div class="spotify-tracks-list" id="spotifyTracksList">
           <!-- 305 Tracks rendered dynamically via js/tracks-data.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         SANDIFY SUB-PAGE 3: AUDIOBOOKS HUB
+         ========================================================================= -->
+    <div class="sandify-audiobooks-view" id="sandifyAudiobooksView" style="display: none;">
+      <div class="sandify-hub-banner audiobooks-banner">
+        <span class="sandify-hub-pill">SANDIFY AUDIOBOOKS</span>
+        <h1>Narrated Epics, Biographies &amp; Wisdom</h1>
+        <p>Dedicated space for full-length audiobooks — Mythological Sagas, Self-Growth, History, and Mindful Storytelling.</p>
+      </div>
+      <div class="sandify-hub-chips">
+        <button class="sandify-s-chip active">All Audiobooks</button>
+        <button class="sandify-s-chip">Mythology &amp; Epics</button>
+        <button class="sandify-s-chip">Self-Growth</button>
+        <button class="sandify-s-chip">Biographies</button>
+        <button class="sandify-s-chip">Spirituality</button>
+      </div>
+      <div class="sandify-hub-empty-card">
+        <h3>Audiobooks Library Ready</h3>
+        <p>Your audiobook titles and chapters will be listed right here. Meanwhile, explore 305+ lossless tracks in Music or return to Sandify Home.</p>
+        <div class="sandify-hub-actions">
+          <button class="sandify-cta-green" onclick="switchSandifyTab('music')">Explore Music</button>
+          <button class="sandify-cta-glass" onclick="switchSandifyTab('home')">Back to Sandify Home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         SANDIFY SUB-PAGE 4: PODCASTS HUB
+         ========================================================================= -->
+    <div class="sandify-podcasts-view" id="sandifyPodcastsView" style="display: none;">
+      <div class="sandify-hub-banner podcasts-banner">
+        <span class="sandify-hub-pill">SANDIFY PODCASTS</span>
+        <h1>Cinema, Philosophy &amp; Deep Conversations</h1>
+        <p>Dedicated space for original podcast series, filmmaker breakdowns, cultural history, and deep-focus sessions.</p>
+      </div>
+      <div class="sandify-hub-chips">
+        <button class="sandify-s-chip active">All Podcasts</button>
+        <button class="sandify-s-chip">Cinema &amp; Storytelling</button>
+        <button class="sandify-s-chip">Philosophy &amp; Wisdom</button>
+        <button class="sandify-s-chip">History &amp; Culture</button>
+        <button class="sandify-s-chip">Deep Focus</button>
+      </div>
+      <div class="sandify-hub-empty-card">
+        <h3>Podcasts Hub Ready</h3>
+        <p>Your podcast shows and episodes will be listed right here. Meanwhile, explore Music or return to Sandify Home.</p>
+        <div class="sandify-hub-actions">
+          <button class="sandify-cta-green" onclick="switchSandifyTab('music')">Explore Music</button>
+          <button class="sandify-cta-glass" onclick="switchSandifyTab('home')">Back to Sandify Home</button>
         </div>
       </div>
     </div>
@@ -1707,9 +2027,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261126_v154_sandify_mobile_card_responsive"></script>
-  <script src="js/tracks-data.js?v=20261126_v154_sandify_mobile_card_responsive"></script>
-  <script src="js/app.js?v=20261126_v154_sandify_mobile_card_responsive"></script>
+  <script src="js/movies-rows-data.js?v=20261126_v155_sandify_home_hub"></script>
+  <script src="js/tracks-data.js?v=20261126_v155_sandify_home_hub"></script>
+  <script src="js/app.js?v=20261126_v155_sandify_home_hub"></script>
 </body>
 
 </html>
