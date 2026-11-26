@@ -7655,6 +7655,17 @@ function initHomeBillboard() {
 
   if (!billboard || !video || !videoWrap) return;
 
+  // Multi-scene playlist cycling through distinct epic movie scenes in HD
+  const billboardScenes = [
+    { src: 'assets/videos/banner_preview_hd.mp4', start: 0, durationMs: 11000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 10, durationMs: 11000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 34, durationMs: 11000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 62, durationMs: 11000 },
+    { src: 'assets/videos/move_trailer_hd.mp4', start: 92, durationMs: 11000 }
+  ];
+  let sceneIdx = 0;
+  let sceneTimer = null;
+
   function playBillboardPreview() {
     video.muted = !isHomeBillboardAudioEnabled;
     video.volume = 1.0;
@@ -7668,20 +7679,65 @@ function initHomeBillboard() {
     }
   }
 
-  function pauseBillboardPreview() {
-    videoWrap.classList.remove('playing');
-    if (!video.paused) {
-      video.pause();
-    }
+  function scheduleNextScene() {
+    if (sceneTimer) clearTimeout(sceneTimer);
+    const currentScene = billboardScenes[sceneIdx];
+    sceneTimer = setTimeout(() => {
+      const homeView = document.getElementById('home-view');
+      if (!homeView || !homeView.classList.contains('active')) {
+        scheduleNextScene();
+        return;
+      }
+      sceneIdx = (sceneIdx + 1) % billboardScenes.length;
+      const nextScene = billboardScenes[sceneIdx];
+      videoWrap.classList.remove('playing');
+
+      setTimeout(() => {
+        const currentSrcAttr = video.getAttribute('src') || '';
+        const needsSrcChange = !currentSrcAttr.endsWith(nextScene.src);
+        if (needsSrcChange) {
+          video.src = nextScene.src;
+          video.load();
+        }
+        const seekAndPlay = () => {
+          try {
+            if (isFinite(video.duration) && video.duration > 2) {
+              video.currentTime = Math.min(nextScene.start, Math.max(0, video.duration - 4));
+            }
+          } catch (e) {}
+          playBillboardPreview();
+        };
+        if (needsSrcChange || video.readyState < 1) {
+          video.addEventListener('loadedmetadata', seekAndPlay, { once: true });
+        } else {
+          seekAndPlay();
+        }
+        scheduleNextScene();
+      }, 350);
+    }, currentScene.durationMs);
   }
 
-  // Play HD video immediately on load/return (muted autoplay supported across PC, Laptop & Mobile)
-  playBillboardPreview();
+  if (!billboard.dataset.scenesInitialized) {
+    billboard.dataset.scenesInitialized = 'true';
+    video.src = billboardScenes[0].src;
+    video.addEventListener('ended', () => {
+      sceneIdx = (sceneIdx + 1) % billboardScenes.length;
+      const nextScene = billboardScenes[sceneIdx];
+      video.src = nextScene.src;
+      video.addEventListener('loadedmetadata', () => {
+        try {
+          if (isFinite(video.duration) && video.duration > 2) {
+            video.currentTime = Math.min(nextScene.start, Math.max(0, video.duration - 4));
+          }
+        } catch (e) {}
+        playBillboardPreview();
+      }, { once: true });
+    });
+    billboard.addEventListener('mouseenter', playBillboardPreview);
+  }
 
-  // Keep hover play on desktop if paused
-  billboard.addEventListener('mouseenter', () => {
-    playBillboardPreview();
-  });
+  playBillboardPreview();
+  scheduleNextScene();
 }
 
 function toggleBillboardAudio(event) {
