@@ -12719,12 +12719,79 @@ video {
   }
 
   .sandify-top-songs-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
   }
 
+  .sandify-top-col,
+  .sandify-songs-col {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .sandify-top-result-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  .sandify-top-art {
+    width: 62px;
+    height: 62px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    border-radius: 6px;
+  }
+
+  .sandify-top-info {
+    flex: 1;
+    min-width: 0;
+  }
+
   .sandify-top-title {
-    font-size: 20px;
+    font-size: 16px;
+    margin: 0 0 5px;
+    -webkit-line-clamp: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .sandify-top-meta {
+    font-size: 12px;
+    gap: 6px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .sandify-top-artist {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .sandify-type-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+  }
+
+  .sandify-green-play {
+    position: static;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .sandify-green-play svg {
+    width: 18px;
+    height: 18px;
   }
 
   .sandify-song-result-row {

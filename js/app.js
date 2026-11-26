@@ -5680,8 +5680,10 @@ function renderSandifySearchResults(query) {
       topCardHtml =
         `<div class="sandify-top-result-card" onclick="openSandifySubpage('${escapeSandifyHtml(a.key)}')">` +
           `<img src="${escapeSandifyHtml(a.cover)}" alt="${escapeSandifyHtml(a.title)}" class="sandify-top-art">` +
-          `<h3 class="sandify-top-title">${escapeSandifyHtml(a.title)}</h3>` +
-          `<div class="sandify-top-meta"><span class="sandify-type-badge">ALBUM</span><span>${escapeSandifyHtml(a.artist1)}</span></div>` +
+          `<div class="sandify-top-info">` +
+            `<h3 class="sandify-top-title">${escapeSandifyHtml(a.title)}</h3>` +
+            `<div class="sandify-top-meta"><span class="sandify-type-badge">ALBUM</span><span class="sandify-top-artist">${escapeSandifyHtml(a.artist1)}</span></div>` +
+          `</div>` +
           `<button class="sandify-green-play" onclick="event.stopPropagation(); playOSTTrack(${a.startTrack || 1});" title="Play Album">` +
             `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>` +
           `</button>` +
@@ -5691,8 +5693,10 @@ function renderSandifySearchResults(query) {
       topCardHtml =
         `<div class="sandify-top-result-card" onclick="playOSTTrack(${s.id})">` +
           `<img src="${escapeSandifyHtml(s.banner)}" alt="${escapeSandifyHtml(s.title)}" class="sandify-top-art">` +
-          `<h3 class="sandify-top-title">${escapeSandifyHtml(s.title)}</h3>` +
-          `<div class="sandify-top-meta"><span class="sandify-type-badge">SONG</span><span>${escapeSandifyHtml(s.artist)}</span></div>` +
+          `<div class="sandify-top-info">` +
+            `<h3 class="sandify-top-title">${escapeSandifyHtml(s.title)}</h3>` +
+            `<div class="sandify-top-meta"><span class="sandify-type-badge">SONG</span><span class="sandify-top-artist">${escapeSandifyHtml(s.artist)}</span></div>` +
+          `</div>` +
           `<button class="sandify-green-play" onclick="event.stopPropagation(); playOSTTrack(${s.id});" title="Play Song">` +
             `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>` +
           `</button>` +
