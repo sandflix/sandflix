@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261126_v143_mobile_movies_gap_fix">
+  <link rel="stylesheet" href="css/style.css?v=20261126_v144_mobile_top_shows_movies_bar">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
   <style id="netflixPillSearchExplicit">
@@ -240,6 +240,7 @@
         var pageMap = {
           'home': 'home-view',
           'movies': 'movies-view',
+          'shows': 'shows-view',
           'trailer': 'trailer-view',
           'watch': 'watch-view',
           'gallery': 'gallery-view',
@@ -275,10 +276,11 @@
           }
         }
 
-        // Update mobile bottom nav
+        // Update mobile bottom nav (Home stays active when browsing Movies or TV Shows via mobile top bar)
+        var mobTargetId = (targetId === 'movies-view' || targetId === 'shows-view') ? 'home-view' : targetId;
         var mobItems = document.querySelectorAll('.mobile-nav-item');
         for (var k = 0; k < mobItems.length; k++) {
-          if (mobItems[k].getAttribute('data-target') === targetId) {
+          if (mobItems[k].getAttribute('data-target') === mobTargetId) {
             mobItems[k].classList.add('active');
           } else {
             mobItems[k].classList.remove('active');
@@ -953,6 +955,12 @@
        PAGE 1: HOME VIEW (Authentic Netflix Browse Experience: netflix.com/browse)
        ========================================================================= -->
   <main class="page-view active" id="home-view">
+
+    <!-- Mobile-Only Netflix Top Browse Bar (TV Shows & Movies) -->
+    <div class="mobile-top-browse-bar" aria-label="Browse TV Shows and Movies">
+      <button class="mobile-browse-pill" onclick="switchPage('shows')">TV Shows</button>
+      <button class="mobile-browse-pill" onclick="switchPage('movies')">Movies</button>
+    </div>
 
     <!-- Netflix Hero Billboard with Hover Video Preview & Audio Controls -->
     <div class="netflix-billboard home-billboard" id="homeHeroBillboard" title="Click anywhere on Billboard to Play Ramayana: Part One">
@@ -4087,6 +4095,15 @@
        ========================================================================= -->
   <section class="page-view" id="movies-view">
 
+    <!-- Mobile-Only Netflix Top Browse Bar (Back to Home, TV Shows, Active Movies) -->
+    <div class="mobile-top-browse-bar" aria-label="Browse Categories">
+      <button class="mobile-browse-close" onclick="switchPage('home')" title="Back to Home" aria-label="Back to Home">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <button class="mobile-browse-pill" onclick="switchPage('shows')">TV Shows</button>
+      <button class="mobile-browse-pill active" onclick="switchPage('home')">Movies</button>
+    </div>
+
     <!-- Netflix Style Sub-Header / Genre Filter Bar -->
     <div class="netflix-genre-header">
       <div class="netflix-genre-left">
@@ -7106,6 +7123,42 @@
 
 
 
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PAGE: TV SHOWS VIEW (Mobile Top Bar Destination - Ready for Series)
+       ========================================================================= -->
+  <section class="page-view" id="shows-view">
+    <div class="mobile-top-browse-bar" aria-label="Browse Categories">
+      <button class="mobile-browse-close" onclick="switchPage('home')" title="Back to Home" aria-label="Back to Home">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <button class="mobile-browse-pill active" onclick="switchPage('home')">TV Shows</button>
+      <button class="mobile-browse-pill" onclick="switchPage('movies')">Movies</button>
+    </div>
+
+    <div class="netflix-genre-header">
+      <div class="netflix-genre-left">
+        <h1 class="netflix-genre-title">TV Shows</h1>
+      </div>
+    </div>
+
+    <div class="shows-coming-soon-wrap">
+      <div class="shows-coming-soon-card">
+        <span class="shows-badge">SANDFLIX SERIES</span>
+        <h2 class="shows-heading">TV Shows &amp; Web Series</h2>
+        <p class="shows-subtext">Curated TV shows and original series are being added here soon. Meanwhile, explore all movies or browse Trending on Home.</p>
+        <div class="shows-actions">
+          <button class="btn-n-play" onclick="switchPage('movies')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Browse Movies</span>
+          </button>
+          <button class="btn-n-info" onclick="switchPage('home')">
+            <span>Back to Home</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -12817,19 +12870,6 @@
       </svg>
       <span>Search</span>
     </button>
-    <button class="mobile-nav-item" data-target="movies-view" onclick="switchPage('movies')">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-        <line x1="7" y1="2" x2="7" y2="22"></line>
-        <line x1="17" y1="2" x2="17" y2="22"></line>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <line x1="2" y1="7" x2="7" y2="7"></line>
-        <line x1="2" y1="17" x2="7" y2="17"></line>
-        <line x1="17" y1="17" x2="22" y2="17"></line>
-        <line x1="17" y1="7" x2="22" y2="7"></line>
-      </svg>
-      <span>Movies</span>
-    </button>
     <button class="mobile-nav-item" data-target="gallery-view" onclick="switchPage('gallery')">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M9 18V5l12-2v13"></path>
@@ -13206,7 +13246,7 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/app.js?v=20261126_v143_mobile_movies_gap_fix"></script>
+  <script src="js/app.js?v=20261126_v144_mobile_top_shows_movies_bar"></script>
 </body>
 
 </html>

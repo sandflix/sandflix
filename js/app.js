@@ -101,6 +101,7 @@ function switchPage(pageKey, fromHistory) {
   const pageMap = {
     'home': 'home-view',
     'movies': 'movies-view',
+    'shows': 'shows-view',
     'gallery': 'gallery-view',
     'search': 'search-view'
   };
@@ -155,9 +156,10 @@ function switchPage(pageKey, fromHistory) {
     }
   });
 
-  // Update mobile bottom navigation bar items
+  // Update mobile bottom navigation bar items (Home stays active when browsing Movies or TV Shows)
+  const mobTargetId = (targetId === 'movies-view' || targetId === 'shows-view') ? 'home-view' : targetId;
   document.querySelectorAll('.mobile-nav-item').forEach(item => {
-    if (item.getAttribute('data-target') === targetId) {
+    if (item.getAttribute('data-target') === mobTargetId) {
       item.classList.add('active');
     } else {
       item.classList.remove('active');
