@@ -5863,87 +5863,90 @@ body.ott-platform {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 14px;
-  background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 7px 18px;
+  background: rgba(18, 18, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.42);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
-  border-radius: 4px;
+  border-radius: 9999px;
   cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
   transition: all 0.2s ease;
 }
 
 .genre-select-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #ffffff;
 }
 
 .genre-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   left: 0;
-  min-width: 470px;
-  max-width: calc(100vw - 32px);
-  background: rgba(8, 8, 8, 0.94);
+  width: 230px;
+  max-width: calc(100vw - 28px);
+  background: rgba(10, 10, 10, 0.94);
   backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 6px;
+  border-radius: 12px;
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.92);
-  padding: 12px 14px;
+  padding: 8px 6px;
   z-index: 200;
-  max-height: 70vh;
+  max-height: 380px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
 .genre-dropdown-menu.show {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(140px, 1fr));
-  gap: 2px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .genre-dropdown-menu a {
   display: block;
-  padding: 7px 10px;
+  padding: 9px 14px;
   color: rgba(255, 255, 255, 0.88);
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 8px;
   white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .genre-dropdown-menu a.genre-all-link {
-  grid-column: 1 / -1;
   font-weight: 700;
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px 8px 0 0;
   margin-bottom: 4px;
-  padding-bottom: 9px;
+  padding-bottom: 10px;
 }
 
 .genre-dropdown-menu a:hover {
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  .genre-dropdown-menu {
-    min-width: 280px;
-    width: calc(100vw - 28px);
-    padding: 10px;
+  .genre-select-btn {
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
   }
 
-  .genre-dropdown-menu.show {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 2px 8px;
+  .genre-dropdown-menu {
+    width: 215px;
+    max-height: 340px;
+    padding: 6px;
   }
 }
-
 .movies-genre-empty-state {
   text-align: center;
   padding: 48px 20px;
