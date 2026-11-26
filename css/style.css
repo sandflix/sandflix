@@ -13005,50 +13005,107 @@ video {
   border-color: #ffffff;
 }
 
-.sandify-hero-showcase-card {
-  background: rgba(18, 18, 18, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  padding: 14px;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.sandify-hero-showcase-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(29, 185, 84, 0.5);
-}
-
-.sandify-hero-showcase-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.sandify-showcase-meta {
+.sandify-hero-trio {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 12px;
 }
 
-.sandify-showcase-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
+.sandify-trio-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(14, 16, 20, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sandify-trio-card:hover {
+  transform: translateX(4px);
+  background: rgba(24, 28, 36, 0.92);
+}
+
+.sandify-trio-card.trio-music:hover { border-color: rgba(29, 185, 84, 0.65); }
+.sandify-trio-card.trio-audiobooks:hover { border-color: rgba(245, 158, 11, 0.65); }
+.sandify-trio-card.trio-podcasts:hover { border-color: rgba(168, 85, 247, 0.65); }
+
+.sandify-trio-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trio-music .sandify-trio-icon {
+  background: rgba(29, 185, 84, 0.16);
   color: #1ed760;
+  border: 1px solid rgba(29, 185, 84, 0.3);
 }
 
-.sandify-showcase-meta strong {
-  font-size: 15px;
+.trio-audiobooks .sandify-trio-icon {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.trio-podcasts .sandify-trio-icon {
+  background: rgba(168, 85, 247, 0.16);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.sandify-trio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sandify-trio-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.trio-music .sandify-trio-tag { color: #1ed760; }
+.trio-audiobooks .sandify-trio-tag { color: #fbbf24; }
+.trio-podcasts .sandify-trio-tag { color: #c084fc; }
+
+.sandify-trio-text strong {
+  font-size: 15.5px;
+  font-weight: 700;
   color: #ffffff;
+  line-height: 1.2;
 }
 
-.sandify-showcase-meta span:last-child {
-  font-size: 12.5px;
+.sandify-trio-text span:last-child {
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sandify-trio-arrow {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sandify-trio-card:hover .sandify-trio-arrow {
+  transform: translateX(3px);
+  color: #ffffff;
 }
 
 /* Sandify Home Sections */
