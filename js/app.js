@@ -7669,7 +7669,43 @@ function initHomeBillboard() {
   let activeVid = videoA;
   let standbyVid = videoB || null;
 
+  function setBillboardBtnMode(mode) {
+    const btn = document.getElementById('homeBillboardAudioBtn');
+    const muteIcon = document.getElementById('homeBBAudioMute');
+    const unmuteIcon = document.getElementById('homeBBAudioUnmute');
+    const reloadIcon = document.getElementById('homeBBReloadIcon');
+    if (!btn) return;
+    btn.setAttribute('data-mode', mode);
+    if (mode === 'reload') {
+      btn.title = 'Replay Preview';
+      if (muteIcon) muteIcon.style.display = 'none';
+      if (unmuteIcon) unmuteIcon.style.display = 'none';
+      if (reloadIcon) reloadIcon.style.display = 'block';
+    } else {
+      btn.title = 'Mute/Unmute Audio Preview';
+      if (reloadIcon) reloadIcon.style.display = 'none';
+      if (isHomeBillboardAudioEnabled) {
+        if (muteIcon) muteIcon.style.display = 'none';
+        if (unmuteIcon) unmuteIcon.style.display = 'block';
+      } else {
+        if (muteIcon) muteIcon.style.display = 'block';
+        if (unmuteIcon) unmuteIcon.style.display = 'none';
+      }
+    }
+  }
+
+  function finishBillboardPlayback() {
+    if (sceneTimer) clearTimeout(sceneTimer);
+    try { if (videoA && !videoA.paused) videoA.pause(); } catch (e) {}
+    try { if (videoB && !videoB.paused) videoB.pause(); } catch (e) {}
+    videoWrap.classList.remove('playing');
+    if (videoA) videoA.classList.remove('is-front');
+    if (videoB) videoB.classList.remove('is-front');
+    setBillboardBtnMode('reload');
+  }
+
   function playActiveVideo() {
+    setBillboardBtnMode('audio');
     activeVid.muted = !isHomeBillboardAudioEnabled;
     activeVid.volume = 1.0;
     const playPromise = activeVid.play();
@@ -7690,7 +7726,13 @@ function initHomeBillboard() {
       return;
     }
 
-    sceneIdx = (sceneIdx + 1) % billboardScenes.length;
+    // Play once through all scenes, then stop & switch volume button to Reload
+    if (sceneIdx + 1 >= billboardScenes.length) {
+      finishBillboardPlayback();
+      return;
+    }
+
+    sceneIdx += 1;
     const nextScene = billboardScenes[sceneIdx];
 
     if (!standbyVid) {
@@ -7770,8 +7812,22 @@ function initHomeBillboard() {
     videoA.src = billboardScenes[0].src;
     videoA.addEventListener('ended', transitionToNextScene);
     if (videoB) videoB.addEventListener('ended', transitionToNextScene);
-    billboard.addEventListener('mouseenter', playActiveVideo);
+    billboard.addEventListener('mouseenter', () => {
+      const btn = document.getElementById('homeBillboardAudioBtn');
+      if (btn && btn.getAttribute('data-mode') !== 'reload') playActiveVideo();
+    });
   }
+
+  window.replayHomeBillboard = function () {
+    sceneIdx = 0;
+    activeVid = videoA;
+    standbyVid = videoB || null;
+    if (videoB) videoB.classList.remove('is-front');
+    videoA.src = billboardScenes[0].src;
+    videoA.currentTime = 0;
+    playActiveVideo();
+    scheduleNextScene();
+  };
 
   playActiveVideo();
   scheduleNextScene();
@@ -7779,14 +7835,22 @@ function initHomeBillboard() {
 
 function toggleBillboardAudio(event) {
   if (event) event.stopPropagation();
+  const btn = document.getElementById('homeBillboardAudioBtn');
+  if (btn && btn.getAttribute('data-mode') === 'reload') {
+    if (typeof window.replayHomeBillboard === 'function') window.replayHomeBillboard();
+    return;
+  }
+
   const videoA = document.getElementById('homeBillboardVideo');
   const videoB = document.getElementById('homeBillboardVideoNext');
   const video = document.querySelector('#homeBillboardVideoWrap video.is-front') || videoA;
   const muteIcon = document.getElementById('homeBBAudioMute');
   const unmuteIcon = document.getElementById('homeBBAudioUnmute');
+  const reloadIcon = document.getElementById('homeBBReloadIcon');
   const videoWrap = document.getElementById('homeBillboardVideoWrap');
 
   if (!video) return;
+  if (reloadIcon) reloadIcon.style.display = 'none';
 
   isHomeBillboardAudioEnabled = !isHomeBillboardAudioEnabled;
   if (videoA) { videoA.muted = !isHomeBillboardAudioEnabled; videoA.volume = 1.0; }

@@ -14013,10 +14013,10 @@ video {
   display: block !important;
   max-width: 1380px !important;
   width: calc(100% - 64px) !important;
-  height: clamp(820px, 110vh, 1080px) !important;
-  min-height: 820px !important;
-  max-height: 1080px !important;
-  margin: 14px auto 28px !important;
+  height: clamp(540px, calc(100vh - 115px), 780px) !important;
+  min-height: 540px !important;
+  max-height: 780px !important;
+  margin: 12px auto 26px !important;
   padding: 0 !important;
   border-radius: 16px !important;
   background: #000000 !important;
@@ -14089,10 +14089,12 @@ video {
 
 .netflix-bb-bottom-left {
   position: absolute;
-  left: 36px;
-  bottom: 30px;
+  left: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: auto;
   z-index: 10;
-  max-width: 520px;
+  max-width: 540px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -14100,9 +14102,9 @@ video {
 }
 
 .netflix-movie-logo-wrap {
-  width: 280px;
+  width: 340px;
   max-width: 100%;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.92));
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.92));
 }
 
 .netflix-movie-crest-logo {
@@ -14166,23 +14168,48 @@ video {
 }
 
 .netflix-bb-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 7px 14px;
   border-radius: 9999px;
-  background: rgba(18, 18, 22, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(18, 18, 22, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 12px;
   font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+}
+
+.nbb-pill-badge-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #e50914;
+  color: #ffffff;
+  font-size: 6.5px;
+  font-weight: 900;
+  line-height: 1.05;
+  padding: 2px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+}
+
+.nbb-pill-icon-gold {
+  color: #f5c95e;
+  flex-shrink: 0;
 }
 
 @media (max-width: 1024px) {
   #homeHeroBillboard.home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
-    height: clamp(680px, 92vh, 880px) !important;
-    min-height: 680px !important;
-    max-height: 880px !important;
+    height: clamp(440px, calc(100vh - 125px), 580px) !important;
+    min-height: 440px !important;
+    max-height: 580px !important;
   }
 
   .netflix-bb-bottom-right {
@@ -14211,12 +14238,14 @@ video {
   .netflix-bb-bottom-left {
     left: 16px;
     right: 16px;
-    bottom: 16px;
+    top: 52%;
+    transform: translateY(-50%);
+    bottom: auto;
     gap: 8px;
   }
 
   .netflix-movie-logo-wrap {
-    width: 190px;
+    width: 210px;
   }
 
   .netflix-bb-meta-line {
