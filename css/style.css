@@ -14008,7 +14008,7 @@ video {
 /* ==========================================================================
    MAIN HOME BILLBOARD — LARGE ROUNDED NETFLIX CARD + GOLD CREST LOGO
    ========================================================================== */
-#homeHeroBillboard.home-billboard-netflix-card {
+.home-billboard-netflix-card {
   position: relative !important;
   display: block !important;
   max-width: 1380px !important;
@@ -14025,13 +14025,13 @@ video {
   overflow: hidden !important;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card::before,
-#homeHeroBillboard.home-billboard-netflix-card::after {
+.home-billboard-netflix-card::before,
+.home-billboard-netflix-card::after {
   display: none !important;
   content: none !important;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .billboard-backdrop {
+.home-billboard-netflix-card .billboard-backdrop {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -14040,14 +14040,14 @@ video {
   z-index: 0;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap {
+.home-billboard-netflix-card .billboard-video-wrap {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: #000000;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video {
+.home-billboard-netflix-card .billboard-video-wrap video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -14060,7 +14060,7 @@ video {
   z-index: 1;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .billboard-video-wrap video.is-front {
+.home-billboard-netflix-card .billboard-video-wrap video.is-front {
   opacity: 1;
   z-index: 2;
 }
@@ -14147,20 +14147,20 @@ video {
   font-size: 11.5px;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .billboard-actions {
+.home-billboard-netflix-card .billboard-actions {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-top: 2px;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .btn-n-play {
+.home-billboard-netflix-card .btn-n-play {
   border-radius: 9999px !important;
   padding: 10px 26px !important;
   font-weight: 700 !important;
 }
 
-#homeHeroBillboard.home-billboard-netflix-card .btn-n-info {
+.home-billboard-netflix-card .btn-n-info {
   border-radius: 9999px !important;
   padding: 10px 24px !important;
   background: rgba(109, 109, 110, 0.58) !important;
@@ -14217,7 +14217,7 @@ video {
 }
 
 @media (max-width: 1024px) {
-  #homeHeroBillboard.home-billboard-netflix-card {
+  .home-billboard-netflix-card {
     width: calc(100% - 32px) !important;
     height: clamp(540px, calc(100vh - 70px), 700px) !important;
     min-height: 540px !important;
@@ -14230,7 +14230,7 @@ video {
 }
 
 @media (max-width: 768px) {
-  #homeHeroBillboard.home-billboard-netflix-card {
+  .home-billboard-netflix-card {
     width: auto !important;
     margin: 10px 12px 20px !important;
     height: auto !important;
@@ -14272,15 +14272,15 @@ video {
     gap: 5px;
   }
 
-  #homeHeroBillboard.home-billboard-netflix-card .btn-n-play,
-  #homeHeroBillboard.home-billboard-netflix-card .btn-n-info {
+  .home-billboard-netflix-card .btn-n-play,
+  .home-billboard-netflix-card .btn-n-info {
     padding: 8px 18px !important;
     font-size: 13px !important;
   }
 }
 
 @media (max-width: 480px) {
-  #homeHeroBillboard.home-billboard-netflix-card {
+  .home-billboard-netflix-card {
     min-height: 300px !important;
     aspect-ratio: 4 / 3;
   }

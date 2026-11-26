@@ -8704,44 +8704,84 @@ function initMoviesBillboard() {
 
   if (!billboard || !video || !videoWrap) return;
 
+  function setMoviesBtnMode(mode) {
+    const btn = document.getElementById('moviesBillboardAudioBtn');
+    const muteIcon = document.getElementById('moviesBBAudioMute');
+    const unmuteIcon = document.getElementById('moviesBBAudioUnmute');
+    const reloadIcon = document.getElementById('moviesBBReloadIcon');
+    if (!btn) return;
+    btn.setAttribute('data-mode', mode);
+    if (mode === 'reload') {
+      btn.title = 'Replay Preview';
+      if (muteIcon) muteIcon.style.display = 'none';
+      if (unmuteIcon) unmuteIcon.style.display = 'none';
+      if (reloadIcon) reloadIcon.style.display = 'block';
+    } else {
+      btn.title = 'Mute/Unmute Audio Preview';
+      if (reloadIcon) reloadIcon.style.display = 'none';
+      if (isMoviesBillboardAudioEnabled) {
+        if (muteIcon) muteIcon.style.display = 'none';
+        if (unmuteIcon) unmuteIcon.style.display = 'block';
+      } else {
+        if (muteIcon) muteIcon.style.display = 'block';
+        if (unmuteIcon) unmuteIcon.style.display = 'none';
+      }
+    }
+  }
+
   function playMoviesBillboardPreview() {
+    setMoviesBtnMode('audio');
     video.muted = !isMoviesBillboardAudioEnabled;
     video.volume = 1.0;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
         videoWrap.classList.add('playing');
+        video.classList.add('is-front');
       }).catch(err => {
         console.log('Movies billboard preview waiting for interaction:', err);
       });
     }
   }
 
-  function pauseMoviesBillboardPreview() {
-    videoWrap.classList.remove('playing');
-    if (!video.paused) {
-      video.pause();
-    }
+  if (!billboard.dataset.moviesInitialized) {
+    billboard.dataset.moviesInitialized = 'true';
+    video.addEventListener('ended', () => {
+      videoWrap.classList.remove('playing');
+      video.classList.remove('is-front');
+      setMoviesBtnMode('reload');
+    });
+    billboard.addEventListener('mouseenter', () => {
+      const btn = document.getElementById('moviesBillboardAudioBtn');
+      if (btn && btn.getAttribute('data-mode') !== 'reload') playMoviesBillboardPreview();
+    });
   }
 
-  billboard.addEventListener('mouseenter', () => {
+  window.replayMoviesBillboard = function () {
+    video.currentTime = 0;
     playMoviesBillboardPreview();
-  });
+  };
 
-  billboard.addEventListener('mouseleave', () => {
-    pauseMoviesBillboardPreview();
-  });
+  playMoviesBillboardPreview();
 }
 window.initMoviesBillboard = initMoviesBillboard;
 
 function toggleMoviesBillboardAudio(event) {
   if (event) event.stopPropagation();
+  const btn = document.getElementById('moviesBillboardAudioBtn');
+  if (btn && btn.getAttribute('data-mode') === 'reload') {
+    if (typeof window.replayMoviesBillboard === 'function') window.replayMoviesBillboard();
+    return;
+  }
+
   const video = document.getElementById('moviesBillboardVideo');
   const muteIcon = document.getElementById('moviesBBAudioMute');
   const unmuteIcon = document.getElementById('moviesBBAudioUnmute');
+  const reloadIcon = document.getElementById('moviesBBReloadIcon');
   const videoWrap = document.getElementById('moviesBillboardVideoWrap');
 
   if (!video) return;
+  if (reloadIcon) reloadIcon.style.display = 'none';
 
   isMoviesBillboardAudioEnabled = !isMoviesBillboardAudioEnabled;
   video.muted = !isMoviesBillboardAudioEnabled;
@@ -8752,10 +8792,12 @@ function toggleMoviesBillboardAudio(event) {
     if (playPromise !== undefined) {
       playPromise.then(() => {
         if (videoWrap) videoWrap.classList.add('playing');
+        video.classList.add('is-front');
       }).catch(err => console.log('Movies billboard play error:', err));
     }
   } else {
     if (videoWrap) videoWrap.classList.add('playing');
+    video.classList.add('is-front');
   }
 
   if (video.muted) {
