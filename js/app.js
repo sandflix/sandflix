@@ -6199,12 +6199,15 @@ function switchSandifyTab(tabKey) {
   tabKey = tabKey || 'home';
   currentSandifyTab = tabKey;
 
+  const subNavEl = document.getElementById('sandifySubNav');
   const homeEl = document.getElementById('sandifyHomeView');
   const musicEl = document.getElementById('sandifyMainView');
   const subpageEl = document.getElementById('sandifySubpageView');
   const audioEl = document.getElementById('sandifyAudiobooksView');
   const podEl = document.getElementById('sandifyPodcastsView');
 
+  // Show Sandify sub-navbar strictly on Sandify Home page only
+  if (subNavEl) subNavEl.style.display = tabKey === 'home' ? '' : 'none';
   if (homeEl) homeEl.style.display = tabKey === 'home' ? 'block' : 'none';
   if (musicEl) musicEl.style.display = tabKey === 'music' ? 'block' : 'none';
   if (audioEl) audioEl.style.display = tabKey === 'audiobooks' ? 'block' : 'none';
@@ -6273,9 +6276,11 @@ function openSandifySubpage(albumKey, fromHistory) {
     else c.classList.remove('active');
   });
 
+  const subNavEl = document.getElementById('sandifySubNav');
   const homeEl = document.getElementById('sandifyHomeView');
   const audioEl = document.getElementById('sandifyAudiobooksView');
   const podEl = document.getElementById('sandifyPodcastsView');
+  if (subNavEl) subNavEl.style.display = 'none';
   if (homeEl) homeEl.style.display = 'none';
   if (audioEl) audioEl.style.display = 'none';
   if (podEl) podEl.style.display = 'none';
