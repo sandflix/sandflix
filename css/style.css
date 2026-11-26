@@ -12806,8 +12806,8 @@ video {
   position: relative;
   z-index: 90;
   background: linear-gradient(180deg, rgba(14, 14, 14, 0.98) 0%, rgba(14, 14, 14, 0.72) 100%);
-  padding: 2px 32px 10px 32px;
-  margin-top: -6px;
+  padding: 10px 32px 10px 32px;
+  margin-top: 0;
 }
 
 .sandify-subnav-inner {
@@ -13398,8 +13398,8 @@ video {
 
 @media (max-width: 1024px) {
   .sandify-subnav {
-    padding: 2px 24px 10px 24px;
-    margin-top: -4px;
+    padding: 10px 24px 10px 24px;
+    margin-top: 0;
   }
 
   .sandify-hero-inner {
@@ -13419,8 +13419,8 @@ video {
 
 @media (max-width: 768px) {
   .sandify-subnav {
-    padding: 0 12px 8px 12px;
-    margin-top: -4px;
+    padding: 10px 12px 10px 12px;
+    margin-top: 0;
   }
 
   .sandify-subnav-pill {
