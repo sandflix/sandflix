@@ -108,7 +108,8 @@ body.ott-platform {
   padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0;
 }
 
 .brand-container {
@@ -116,6 +117,7 @@ body.ott-platform {
   align-items: center;
   cursor: pointer;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .sacred-emblem {
@@ -151,6 +153,8 @@ body.ott-platform {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: 44px;
+  flex-shrink: 0;
 }
 
 .tab-link {
@@ -192,6 +196,8 @@ body.ott-platform {
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 
@@ -2824,6 +2830,7 @@ body.ott-platform {
 
   .nav-tabs {
     gap: 6px;
+    margin-left: 20px;
   }
 
   .tab-link {
@@ -4833,6 +4840,7 @@ body.ott-platform {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -5900,6 +5908,38 @@ body.ott-platform {
   background: rgba(255, 42, 68, 0.3);
 }
 
+.netflix-genre-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.n-pill {
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.n-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.n-pill.active {
+  background: #ff2a44;
+  border-color: #ff2a44;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(255, 42, 68, 0.4);
+}
+
 /* ==========================================================================
    NETFLIX BILLBOARD (MASSIVE HERO BANNER)
    ========================================================================== */
@@ -6413,6 +6453,10 @@ body.ott-platform {
 
   .netflix-genre-title {
     font-size: 26px;
+  }
+
+  .netflix-genre-pills {
+    display: none;
   }
 
   .netflix-billboard {
@@ -7733,6 +7777,7 @@ video {
 
   .nav-tabs {
     gap: 6px;
+    margin-left: 20px;
   }
 
   .tab-link {
@@ -7909,6 +7954,26 @@ video {
   .genre-select-btn {
     padding: 5px 10px !important;
     font-size: 11.5px !important;
+  }
+
+  .netflix-genre-pills {
+    display: flex !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding-bottom: 2px !important;
+  }
+
+  .netflix-genre-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .n-pill {
+    padding: 4px 11px !important;
+    font-size: 11px !important;
+    flex-shrink: 0 !important;
   }
 
   /* Movies Page: Billboard Banner Mobile */
@@ -8478,7 +8543,7 @@ video {
   pointer-events: none !important;
 }
 
-.netflix-slider-track.compact-row > *,
+.netflix-slider-track.compact-row>*,
 .netflix-slider-track.compact-row .n-card,
 .netflix-slider-track.compact-row .n-slider-btn {
   pointer-events: auto !important;
@@ -9571,7 +9636,7 @@ video {
   pointer-events: none !important;
 }
 
-.single-movie-track > *,
+.single-movie-track>*,
 .single-movie-track .n-card,
 .single-movie-track .n-slider-btn {
   pointer-events: auto !important;
@@ -11187,11 +11252,11 @@ video {
 
 @media (max-width: 768px) {
   .nbp-embed-server-bar {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 
   .nbp-embed-server-bar::-webkit-scrollbar {
     display: none;
@@ -11259,11 +11324,12 @@ video {
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
-  border-radius: 9999px; /* Complete Semicircular Capsule Pill shape */
-  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.22s ease, 
-              border-color 0.22s ease,
-              box-shadow 0.22s ease;
+  border-radius: 9999px;
+  /* Complete Semicircular Capsule Pill shape */
+  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .netflix-search-widget.open .n-search-toggle-btn {
@@ -11275,12 +11341,16 @@ video {
   max-width: calc(100vw - 320px);
   opacity: 1;
   pointer-events: auto;
-  border: 1px solid rgba(255, 255, 255, 0.38); /* Exact #616161 sampled border from Netflix screenshot */
-  background: rgba(20, 20, 20, 0.95); /* Exact #141414 deep dark background */
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  /* Exact #616161 sampled border from Netflix screenshot */
+  background: rgba(20, 20, 20, 0.95);
+  /* Exact #141414 deep dark background */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 0 8px 0 12px; /* 12px left curve to icon, 8px right curve */
-  border-radius: 9999px; /* 100% Semicircular Pill ends */
+  padding: 0 8px 0 12px;
+  /* 12px left curve to icon, 8px right curve */
+  border-radius: 9999px;
+  /* 100% Semicircular Pill ends */
   height: 35px;
   box-sizing: border-box;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -11319,15 +11389,18 @@ video {
 }
 
 .n-search-input-field::placeholder {
-  color: rgba(255, 255, 255, 0.52); /* Exact soft grey placeholder */
+  color: rgba(255, 255, 255, 0.52);
+  /* Exact soft grey placeholder */
   font-weight: 400;
   font-size: 14px;
 }
 
 .n-search-clear-btn {
-  background: #464646; /* Exact sampled grey circle badge rgb(64,64,64) from Netflix screenshot */
+  background: #464646;
+  /* Exact sampled grey circle badge rgb(64,64,64) from Netflix screenshot */
   border: none;
-  color: #161616; /* Dark cross inside */
+  color: #161616;
+  /* Dark cross inside */
   cursor: pointer;
   width: 16px;
   height: 16px;
@@ -11368,9 +11441,11 @@ video {
   .desktop-search-view-wrap {
     display: block !important;
   }
+
   .mobile-search-view-wrap {
     display: none !important;
   }
+
   .netflix-search-widget {
     display: inline-flex !important;
   }
@@ -11380,9 +11455,11 @@ video {
   .desktop-search-view-wrap {
     display: none !important;
   }
+
   .mobile-search-view-wrap {
     display: block !important;
   }
+
   .netflix-search-widget {
     display: none !important;
   }
@@ -11432,8 +11509,10 @@ video {
 .n-search-pill {
   background: rgba(18, 18, 18, 0.92);
   color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.35); /* Exact subtle outline matching uploaded pill image */
-  border-radius: 9999px; /* Complete Semicircular Capsule Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  /* Exact subtle outline matching uploaded pill image */
+  border-radius: 9999px;
+  /* Complete Semicircular Capsule Pill shape */
   padding: 8px 18px;
   font-size: 13.5px;
   font-weight: 500;
@@ -11580,7 +11659,8 @@ video {
   background: rgba(18, 18, 18, 0.92);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 9999px; /* Pill capsule */
+  border-radius: 9999px;
+  /* Pill capsule */
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 500;
@@ -11828,6 +11908,7 @@ video {
   .search-card .n-movie-name {
     font-size: 12px;
   }
+
   .search-card .n-card-genres {
     font-size: 10px;
   }
