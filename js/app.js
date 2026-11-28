@@ -5675,6 +5675,106 @@ let RAJ_SHAMANI_YT_PODCASTS = [
     banner: 'https://i.ytimg.com/vi/X5Re2M9Lcq8/maxresdefault.jpg'
   }
 ];
+let RAJ_SHAMANI_POPULAR_PODCASTS = [
+  {
+    videoId: 'E3oG313_kps',
+    title: "Khan Sir Podcast: India vs China, Pakistan, Bihar's Reality & Geopolitics | FO343",
+    artist: 'Raj Shamani • 41.8M views',
+    published: '2025',
+    banner: 'https://i.ytimg.com/vi/E3oG313_kps/maxresdefault.jpg'
+  },
+  {
+    videoId: 'x63HCoDfAhQ',
+    title: 'Protecting the President: Security, VIP Threats & ADC Life | Major Rishabh | FO560',
+    artist: 'Raj Shamani • 41.6M views',
+    published: '2026',
+    banner: 'https://i.ytimg.com/vi/x63HCoDfAhQ/maxresdefault.jpg'
+  },
+  {
+    videoId: 'MdeQMVBuGgY',
+    title: 'Vijay Mallya Podcast: Rise & Downfall Of Kingfisher Airlines, Loans & RCB | FO364',
+    artist: 'Raj Shamani • 31.9M views',
+    published: '2025',
+    banner: 'https://i.ytimg.com/vi/MdeQMVBuGgY/maxresdefault.jpg'
+  },
+  {
+    videoId: 'Z1GnEgCcCWE',
+    title: 'Indian Spy: Dark Reality China, Weapons, Commando Training & Jail | Lucky Bisht | FO198',
+    artist: 'Raj Shamani • 28.2M views',
+    published: '2024',
+    banner: 'https://i.ytimg.com/vi/Z1GnEgCcCWE/maxresdefault.jpg'
+  },
+  {
+    videoId: 'Y566_T-YlNQ',
+    title: 'Andrew Huberman: Become Mentally Dangerous With These Daily Habits | FO556',
+    artist: 'Raj Shamani • 21.0M views',
+    published: '2026',
+    banner: 'https://i.ytimg.com/vi/Y566_T-YlNQ/maxresdefault.jpg'
+  },
+  {
+    videoId: '4Vz6L8B73i4',
+    title: "Neuroscientist's Guide To 10X Your Focus & Memory | Dr Sahar Yousef | FO559",
+    artist: 'Raj Shamani • 18.7M views',
+    published: '2026',
+    banner: 'https://i.ytimg.com/vi/4Vz6L8B73i4/maxresdefault.jpg'
+  },
+  {
+    videoId: 'VAtgcFtqIqw',
+    title: 'Khan Sir on World War 3, India vs Pakistan, China, Trump & Epstein Files | FO485',
+    artist: 'Raj Shamani • 16.6M views',
+    published: '2026',
+    banner: 'https://i.ytimg.com/vi/VAtgcFtqIqw/maxresdefault.jpg'
+  },
+  {
+    videoId: 'JepLZh_dMeY',
+    title: 'Dr. Cuterus On Health, Science, Wellness & Myths | FO147',
+    artist: 'Raj Shamani • 14.8M views',
+    published: '2023',
+    banner: 'https://i.ytimg.com/vi/JepLZh_dMeY/maxresdefault.jpg'
+  },
+  {
+    videoId: 'MNbfiDXZBsg',
+    title: 'PARA SFs, Indian Army, Weapons & Dangerous Missions ft. Col. Shivender Kanwar | FO239',
+    artist: 'Raj Shamani • 14.6M views',
+    published: '2024',
+    banner: 'https://i.ytimg.com/vi/MNbfiDXZBsg/maxresdefault.jpg'
+  },
+  {
+    videoId: '9QXCkMTbrSk',
+    title: 'President of France on Trump, India, Modi, Tech & Future | H.E. Emmanuel Macron | FO473',
+    artist: 'Raj Shamani • 13.8M views',
+    published: '2026',
+    banner: 'https://i.ytimg.com/vi/9QXCkMTbrSk/maxresdefault.jpg'
+  },
+  {
+    videoId: 'Q3mlNjnRO8w',
+    title: 'India, Geopolitics, International Relations, US Visa & PM Modi | Dr S Jaishankar | FO176',
+    artist: 'Raj Shamani • 12.6M views',
+    published: '2024',
+    banner: 'https://i.ytimg.com/vi/Q3mlNjnRO8w/maxresdefault.jpg'
+  },
+  {
+    videoId: 'M8ICGx4p0lA',
+    title: 'Zakir Khan On Parents, Relationship, Bollywood, Success & Money | FO148',
+    artist: 'Raj Shamani • 9.1M views',
+    published: '2023',
+    banner: 'https://i.ytimg.com/vi/M8ICGx4p0lA/maxresdefault.jpg'
+  },
+  {
+    videoId: 'b9-Mxcoxx-Q',
+    title: 'Tihar Jail, Criminals, Smuggling & VIP Treatment | Jailor Deepak | FO175',
+    artist: 'Raj Shamani • 9.1M views',
+    published: '2024',
+    banner: 'https://i.ytimg.com/vi/b9-Mxcoxx-Q/maxresdefault.jpg'
+  },
+  {
+    videoId: 'kJKD-E9Ipi0',
+    title: 'Bharti Singh On Trolls, Body Shaming, Comedy, Family & Kapil Sharma | FO396',
+    artist: 'Raj Shamani • 8.6M views',
+    published: '2025',
+    banner: 'https://i.ytimg.com/vi/kJKD-E9Ipi0/maxresdefault.jpg'
+  }
+];
 let currentPodcastFilter = 'all';
 let sandifyYtPlayer = null;
 let sandifyYtApiPromise = null;
@@ -5749,7 +5849,8 @@ async function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
     }
   } catch (_) {}
 
-  const epMatch = RAJ_SHAMANI_YT_PODCASTS.find(e => e.videoId === videoId);
+  const allRajEpisodes = [...RAJ_SHAMANI_YT_PODCASTS, ...RAJ_SHAMANI_POPULAR_PODCASTS];
+  const epMatch = allRajEpisodes.find(e => e.videoId === videoId);
   const title = encodedTitle ? decodeURIComponent(encodedTitle) : (epMatch ? epMatch.title : 'Raj Shamani Podcast');
   const artist = encodedArtist ? decodeURIComponent(encodedArtist) : (epMatch ? epMatch.artist : 'Raj Shamani');
   if (titleEl) titleEl.textContent = title;
@@ -5760,7 +5861,14 @@ async function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   if (upNextEl) {
-    const others = RAJ_SHAMANI_YT_PODCASTS.filter(ep => ep.videoId !== videoId);
+    const seenUp = new Set([videoId]);
+    const others = [];
+    for (const ep of allRajEpisodes) {
+      if (!seenUp.has(ep.videoId)) {
+        seenUp.add(ep.videoId);
+        others.push(ep);
+      }
+    }
     upNextEl.innerHTML = renderYouTubePodcastCardsHtml(others);
   }
 
@@ -5888,10 +5996,11 @@ function cycleSandifyYtSpeed() {
 }
 
 function playNextSandifyYtEpisode() {
-  if (!RAJ_SHAMANI_YT_PODCASTS.length) return;
-  const idx = RAJ_SHAMANI_YT_PODCASTS.findIndex(e => e.videoId === sandifyYtPendingVideoId);
-  const next = RAJ_SHAMANI_YT_PODCASTS[(idx + 1) % RAJ_SHAMANI_YT_PODCASTS.length];
-  if (next) playYouTubePodcast(next.videoId, encodeURIComponent(next.title), encodeURIComponent(next.artist));
+  const allRajEpisodes = [...RAJ_SHAMANI_YT_PODCASTS, ...RAJ_SHAMANI_POPULAR_PODCASTS];
+  if (!allRajEpisodes.length) return;
+  const idx = allRajEpisodes.findIndex(e => e.videoId === sandifyYtPendingVideoId);
+  const next = allRajEpisodes[(idx + 1) % allRajEpisodes.length];
+  if (next) playYouTubePodcast(next.videoId);
 }
 
 window.playYouTubePodcast = playYouTubePodcast;
@@ -5983,6 +6092,13 @@ function renderPodcastsList(filterKey) {
 
   if (filterKey === 'all' || filterKey === 'rajshamani') {
     html += `
+      <section class="audiobooks-section-block" aria-label="Most Viewed Raj Shamani Podcasts (2023-2026)">
+        <div class="audiobooks-section-header">
+          <h3 class="audiobooks-section-title">Most Popular Raj Shamani (2023 &ndash; 2026)</h3>
+          <span class="audiobooks-section-count">Most Viewed &bull; ${RAJ_SHAMANI_POPULAR_PODCASTS.length} Episodes</span>
+        </div>
+        <div class="podcasts-cards-grid">${renderYouTubePodcastCardsHtml(RAJ_SHAMANI_POPULAR_PODCASTS)}</div>
+      </section>
       <section class="audiobooks-section-block" aria-label="Latest from Raj Shamani">
         <div class="audiobooks-section-header">
           <h3 class="audiobooks-section-title">Latest from Raj Shamani</h3>
