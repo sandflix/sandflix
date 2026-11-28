@@ -14562,6 +14562,27 @@ video {
   background: transparent;
 }
 
+.sandify-watch-corner-logo {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  height: 44px;
+  width: auto;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.94;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .sandify-watch-corner-logo {
+    top: 10px;
+    left: 12px;
+    height: 30px;
+  }
+}
+
 .sandify-yt-center-play {
   position: absolute;
   top: 50%;
