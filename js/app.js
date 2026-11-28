@@ -5574,26 +5574,185 @@ if (document.readyState === 'loading') {
   renderAudiobooksList('all');
 }
 
-function renderPodcastsList(filterKey) {
-  const container = document.getElementById('podcastsTracklist');
-  if (!container) return;
-  filterKey = filterKey || 'all';
+const RAJ_SHAMANI_CHANNEL_ID = 'UCzwCEE_PchiBULMnAJqhGVg';
+let RAJ_SHAMANI_YT_PODCASTS = [
+  {
+    videoId: 'S3HBv7aFrjc',
+    title: "What's Next For The World: Heatwaves, Water Crisis & Pollution | Sunita Narain | FO593",
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-26',
+    banner: 'https://i.ytimg.com/vi/S3HBv7aFrjc/maxresdefault.jpg'
+  },
+  {
+    videoId: 'KmZKA_DG4-0',
+    title: 'How To Find Business Ideas, Identify Market Gaps & Make Money | Udit Chawla | FO592',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-24',
+    banner: 'https://i.ytimg.com/vi/KmZKA_DG4-0/maxresdefault.jpg'
+  },
+  {
+    videoId: '8C32XBcvfh8',
+    title: 'How Shadow Economy Shapes Trade, Politics, Money & Power | Mariana Van Zeller | FO591',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-21',
+    banner: 'https://i.ytimg.com/vi/8C32XBcvfh8/maxresdefault.jpg'
+  },
+  {
+    videoId: '8ETRd0mgWAI',
+    title: 'How Successful People Train Their Brain Differently | Dr. Daniel Amen | FO590',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-19',
+    banner: 'https://i.ytimg.com/vi/8ETRd0mgWAI/maxresdefault.jpg'
+  }
+];
+let currentPodcastFilter = 'all';
 
-  const pods = OST_TRACKS.filter(t => t.album === 'poadcasts' && (filterKey === 'all' || t.category === filterKey));
-  container.innerHTML = pods.map((pod) => `
-    <article class="spotify-music-card podcast-card" id="podCard${pod.id}" onclick="playOSTTrack(${pod.id})" title="Play ${pod.title}">
+function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
+  const wrap = document.getElementById('ytPodcastPlayerWrap');
+  const iframe = document.getElementById('ytPodcastIframe');
+  const titleEl = document.getElementById('ytPodcastPlayerTitle');
+  const subEl = document.getElementById('ytPodcastPlayerSub');
+  if (!wrap || !iframe) return;
+
+  try {
+    if (typeof ostAudio !== 'undefined' && ostAudio && !ostAudio.paused) {
+      ostAudio.pause();
+    }
+  } catch (_) {}
+
+  const title = decodeURIComponent(encodedTitle || 'Raj Shamani Podcast');
+  const artist = decodeURIComponent(encodedArtist || 'Raj Shamani (@rajshamani)');
+  if (titleEl) titleEl.textContent = title;
+  if (subEl) subEl.textContent = `${artist} • Playing Inside Sandify`;
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  wrap.style.display = 'block';
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closeYouTubePodcast() {
+  const wrap = document.getElementById('ytPodcastPlayerWrap');
+  const iframe = document.getElementById('ytPodcastIframe');
+  if (iframe) iframe.src = '';
+  if (wrap) wrap.style.display = 'none';
+}
+
+window.playYouTubePodcast = playYouTubePodcast;
+window.closeYouTubePodcast = closeYouTubePodcast;
+
+async function fetchLatestYouTubePodcasts() {
+  try {
+    let episodes = [];
+    // 1. Try local Node backend first (/api/youtube-podcasts)
+    try {
+      const localRes = await fetch(`/api/youtube-podcasts?channelId=${RAJ_SHAMANI_CHANNEL_ID}`);
+      if (localRes.ok) {
+        const localData = await localRes.json();
+        if (localData && localData.success && Array.isArray(localData.episodes) && localData.episodes.length) {
+          episodes = localData.episodes;
+        }
+      }
+    } catch (_) {}
+
+    // 2. Fallback to public RSS-to-JSON bridge for GitHub Pages live auto-sync
+    if (!episodes.length) {
+      const rssUrl = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${RAJ_SHAMANI_CHANNEL_ID}`);
+      const rssRes = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
+      if (rssRes.ok) {
+        const rssData = await rssRes.json();
+        if (rssData && Array.isArray(rssData.items)) {
+          episodes = rssData.items
+            .filter(item => item.link && !/\/shorts\//i.test(item.link) && !/#shorts/i.test(item.title || ''))
+            .map(item => {
+              const m = (item.link || '').match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+              const vid = m ? m[1] : '';
+              return vid ? {
+                videoId: vid,
+                title: (item.title || '').replace(/\s*\|\s*Raj Shamani$/i, '').trim(),
+                artist: 'Raj Shamani (@rajshamani)',
+                published: (item.pubDate || '').slice(0, 10),
+                banner: `https://i.ytimg.com/vi/${vid}/maxresdefault.jpg`
+              } : null;
+            })
+            .filter(Boolean);
+        }
+      }
+    }
+
+    if (episodes.length) {
+      RAJ_SHAMANI_YT_PODCASTS = episodes;
+      renderPodcastsList(currentPodcastFilter);
+    }
+  } catch (_) {}
+}
+
+function renderYouTubePodcastCardsHtml(episodes) {
+  return episodes.map((ep) => `
+    <article class="spotify-music-card podcast-card" onclick="playYouTubePodcast('${ep.videoId}', '${encodeURIComponent(ep.title)}', '${encodeURIComponent(ep.artist)}')" title="Play ${ep.title.replace(/"/g, '&quot;')}">
       <div class="spotify-card-img-wrap">
-        <img src="${pod.banner}" alt="${pod.title}" class="spotify-card-img" loading="lazy" decoding="async">
-        <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(${pod.id});" aria-label="Play ${pod.title}">
+        <img src="${ep.banner}" alt="${ep.title.replace(/"/g, '&quot;')}" class="spotify-card-img" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${ep.videoId}/hqdefault.jpg';">
+        <button class="spotify-card-play" onclick="event.stopPropagation(); playYouTubePodcast('${ep.videoId}', '${encodeURIComponent(ep.title)}', '${encodeURIComponent(ep.artist)}');" aria-label="Play ${ep.title.replace(/"/g, '&quot;')}">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
         </button>
       </div>
       <div class="spotify-card-body">
-        <h3 class="spotify-card-title">${pod.title}</h3>
-        <p class="spotify-card-sub">${pod.artist} &bull; ${pod.duration}</p>
+        <h3 class="spotify-card-title">${ep.title}</h3>
+        <p class="spotify-card-sub">${ep.artist}${ep.published ? ' &bull; ' + ep.published : ''}</p>
       </div>
     </article>
   `).join('');
+}
+
+function renderPodcastsList(filterKey) {
+  const container = document.getElementById('podcastsTracklist');
+  if (!container) return;
+  filterKey = filterKey || 'all';
+  currentPodcastFilter = filterKey;
+
+  let html = '';
+
+  if (filterKey === 'all' || filterKey === 'rajshamani') {
+    html += `
+      <section class="audiobooks-section-block" aria-label="Latest from Raj Shamani">
+        <div class="audiobooks-section-header">
+          <h3 class="audiobooks-section-title">Latest from Raj Shamani (@rajshamani)</h3>
+          <span class="audiobooks-section-count">YouTube Live Sync &bull; ${RAJ_SHAMANI_YT_PODCASTS.length} Episodes</span>
+        </div>
+        <div class="podcasts-cards-grid">${renderYouTubePodcastCardsHtml(RAJ_SHAMANI_YT_PODCASTS)}</div>
+      </section>
+    `;
+  }
+
+  if (filterKey !== 'rajshamani') {
+    const pods = OST_TRACKS.filter(t => t.album === 'poadcasts' && (filterKey === 'all' || t.category === filterKey));
+    if (pods.length) {
+      const audioCards = pods.map((pod) => `
+        <article class="spotify-music-card podcast-card" id="podCard${pod.id}" onclick="playOSTTrack(${pod.id})" title="Play ${pod.title}">
+          <div class="spotify-card-img-wrap">
+            <img src="${pod.banner}" alt="${pod.title}" class="spotify-card-img" loading="lazy" decoding="async">
+            <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(${pod.id});" aria-label="Play ${pod.title}">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+          </div>
+          <div class="spotify-card-body">
+            <h3 class="spotify-card-title">${pod.title}</h3>
+            <p class="spotify-card-sub">${pod.artist} &bull; ${pod.duration}</p>
+          </div>
+        </article>
+      `).join('');
+
+      html += `
+        <section class="audiobooks-section-block" aria-label="Featured Audio Podcasts">
+          <div class="audiobooks-section-header">
+            <h3 class="audiobooks-section-title">Featured Podcasts (Audio)</h3>
+            <span class="audiobooks-section-count">${pods.length} Episodes</span>
+          </div>
+          <div class="podcasts-cards-grid">${audioCards}</div>
+        </section>
+      `;
+    }
+  }
+
+  container.innerHTML = html;
 }
 
 function filterPodcasts(filterKey, btnEl) {
@@ -5604,9 +5763,13 @@ function filterPodcasts(filterKey, btnEl) {
 window.renderPodcastsList = renderPodcastsList;
 window.filterPodcasts = filterPodcasts;
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => renderPodcastsList('all'));
+  document.addEventListener('DOMContentLoaded', () => {
+    renderPodcastsList('all');
+    fetchLatestYouTubePodcasts();
+  });
 } else {
   renderPodcastsList('all');
+  fetchLatestYouTubePodcasts();
 }
 
 let ostAudio = new Audio();

@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261128_v188_podcasts_cards_live">
+  <link rel="stylesheet" href="css/style.css?v=20261128_v189_rajshamani_youtube_podcasts">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1690,13 +1690,29 @@
       </div>
       <div class="sandify-hub-chips" id="podcastsFilterChips">
         <button class="sandify-s-chip active" onclick="filterPodcasts('all', this)">All Podcasts</button>
+        <button class="sandify-s-chip" onclick="filterPodcasts('rajshamani', this)">Raj Shamani (@rajshamani)</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('business', this)">Business &amp; Brain</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('society', this)">Society &amp; Wildlife</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('cinema', this)">Cinema &amp; Love</button>
       </div>
 
-      <!-- Podcasts Cards Grid (YouTube Podcast Posters + Episode Names) -->
-      <div class="podcasts-cards-grid" id="podcastsTracklist">
+      <!-- In-App YouTube Podcast Player (Plays @rajshamani episodes right inside Sandify) -->
+      <div class="yt-podcast-player-wrap" id="ytPodcastPlayerWrap" style="display: none;">
+        <div class="yt-podcast-player-header">
+          <div class="yt-podcast-player-meta">
+            <span class="yt-live-badge">NOW PLAYING ON SANDIFY</span>
+            <h3 class="yt-podcast-player-title" id="ytPodcastPlayerTitle">Raj Shamani Podcast</h3>
+            <p class="yt-podcast-player-sub" id="ytPodcastPlayerSub">Raj Shamani &bull; @rajshamani</p>
+          </div>
+          <button class="yt-podcast-close-btn" onclick="closeYouTubePodcast()" aria-label="Close Podcast Player">&times; Close</button>
+        </div>
+        <div class="yt-podcast-player-frame">
+          <iframe id="ytPodcastIframe" src="" title="Sandify YouTube Podcast Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Podcasts Sections: Latest from Raj Shamani (@rajshamani) & Featured Audio Podcasts -->
+      <div class="audiobooks-sections-wrap" id="podcastsTracklist">
         <!-- Rendered dynamically by renderPodcastsList() -->
       </div>
     </div>
@@ -2234,9 +2250,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261128_v188_podcasts_cards_live"></script>
-  <script src="js/tracks-data.js?v=20261128_v188_podcasts_cards_live"></script>
-  <script src="js/app.js?v=20261128_v188_podcasts_cards_live"></script>
+  <script src="js/movies-rows-data.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
+  <script src="js/tracks-data.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
+  <script src="js/app.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
 </body>
 
 </html>

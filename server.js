@@ -4,6 +4,7 @@
 // ========================================================
 
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
@@ -73,6 +74,54 @@ const server = http.createServer((req, res) => {
           src: `Poadcasts/${f}`
         }));
       return res.end(JSON.stringify({ success: true, folder: 'Poadcasts', files: list }));
+    });
+    return;
+  }
+
+  // REST API: Live YouTube Channel Podcasts RSS Feed (filters out #Shorts)
+  if (reqPath === '/api/youtube-podcasts') {
+    const queryStr = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryStr);
+    const channelId = (params.get('channelId') || 'UCzwCEE_PchiBULMnAJqhGVg').replace(/[^a-zA-Z0-9_-]/g, '');
+    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+    https.get(rssUrl, (ytRes) => {
+      let xml = '';
+      ytRes.on('data', chunk => { xml += chunk; });
+      ytRes.on('end', () => {
+        const episodes = [];
+        const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+        let match;
+        while ((match = entryRegex.exec(xml)) !== null) {
+          const block = match[1];
+          const vid = (block.match(/<yt:videoId>([^<]+)<\/yt:videoId>/) || [])[1] || '';
+          const titleRaw = (block.match(/<title>([^<]+)<\/title>/) || [])[1] || '';
+          const link = (block.match(/<link[^>]*href="([^"]+)"/) || [])[1] || '';
+          const published = ((block.match(/<published>([^<]+)<\/published>/) || [])[1] || '').slice(0, 10);
+          const author = (block.match(/<author>\s*<name>([^<]+)<\/name>/) || [])[1] || 'Raj Shamani';
+          const title = titleRaw
+            .replace(/&amp;/g, '&')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'")
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>');
+          if (!vid || /\/shorts\//i.test(link) || /#shorts/i.test(title)) continue;
+          episodes.push({
+            videoId: vid,
+            title: title,
+            artist: author,
+            published: published,
+            banner: `https://i.ytimg.com/vi/${vid}/maxresdefault.jpg`
+          });
+        }
+        res.writeHead(200, {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({ success: true, channelId, episodes }));
+      });
+    }).on('error', () => {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*' });
+      res.end(JSON.stringify({ success: false, channelId, episodes: [] }));
     });
     return;
   }
