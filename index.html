@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261128_v189_rajshamani_youtube_podcasts">
+  <link rel="stylesheet" href="css/style.css?v=20261128_v190_podcast_watch_page_14eps">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1696,24 +1696,61 @@
         <button class="sandify-s-chip" onclick="filterPodcasts('cinema', this)">Cinema &amp; Love</button>
       </div>
 
-      <!-- In-App YouTube Podcast Player (Plays @rajshamani episodes right inside Sandify) -->
-      <div class="yt-podcast-player-wrap" id="ytPodcastPlayerWrap" style="display: none;">
-        <div class="yt-podcast-player-header">
-          <div class="yt-podcast-player-meta">
-            <span class="yt-live-badge">NOW PLAYING ON SANDIFY</span>
-            <h3 class="yt-podcast-player-title" id="ytPodcastPlayerTitle">Raj Shamani Podcast</h3>
-            <p class="yt-podcast-player-sub" id="ytPodcastPlayerSub">Raj Shamani &bull; @rajshamani</p>
-          </div>
-          <button class="yt-podcast-close-btn" onclick="closeYouTubePodcast()" aria-label="Close Podcast Player">&times; Close</button>
-        </div>
-        <div class="yt-podcast-player-frame">
-          <iframe id="ytPodcastIframe" src="" title="Sandify YouTube Podcast Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-
       <!-- Podcasts Sections: Latest from Raj Shamani (@rajshamani) & Featured Audio Podcasts -->
       <div class="audiobooks-sections-wrap" id="podcastsTracklist">
         <!-- Rendered dynamically by renderPodcastsList() -->
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         SANDIFY SUB-PAGE 5: PODCAST WATCH PAGE (Dedicated Separate Player Page)
+         ========================================================================= -->
+    <div class="sandify-podcast-watch-view" id="sandifyPodcastWatchView" style="display: none;">
+      <div class="sandify-watch-topbar">
+        <button class="sandify-watch-back-btn" onclick="closeYouTubePodcast()" aria-label="Back to Podcasts">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Back to Podcasts</span>
+        </button>
+        <span class="yt-live-badge">SANDIFY PODCAST STREAM</span>
+      </div>
+
+      <div class="sandify-watch-player-shell" id="sandifyWatchPlayerShell">
+        <div class="sandify-watch-video-stage">
+          <div id="sandifyYtPlayerMount"></div>
+          <!-- Clean click-to-toggle overlay + blocks YouTube corner logo/links -->
+          <div class="sandify-yt-click-overlay" onclick="toggleSandifyYtPlay()" title="Play / Pause"></div>
+          <div class="sandify-yt-corner-mask-top" aria-hidden="true"></div>
+          <div class="sandify-yt-corner-mask-bottom" aria-hidden="true"></div>
+        </div>
+
+        <div class="sandify-watch-controls">
+          <button class="sandify-wc-btn" id="sandifyYtPlayBtn" onclick="toggleSandifyYtPlay()" aria-label="Play or Pause">
+            <svg id="sandifyYtPlayIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          </button>
+          <button class="sandify-wc-btn sandify-wc-skip" onclick="seekSandifyYtBy(-10)" title="Rewind 10s">-10s</button>
+          <button class="sandify-wc-btn sandify-wc-skip" onclick="seekSandifyYtBy(10)" title="Forward 10s">+10s</button>
+          <span class="sandify-wc-time" id="sandifyYtCurTime">0:00</span>
+          <input type="range" class="sandify-watch-progress" id="sandifyYtProgress" min="0" max="100" value="0" step="0.1" oninput="seekSandifyYtPercent(this.value)" aria-label="Seek video">
+          <span class="sandify-wc-time" id="sandifyYtDurTime">0:00</span>
+          <button class="sandify-wc-btn" id="sandifyYtMuteBtn" onclick="toggleSandifyYtMute()" aria-label="Mute or Unmute">
+            <svg id="sandifyYtVolIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </button>
+          <button class="sandify-wc-btn" onclick="toggleSandifyYtFullscreen()" aria-label="Fullscreen" title="Fullscreen">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="sandify-watch-info">
+        <h2 class="sandify-watch-title" id="ytPodcastPlayerTitle">Raj Shamani Podcast</h2>
+        <p class="sandify-watch-sub" id="ytPodcastPlayerSub">Raj Shamani (@rajshamani)</p>
+      </div>
+
+      <div class="audiobooks-section-block sandify-watch-upnext-block">
+        <div class="audiobooks-section-header">
+          <h3 class="audiobooks-section-title">More Episodes from Raj Shamani (@rajshamani)</h3>
+        </div>
+        <div class="podcasts-cards-grid" id="sandifyWatchUpNext"></div>
       </div>
     </div>
 
@@ -2250,9 +2287,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
-  <script src="js/tracks-data.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
-  <script src="js/app.js?v=20261128_v189_rajshamani_youtube_podcasts"></script>
+  <script src="js/movies-rows-data.js?v=20261128_v190_podcast_watch_page_14eps"></script>
+  <script src="js/tracks-data.js?v=20261128_v190_podcast_watch_page_14eps"></script>
+  <script src="js/app.js?v=20261128_v190_podcast_watch_page_14eps"></script>
 </body>
 
 </html>

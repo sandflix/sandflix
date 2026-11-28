@@ -5603,16 +5603,139 @@ let RAJ_SHAMANI_YT_PODCASTS = [
     artist: 'Raj Shamani (@rajshamani)',
     published: '2026-11-19',
     banner: 'https://i.ytimg.com/vi/8ETRd0mgWAI/maxresdefault.jpg'
+  },
+  {
+    videoId: '8ol3j7o1U7o',
+    title: 'Why AI Will Replace These Jobs: The Skills You Need Next | Sachin Puri | FO589',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-16',
+    banner: 'https://i.ytimg.com/vi/8ol3j7o1U7o/maxresdefault.jpg'
+  },
+  {
+    videoId: 'BgeNDG5jD60',
+    title: 'Why People Ignore You: The Communication Mistakes You Need To Fix | Vinh Giang | FO588',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-14',
+    banner: 'https://i.ytimg.com/vi/BgeNDG5jD60/maxresdefault.jpg'
+  },
+  {
+    videoId: 'n26Q0SA7z5c',
+    title: 'How To Market Anything In 2027: Creators, Triggers & Communities | Kent Yoshimura | FO587',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-12',
+    banner: 'https://i.ytimg.com/vi/n26Q0SA7z5c/maxresdefault.jpg'
+  },
+  {
+    videoId: 'g9zGQdrAlMw',
+    title: 'Psychology Of Billionaires, Extreme Ambition & Secrets Of Success | Joe Hudson | FO586',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-11-09',
+    banner: 'https://i.ytimg.com/vi/g9zGQdrAlMw/maxresdefault.jpg'
+  },
+  {
+    videoId: '6FNRVY2vYXw',
+    title: "Inside India's Bureaucracy: UPSC, IAS, Corruption & Political Power | Amit Kilhor | FO520",
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2026-09-18',
+    banner: 'https://i.ytimg.com/vi/6FNRVY2vYXw/maxresdefault.jpg'
+  },
+  {
+    videoId: 'fHBR1j1kJ1I',
+    title: "Billionaire's Brain vs Your Brain: Morning Routine, Focus & Addiction | Dr. Sweta Adatia | FO403",
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2025-11-10',
+    banner: 'https://i.ytimg.com/vi/fHBR1j1kJ1I/maxresdefault.jpg'
+  },
+  {
+    videoId: 'gHQo3UafM54',
+    title: 'Sunil Chhetri On Indian Football, Retirement, Love Life, Family & Virat Kohli | FO223',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2024-07-04',
+    banner: 'https://i.ytimg.com/vi/gHQo3UafM54/maxresdefault.jpg'
+  },
+  {
+    videoId: 'k7EJ_9gaWPA',
+    title: 'Diljit Dosanjh On Music, Love Life, Childhood, Bollywood, Money & India | FO215',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2024-06-15',
+    banner: 'https://i.ytimg.com/vi/k7EJ_9gaWPA/maxresdefault.jpg'
+  },
+  {
+    videoId: 'oxhs_C9yPhs',
+    title: 'Kartik Aaryan On His Dating Life, Money, Cars, Bollywood & Chandu Champion | FO213',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2024-06-11',
+    banner: 'https://i.ytimg.com/vi/oxhs_C9yPhs/maxresdefault.jpg'
+  },
+  {
+    videoId: 'X5Re2M9Lcq8',
+    title: 'The Chainsmokers On Music, Love, Money, Coldplay & India | FO211',
+    artist: 'Raj Shamani (@rajshamani)',
+    published: '2024-06-06',
+    banner: 'https://i.ytimg.com/vi/X5Re2M9Lcq8/maxresdefault.jpg'
   }
 ];
 let currentPodcastFilter = 'all';
+let sandifyYtPlayer = null;
+let sandifyYtApiPromise = null;
+let sandifyYtTimer = null;
+let sandifyYtPendingVideoId = null;
 
-function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
-  const wrap = document.getElementById('ytPodcastPlayerWrap');
-  const iframe = document.getElementById('ytPodcastIframe');
+function formatYtSec(sec) {
+  sec = Math.max(0, Math.floor(sec || 0));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function updateSandifyYtPlayIcon(isPlaying) {
+  const icon = document.getElementById('sandifyYtPlayIcon');
+  if (!icon) return;
+  icon.innerHTML = isPlaying
+    ? '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>'
+    : '<polygon points="6 4 20 12 6 20 6 4"></polygon>';
+}
+
+function startSandifyYtProgressLoop() {
+  if (sandifyYtTimer) clearInterval(sandifyYtTimer);
+  sandifyYtTimer = setInterval(() => {
+    if (!sandifyYtPlayer || typeof sandifyYtPlayer.getCurrentTime !== 'function') return;
+    const cur = sandifyYtPlayer.getCurrentTime() || 0;
+    const dur = sandifyYtPlayer.getDuration() || 0;
+    const curEl = document.getElementById('sandifyYtCurTime');
+    const durEl = document.getElementById('sandifyYtDurTime');
+    const progEl = document.getElementById('sandifyYtProgress');
+    if (curEl) curEl.textContent = formatYtSec(cur);
+    if (durEl) durEl.textContent = formatYtSec(dur);
+    if (progEl && dur > 0) progEl.value = ((cur / dur) * 100).toFixed(2);
+  }, 500);
+}
+
+function ensureSandifyYtApi() {
+  if (window.YT && window.YT.Player) return Promise.resolve();
+  if (sandifyYtApiPromise) return sandifyYtApiPromise;
+  sandifyYtApiPromise = new Promise((resolve) => {
+    const prevReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof prevReady === 'function') prevReady();
+      resolve();
+    };
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  });
+  return sandifyYtApiPromise;
+}
+
+async function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
+  const podView = document.getElementById('sandifyPodcastsView');
+  const watchView = document.getElementById('sandifyPodcastWatchView');
   const titleEl = document.getElementById('ytPodcastPlayerTitle');
   const subEl = document.getElementById('ytPodcastPlayerSub');
-  if (!wrap || !iframe) return;
+  const upNextEl = document.getElementById('sandifyWatchUpNext');
+  if (!watchView) return;
 
   try {
     if (typeof ostAudio !== 'undefined' && ostAudio && !ostAudio.paused) {
@@ -5623,21 +5746,125 @@ function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
   const title = decodeURIComponent(encodedTitle || 'Raj Shamani Podcast');
   const artist = decodeURIComponent(encodedArtist || 'Raj Shamani (@rajshamani)');
   if (titleEl) titleEl.textContent = title;
-  if (subEl) subEl.textContent = `${artist} • Playing Inside Sandify`;
-  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-  wrap.style.display = 'block';
-  wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (subEl) subEl.textContent = `${artist} • Sandify Podcast Stream`;
+
+  if (podView) podView.style.display = 'none';
+  watchView.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (upNextEl) {
+    const others = RAJ_SHAMANI_YT_PODCASTS.filter(ep => ep.videoId !== videoId);
+    upNextEl.innerHTML = renderYouTubePodcastCardsHtml(others);
+  }
+
+  sandifyYtPendingVideoId = videoId;
+  await ensureSandifyYtApi();
+  if (sandifyYtPendingVideoId !== videoId) return;
+
+  if (sandifyYtPlayer && typeof sandifyYtPlayer.loadVideoById === 'function') {
+    sandifyYtPlayer.loadVideoById(videoId);
+    sandifyYtPlayer.playVideo();
+  } else {
+    sandifyYtPlayer = new window.YT.Player('sandifyYtPlayerMount', {
+      videoId: videoId,
+      host: 'https://www.youtube-nocookie.com',
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        modestbranding: 1,
+        rel: 0,
+        iv_load_policy: 3,
+        playsinline: 1,
+        fs: 0,
+        disablekb: 0,
+        origin: window.location.origin
+      },
+      events: {
+        onReady: (e) => {
+          e.target.playVideo();
+          updateSandifyYtPlayIcon(true);
+          startSandifyYtProgressLoop();
+        },
+        onStateChange: (e) => {
+          updateSandifyYtPlayIcon(e.data === window.YT.PlayerState.PLAYING);
+        },
+        onError: () => {
+          // Retry once unmuted->muted in case browser autoplay policy blocked audio start
+          if (sandifyYtPlayer && typeof sandifyYtPlayer.mute === 'function') {
+            sandifyYtPlayer.mute();
+            sandifyYtPlayer.playVideo();
+          }
+        }
+      }
+    });
+  }
 }
 
 function closeYouTubePodcast() {
-  const wrap = document.getElementById('ytPodcastPlayerWrap');
-  const iframe = document.getElementById('ytPodcastIframe');
-  if (iframe) iframe.src = '';
-  if (wrap) wrap.style.display = 'none';
+  const podView = document.getElementById('sandifyPodcastsView');
+  const watchView = document.getElementById('sandifyPodcastWatchView');
+  if (sandifyYtTimer) {
+    clearInterval(sandifyYtTimer);
+    sandifyYtTimer = null;
+  }
+  if (sandifyYtPlayer && typeof sandifyYtPlayer.stopVideo === 'function') {
+    sandifyYtPlayer.stopVideo();
+  }
+  if (watchView) watchView.style.display = 'none';
+  if (podView && currentSandifyTab === 'podcasts') podView.style.display = 'block';
+}
+
+function toggleSandifyYtPlay() {
+  if (!sandifyYtPlayer || typeof sandifyYtPlayer.getPlayerState !== 'function') return;
+  const st = sandifyYtPlayer.getPlayerState();
+  if (st === window.YT.PlayerState.PLAYING) {
+    sandifyYtPlayer.pauseVideo();
+  } else {
+    sandifyYtPlayer.playVideo();
+  }
+}
+
+function seekSandifyYtBy(deltaSec) {
+  if (!sandifyYtPlayer || typeof sandifyYtPlayer.getCurrentTime !== 'function') return;
+  const cur = sandifyYtPlayer.getCurrentTime() || 0;
+  sandifyYtPlayer.seekTo(Math.max(0, cur + deltaSec), true);
+}
+
+function seekSandifyYtPercent(pct) {
+  if (!sandifyYtPlayer || typeof sandifyYtPlayer.getDuration !== 'function') return;
+  const dur = sandifyYtPlayer.getDuration() || 0;
+  if (dur > 0) sandifyYtPlayer.seekTo((parseFloat(pct) / 100) * dur, true);
+}
+
+function toggleSandifyYtMute() {
+  if (!sandifyYtPlayer || typeof sandifyYtPlayer.isMuted !== 'function') return;
+  const icon = document.getElementById('sandifyYtVolIcon');
+  if (sandifyYtPlayer.isMuted()) {
+    sandifyYtPlayer.unMute();
+    if (icon) icon.style.opacity = '1';
+  } else {
+    sandifyYtPlayer.mute();
+    if (icon) icon.style.opacity = '0.45';
+  }
+}
+
+function toggleSandifyYtFullscreen() {
+  const shell = document.getElementById('sandifyWatchPlayerShell');
+  if (!shell) return;
+  if (!document.fullscreenElement) {
+    shell.requestFullscreen?.();
+  } else {
+    document.exitFullscreen?.();
+  }
 }
 
 window.playYouTubePodcast = playYouTubePodcast;
 window.closeYouTubePodcast = closeYouTubePodcast;
+window.toggleSandifyYtPlay = toggleSandifyYtPlay;
+window.seekSandifyYtBy = seekSandifyYtBy;
+window.seekSandifyYtPercent = seekSandifyYtPercent;
+window.toggleSandifyYtMute = toggleSandifyYtMute;
+window.toggleSandifyYtFullscreen = toggleSandifyYtFullscreen;
 
 async function fetchLatestYouTubePodcasts() {
   try {
@@ -5679,7 +5906,9 @@ async function fetchLatestYouTubePodcasts() {
     }
 
     if (episodes.length) {
-      RAJ_SHAMANI_YT_PODCASTS = episodes;
+      const seen = new Set(episodes.map(e => e.videoId));
+      const merged = [...episodes, ...RAJ_SHAMANI_YT_PODCASTS.filter(e => !seen.has(e.videoId))];
+      RAJ_SHAMANI_YT_PODCASTS = merged;
       renderPodcastsList(currentPodcastFilter);
     }
   } catch (_) {}
@@ -6816,6 +7045,11 @@ function switchSandifyTab(tabKey, fromHistory) {
   if (musicEl) musicEl.style.display = tabKey === 'music' ? 'block' : 'none';
   if (audioEl) audioEl.style.display = tabKey === 'audiobooks' ? 'block' : 'none';
   if (podEl) podEl.style.display = tabKey === 'podcasts' ? 'block' : 'none';
+  const watchEl = document.getElementById('sandifyPodcastWatchView');
+  if (watchEl && watchEl.style.display !== 'none') {
+    if (typeof closeYouTubePodcast === 'function') closeYouTubePodcast();
+    watchEl.style.display = 'none';
+  }
   if (subpageEl) {
     subpageEl.style.display = 'none';
     subpageEl.classList.remove('fade-in-active');
