@@ -31,6 +31,29 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
 
+  // REST API: Local AudioBookss Library Endpoint
+  if (reqPath === '/api/audiobooks') {
+    const abDir = path.join(ROOT_DIR, 'AudioBookss');
+    fs.readdir(abDir, (err, files) => {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      });
+      if (err || !Array.isArray(files)) {
+        return res.end(JSON.stringify({ success: true, folder: 'AudioBookss', files: [] }));
+      }
+      const list = files
+        .filter(f => /\.(m4a|mp3|wav|ogg)$/i.test(f))
+        .map((f, idx) => ({
+          id: 306 + idx,
+          filename: f,
+          src: `AudioBookss/${f}`
+        }));
+      return res.end(JSON.stringify({ success: true, folder: 'AudioBookss', files: list }));
+    });
+    return;
+  }
+
   // REST API: Peachify TMDB Movie Stream Endpoint
   if (reqPath.startsWith('/api/stream/movie/')) {
     const tmdbId = reqPath.replace('/api/stream/movie/', '').trim();

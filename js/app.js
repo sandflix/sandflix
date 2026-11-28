@@ -5209,8 +5209,240 @@ const OST_TRACKS = [
     category: 'soundtrack',
     album: 'stronger-soul',
     desc: 'Indian cricketer Jemimah Rodrigues\'s angelic unplugged acoustic guitar mashup of Kesariya and Apna Bana Le.'
+  },
+  // --- AUDIOBOOKSS LIBRARY (Backend Folder: AudioBookss/) ---
+  {
+    id: 306,
+    title: 'Audiobook 01 • Sacred Wisdom',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/9mrHr7n8tnAJ7117Fati+ALy6x4JL1O8.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 01m',
+    durationSec: 3690,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+  },
+  {
+    id: 307,
+    title: 'Audiobook 02 • Mindful Reflections',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/sANoCbkwLA9xGxUFlzUK+Em2RLs4xiZA.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 01m',
+    durationSec: 3660,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+  },
+  {
+    id: 308,
+    title: 'Audiobook 03 • Timeless Tales',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/wYt4vlyo7N2R0UZ1lkME+2onjwnDxst0.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 12m',
+    durationSec: 4320,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 12m • M4A Hi-Res).'
+  },
+  {
+    id: 309,
+    title: 'Audiobook 04 • Inner Clarity',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/OeJobM9AfDxAx28gpeKP+hxsPBjvybL4.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 13m',
+    durationSec: 4362,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+  },
+  {
+    id: 310,
+    title: 'Audiobook 05 • Path of Dharma',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/2ah3SRCaNHTpK4g9TTI8+QWvBvDeB7aw.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 13m',
+    durationSec: 4398,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+  },
+  {
+    id: 311,
+    title: 'Audiobook 06 • Awakening Mind',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/64AA9klsGcegf2YiJZzV+26kbrMfb6kg.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '1h 52m',
+    durationSec: 6696,
+    category: 'short',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (1h 52m • M4A Hi-Res).'
+  },
+  {
+    id: 312,
+    title: 'Audiobook 07 • Eternal Chronicles',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/HXscVzfxBzRP8RuZBLpH+AHlSuYkNgm8.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '2h 17m',
+    durationSec: 8214,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (2h 17m • M4A Hi-Res).'
+  },
+  {
+    id: 313,
+    title: 'Audiobook 08 • Ancient Heritage',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/27itz9rHzg1AcV2IzOjO+-FIcgjCHR_o.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '2h 28m',
+    durationSec: 8850,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (2h 28m • M4A Hi-Res).'
+  },
+  {
+    id: 314,
+    title: 'Audiobook 09 • Legends & Lore',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/b4q6xkl0IZicg9oAV9Yt+G4f7R7LQUJY.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '3h 14m',
+    durationSec: 11658,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (3h 14m • M4A Hi-Res).'
+  },
+  {
+    id: 315,
+    title: 'Audiobook 10 • Voices of History',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/2XuxvMqbMWWvvs8IpUBD+r0GUxrLFo9E.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '3h 28m',
+    durationSec: 12450,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (3h 28m • M4A Hi-Res).'
+  },
+  {
+    id: 316,
+    title: 'Audiobook 11 • Deep Philosophy',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/JnNTjS6UGpkooW6yhpZy+kzgEEYnd5Fk.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '3h 32m',
+    durationSec: 12738,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (3h 32m • M4A Hi-Res).'
+  },
+  {
+    id: 317,
+    title: 'Audiobook 12 • Soulful Journey',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/ZVhUlEpULhah1s4454He+GrleebzYOl8.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '3h 47m',
+    durationSec: 13608,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (3h 47m • M4A Hi-Res).'
+  },
+  {
+    id: 318,
+    title: 'Audiobook 13 • Rise of Destiny',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/d2zCN0WIs0KfWnspXzsE+0LWBcZEqepA.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '3h 58m',
+    durationSec: 14292,
+    category: 'medium',
+    album: 'audiobookss',
+    desc: 'Full-length narrated audiobook (3h 58m • M4A Hi-Res).'
+  },
+  {
+    id: 319,
+    title: 'Audiobook 14 • Grand Saga Vol. I',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/k4Wy3chsAsGDfTT37bGa+1dX4sL9wWpM.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '5h 38m',
+    durationSec: 20256,
+    category: 'epic',
+    album: 'audiobookss',
+    desc: 'Epic full-length narrated audiobook (5h 38m • M4A Hi-Res).'
+  },
+  {
+    id: 320,
+    title: 'Audiobook 15 • Grand Saga Vol. II',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/Cu4q3qBSxPeWS4VOlwAO+wp7Lz1svVro.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '6h 08m',
+    durationSec: 22068,
+    category: 'epic',
+    album: 'audiobookss',
+    desc: 'Epic full-length narrated audiobook (6h 08m • M4A Hi-Res).'
+  },
+  {
+    id: 321,
+    title: 'Audiobook 16 • Complete Master Edition',
+    artist: 'Sandify Audiobooks',
+    src: 'AudioBookss/VaLZIm4xporEqY3BmVAx+28sptQICKCk.m4a',
+    banner: 'assets/images/sandify_tracks_banner.jpg',
+    duration: '14h 17m',
+    durationSec: 51396,
+    category: 'epic',
+    album: 'audiobookss',
+    desc: 'Complete unabridged master audiobook (14h 17m • M4A Hi-Res).'
   }
 ];
+
+function renderAudiobooksList(filterKey) {
+  const container = document.getElementById('audiobooksTracklist');
+  if (!container) return;
+  filterKey = filterKey || 'all';
+
+  const books = OST_TRACKS.filter(t => t.album === 'audiobookss' && (filterKey === 'all' || t.category === filterKey));
+  container.innerHTML = books.map((book, idx) => `
+    <div class="spotify-row" id="sRow${book.id}" data-album="audiobookss" data-track-id="${book.id}" data-cat="${book.category}" onclick="playOSTTrack(${book.id})">
+      <div class="s-col-num">
+        <span class="s-track-idx">${idx + 1}</span>
+        <button class="s-row-play-btn" title="Play">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+        </button>
+        <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="s-col-info">
+        <img src="${book.banner}" alt="${book.title}" class="s-track-thumb" loading="lazy" decoding="async">
+        <div class="s-track-text">
+          <h4 class="s-track-name">${book.title}</h4>
+          <p class="s-track-artist">${book.artist} &bull; ${book.duration} &bull; <span class="s-lossless-tag">M4A Hi-Res</span></p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterAudiobooks(filterKey, btnEl) {
+  document.querySelectorAll('#audiobooksFilterChips .sandify-s-chip').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  renderAudiobooksList(filterKey);
+}
+window.renderAudiobooksList = renderAudiobooksList;
+window.filterAudiobooks = filterAudiobooks;
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => renderAudiobooksList('all'));
+} else {
+  renderAudiobooksList('all');
+}
 
 let ostAudio = new Audio();
 let currentOSTIndex = 0;

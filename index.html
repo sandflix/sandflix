@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261128_v184_native_16_9_posters">
+  <link rel="stylesheet" href="css/style.css?v=20261128_v185_audiobookss_list">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1629,20 +1629,16 @@
         </div>
       </div>
 
-      <div class="sandify-hub-chips">
-        <button class="sandify-s-chip active">All Audiobooks</button>
-        <button class="sandify-s-chip">Mythology &amp; Epics</button>
-        <button class="sandify-s-chip">Self-Growth</button>
-        <button class="sandify-s-chip">Biographies</button>
-        <button class="sandify-s-chip">Spirituality</button>
+      <div class="sandify-hub-chips" id="audiobooksFilterChips">
+        <button class="sandify-s-chip active" onclick="filterAudiobooks('all', this)">All Audiobooks</button>
+        <button class="sandify-s-chip" onclick="filterAudiobooks('short', this)">Short (&lt; 2h)</button>
+        <button class="sandify-s-chip" onclick="filterAudiobooks('medium', this)">Medium (2h &ndash; 4h)</button>
+        <button class="sandify-s-chip" onclick="filterAudiobooks('epic', this)">Epic (4h+)</button>
       </div>
-      <div class="sandify-hub-empty-card">
-        <h3>Audiobooks Library Ready</h3>
-        <p>Your audiobook titles and chapters will be listed right here. Meanwhile, explore lossless tracks in Music or return to Sandify Home.</p>
-        <div class="sandify-hub-actions">
-          <button class="sandify-cta-green" onclick="switchSandifyTab('music')">Explore Music</button>
-          <button class="sandify-cta-glass" onclick="switchSandifyTab('home')">Back to Sandify Home</button>
-        </div>
+
+      <!-- Audiobooks Tracklist (Same Spotify-style list as Music Songs) -->
+      <div class="spotify-tracklist" id="audiobooksTracklist">
+        <!-- Rendered dynamically by renderAudiobooksList() -->
       </div>
     </div>
 
@@ -2240,9 +2236,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261128_v184_native_16_9_posters"></script>
-  <script src="js/tracks-data.js?v=20261128_v184_native_16_9_posters"></script>
-  <script src="js/app.js?v=20261128_v184_native_16_9_posters"></script>
+  <script src="js/movies-rows-data.js?v=20261128_v185_audiobookss_list"></script>
+  <script src="js/tracks-data.js?v=20261128_v185_audiobookss_list"></script>
+  <script src="js/app.js?v=20261128_v185_audiobookss_list"></script>
 </body>
 
 </html>
