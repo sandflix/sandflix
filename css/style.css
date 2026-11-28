@@ -14338,3 +14338,29 @@ video {
     width: 200px;
   }
 }
+
+/* Audiobooks Cards Grid */
+.audiobooks-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+  padding-bottom: 48px;
+}
+
+.audiobook-card .spotify-card-img-wrap {
+  aspect-ratio: 1 / 1;
+}
+
+.audiobook-card .spotify-card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .audiobooks-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}

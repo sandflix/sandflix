@@ -5210,198 +5210,214 @@ const OST_TRACKS = [
     album: 'stronger-soul',
     desc: 'Indian cricketer Jemimah Rodrigues\'s angelic unplugged acoustic guitar mashup of Kesariya and Apna Bana Le.'
   },
-  // --- AUDIOBOOKSS LIBRARY (Backend Folder: AudioBookss/) ---
+  // --- AUDIOBOOKSS LIBRARY (Backend Folder: AudioBookss/ + GitHub Release v2.0-audiobooks) ---
   {
     id: 306,
-    title: 'Audiobook 01 • Sacred Wisdom',
+    title: 'Sacred Wisdom',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/9mrHr7n8tnAJ7117Fati+ALy6x4JL1O8.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_01.m4a',
+    fallbackSrc: 'AudioBookss/9mrHr7n8tnAJ7117Fati+ALy6x4JL1O8.m4a',
+    banner: 'assets/images/audiobooks/book_01.jpg',
     duration: '1h 01m',
     durationSec: 3690,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+    desc: 'Sacred Wisdom — Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
   },
   {
     id: 307,
-    title: 'Audiobook 02 • Mindful Reflections',
+    title: 'Mindful Reflections',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/sANoCbkwLA9xGxUFlzUK+Em2RLs4xiZA.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_02.m4a',
+    fallbackSrc: 'AudioBookss/sANoCbkwLA9xGxUFlzUK+Em2RLs4xiZA.m4a',
+    banner: 'assets/images/audiobooks/book_02.jpg',
     duration: '1h 01m',
     durationSec: 3660,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+    desc: 'Mindful Reflections — Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
   },
   {
     id: 308,
-    title: 'Audiobook 03 • Timeless Tales',
+    title: 'Timeless Tales',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/wYt4vlyo7N2R0UZ1lkME+2onjwnDxst0.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_03.m4a',
+    fallbackSrc: 'AudioBookss/wYt4vlyo7N2R0UZ1lkME+2onjwnDxst0.m4a',
+    banner: 'assets/images/audiobooks/book_03.jpg',
     duration: '1h 12m',
     durationSec: 4320,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 12m • M4A Hi-Res).'
+    desc: 'Timeless Tales — Full-length narrated audiobook (1h 12m • M4A Hi-Res).'
   },
   {
     id: 309,
-    title: 'Audiobook 04 • Inner Clarity',
+    title: 'Inner Clarity',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/OeJobM9AfDxAx28gpeKP+hxsPBjvybL4.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_04.m4a',
+    fallbackSrc: 'AudioBookss/OeJobM9AfDxAx28gpeKP+hxsPBjvybL4.m4a',
+    banner: 'assets/images/audiobooks/book_04.jpg',
     duration: '1h 13m',
     durationSec: 4362,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+    desc: 'Inner Clarity — Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
   },
   {
     id: 310,
-    title: 'Audiobook 05 • Path of Dharma',
+    title: 'Path of Dharma',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/2ah3SRCaNHTpK4g9TTI8+QWvBvDeB7aw.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_05.m4a',
+    fallbackSrc: 'AudioBookss/2ah3SRCaNHTpK4g9TTI8+QWvBvDeB7aw.m4a',
+    banner: 'assets/images/audiobooks/book_05.jpg',
     duration: '1h 13m',
     durationSec: 4398,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+    desc: 'Path of Dharma — Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
   },
   {
     id: 311,
-    title: 'Audiobook 06 • Awakening Mind',
+    title: 'Awakening Mind',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/64AA9klsGcegf2YiJZzV+26kbrMfb6kg.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_06.m4a',
+    fallbackSrc: 'AudioBookss/64AA9klsGcegf2YiJZzV+26kbrMfb6kg.m4a',
+    banner: 'assets/images/audiobooks/book_06.jpg',
     duration: '1h 52m',
     durationSec: 6696,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (1h 52m • M4A Hi-Res).'
+    desc: 'Awakening Mind — Full-length narrated audiobook (1h 52m • M4A Hi-Res).'
   },
   {
     id: 312,
-    title: 'Audiobook 07 • Eternal Chronicles',
+    title: 'Eternal Chronicles',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/HXscVzfxBzRP8RuZBLpH+AHlSuYkNgm8.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_07.m4a',
+    fallbackSrc: 'AudioBookss/HXscVzfxBzRP8RuZBLpH+AHlSuYkNgm8.m4a',
+    banner: 'assets/images/audiobooks/book_07.jpg',
     duration: '2h 17m',
     durationSec: 8214,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (2h 17m • M4A Hi-Res).'
+    desc: 'Eternal Chronicles — Full-length narrated audiobook (2h 17m • M4A Hi-Res).'
   },
   {
     id: 313,
-    title: 'Audiobook 08 • Ancient Heritage',
+    title: 'Ancient Heritage',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/27itz9rHzg1AcV2IzOjO+-FIcgjCHR_o.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_08.m4a',
+    fallbackSrc: 'AudioBookss/27itz9rHzg1AcV2IzOjO+-FIcgjCHR_o.m4a',
+    banner: 'assets/images/audiobooks/book_08.jpg',
     duration: '2h 28m',
     durationSec: 8850,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (2h 28m • M4A Hi-Res).'
+    desc: 'Ancient Heritage — Full-length narrated audiobook (2h 28m • M4A Hi-Res).'
   },
   {
     id: 314,
-    title: 'Audiobook 09 • Legends & Lore',
+    title: 'Legends & Lore',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/b4q6xkl0IZicg9oAV9Yt+G4f7R7LQUJY.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_09.m4a',
+    fallbackSrc: 'AudioBookss/b4q6xkl0IZicg9oAV9Yt+G4f7R7LQUJY.m4a',
+    banner: 'assets/images/audiobooks/book_09.jpg',
     duration: '3h 14m',
     durationSec: 11658,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (3h 14m • M4A Hi-Res).'
+    desc: 'Legends & Lore — Full-length narrated audiobook (3h 14m • M4A Hi-Res).'
   },
   {
     id: 315,
-    title: 'Audiobook 10 • Voices of History',
+    title: 'Voices of History',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/2XuxvMqbMWWvvs8IpUBD+r0GUxrLFo9E.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_10.m4a',
+    fallbackSrc: 'AudioBookss/2XuxvMqbMWWvvs8IpUBD+r0GUxrLFo9E.m4a',
+    banner: 'assets/images/audiobooks/book_10.jpg',
     duration: '3h 28m',
     durationSec: 12450,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (3h 28m • M4A Hi-Res).'
+    desc: 'Voices of History — Full-length narrated audiobook (3h 28m • M4A Hi-Res).'
   },
   {
     id: 316,
-    title: 'Audiobook 11 • Deep Philosophy',
+    title: 'Deep Philosophy',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/JnNTjS6UGpkooW6yhpZy+kzgEEYnd5Fk.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_11.m4a',
+    fallbackSrc: 'AudioBookss/JnNTjS6UGpkooW6yhpZy+kzgEEYnd5Fk.m4a',
+    banner: 'assets/images/audiobooks/book_11.jpg',
     duration: '3h 32m',
     durationSec: 12738,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (3h 32m • M4A Hi-Res).'
+    desc: 'Deep Philosophy — Full-length narrated audiobook (3h 32m • M4A Hi-Res).'
   },
   {
     id: 317,
-    title: 'Audiobook 12 • Soulful Journey',
+    title: 'Soulful Journey',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/ZVhUlEpULhah1s4454He+GrleebzYOl8.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_12.m4a',
+    fallbackSrc: 'AudioBookss/ZVhUlEpULhah1s4454He+GrleebzYOl8.m4a',
+    banner: 'assets/images/audiobooks/book_12.jpg',
     duration: '3h 47m',
     durationSec: 13608,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (3h 47m • M4A Hi-Res).'
+    desc: 'Soulful Journey — Full-length narrated audiobook (3h 47m • M4A Hi-Res).'
   },
   {
     id: 318,
-    title: 'Audiobook 13 • Rise of Destiny',
+    title: 'Rise of Destiny',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/d2zCN0WIs0KfWnspXzsE+0LWBcZEqepA.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_13.m4a',
+    fallbackSrc: 'AudioBookss/d2zCN0WIs0KfWnspXzsE+0LWBcZEqepA.m4a',
+    banner: 'assets/images/audiobooks/book_13.jpg',
     duration: '3h 58m',
     durationSec: 14292,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Full-length narrated audiobook (3h 58m • M4A Hi-Res).'
+    desc: 'Rise of Destiny — Full-length narrated audiobook (3h 58m • M4A Hi-Res).'
   },
   {
     id: 319,
-    title: 'Audiobook 14 • Grand Saga Vol. I',
+    title: 'Grand Saga Vol. I',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/k4Wy3chsAsGDfTT37bGa+1dX4sL9wWpM.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_14.m4a',
+    fallbackSrc: 'AudioBookss/k4Wy3chsAsGDfTT37bGa+1dX4sL9wWpM.m4a',
+    banner: 'assets/images/audiobooks/book_14.jpg',
     duration: '5h 38m',
     durationSec: 20256,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Epic full-length narrated audiobook (5h 38m • M4A Hi-Res).'
+    desc: 'Grand Saga Vol. I — Epic narrated audiobook (5h 38m • M4A Hi-Res).'
   },
   {
     id: 320,
-    title: 'Audiobook 15 • Grand Saga Vol. II',
+    title: 'Grand Saga Vol. II',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/Cu4q3qBSxPeWS4VOlwAO+wp7Lz1svVro.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_15.m4a',
+    fallbackSrc: 'AudioBookss/Cu4q3qBSxPeWS4VOlwAO+wp7Lz1svVro.m4a',
+    banner: 'assets/images/audiobooks/book_15.jpg',
     duration: '6h 08m',
     durationSec: 22068,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Epic full-length narrated audiobook (6h 08m • M4A Hi-Res).'
+    desc: 'Grand Saga Vol. II — Epic narrated audiobook (6h 08m • M4A Hi-Res).'
   },
   {
     id: 321,
-    title: 'Audiobook 16 • Complete Master Edition',
+    title: 'Complete Master Edition',
     artist: 'Sandify Audiobooks',
-    src: 'AudioBookss/VaLZIm4xporEqY3BmVAx+28sptQICKCk.m4a',
-    banner: 'assets/images/sandify_tracks_banner.jpg',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_16.m4a',
+    fallbackSrc: 'AudioBookss/VaLZIm4xporEqY3BmVAx+28sptQICKCk.m4a',
+    banner: 'assets/images/audiobooks/book_16.jpg',
     duration: '14h 17m',
     durationSec: 51396,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Complete unabridged master audiobook (14h 17m • M4A Hi-Res).'
+    desc: 'Complete Master Edition — Unabridged audiobook (14h 17m • M4A Hi-Res).'
   }
 ];
 
@@ -5411,23 +5427,19 @@ function renderAudiobooksList(filterKey) {
   filterKey = filterKey || 'all';
 
   const books = OST_TRACKS.filter(t => t.album === 'audiobookss' && (filterKey === 'all' || t.category === filterKey));
-  container.innerHTML = books.map((book, idx) => `
-    <div class="spotify-row" id="sRow${book.id}" data-album="audiobookss" data-track-id="${book.id}" data-cat="${book.category}" onclick="playOSTTrack(${book.id})">
-      <div class="s-col-num">
-        <span class="s-track-idx">${idx + 1}</span>
-        <button class="s-row-play-btn" title="Play">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+  container.innerHTML = books.map((book) => `
+    <article class="spotify-music-card audiobook-card" id="abCard${book.id}" onclick="playOSTTrack(${book.id})" title="Play ${book.title}">
+      <div class="spotify-card-img-wrap">
+        <img src="${book.banner}" alt="${book.title}" class="spotify-card-img" loading="lazy" decoding="async">
+        <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(${book.id});" aria-label="Play ${book.title}">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
         </button>
-        <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
       </div>
-      <div class="s-col-info">
-        <img src="${book.banner}" alt="${book.title}" class="s-track-thumb" loading="lazy" decoding="async">
-        <div class="s-track-text">
-          <h4 class="s-track-name">${book.title}</h4>
-          <p class="s-track-artist">${book.artist} &bull; ${book.duration} &bull; <span class="s-lossless-tag">M4A Hi-Res</span></p>
-        </div>
+      <div class="spotify-card-body">
+        <h3 class="spotify-card-title">${book.title}</h3>
+        <p class="spotify-card-sub">${book.title} &bull; ${book.duration}</p>
       </div>
-    </div>
+    </article>
   `).join('');
 }
 
