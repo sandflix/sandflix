@@ -5213,8 +5213,9 @@ const OST_TRACKS = [
   // --- AUDIOBOOKSS LIBRARY (Backend Folder: AudioBookss/ + GitHub Release v2.0-audiobooks) ---
   {
     id: 306,
-    title: 'Sacred Wisdom',
-    artist: 'Sandify Audiobooks',
+    title: 'The 7 Habits of Highly Effective People',
+    artist: 'Stephen R. Covey',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_01.m4a',
     fallbackSrc: 'AudioBookss/9mrHr7n8tnAJ7117Fati+ALy6x4JL1O8.m4a',
     banner: 'assets/images/audiobooks/book_01.jpg',
@@ -5222,12 +5223,13 @@ const OST_TRACKS = [
     durationSec: 3690,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Sacred Wisdom — Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+    desc: 'The 7 Habits of Highly Effective People by Stephen R. Covey — Hindi Audiobook (1h 01m).'
   },
   {
     id: 307,
-    title: 'Mindful Reflections',
-    artist: 'Sandify Audiobooks',
+    title: 'The Subtle Art of Not Giving a F*ck',
+    artist: 'Mark Manson',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_02.m4a',
     fallbackSrc: 'AudioBookss/sANoCbkwLA9xGxUFlzUK+Em2RLs4xiZA.m4a',
     banner: 'assets/images/audiobooks/book_02.jpg',
@@ -5235,12 +5237,13 @@ const OST_TRACKS = [
     durationSec: 3660,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Mindful Reflections — Full-length narrated audiobook (1h 01m • M4A Hi-Res).'
+    desc: 'The Subtle Art of Not Giving a F*ck by Mark Manson — Hindi Audiobook (1h 01m).'
   },
   {
     id: 308,
-    title: 'Timeless Tales',
-    artist: 'Sandify Audiobooks',
+    title: 'Sapiens: A Brief History of Humankind',
+    artist: 'Yuval Noah Harari',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_03.m4a',
     fallbackSrc: 'AudioBookss/wYt4vlyo7N2R0UZ1lkME+2onjwnDxst0.m4a',
     banner: 'assets/images/audiobooks/book_03.jpg',
@@ -5248,12 +5251,13 @@ const OST_TRACKS = [
     durationSec: 4320,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Timeless Tales — Full-length narrated audiobook (1h 12m • M4A Hi-Res).'
+    desc: 'Sapiens: A Brief History of Humankind by Yuval Noah Harari — Hindi Audiobook (1h 12m).'
   },
   {
     id: 309,
-    title: 'Inner Clarity',
-    artist: 'Sandify Audiobooks',
+    title: 'Think Like a Monk',
+    artist: 'Jay Shetty',
+    origin: 'indian',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_04.m4a',
     fallbackSrc: 'AudioBookss/OeJobM9AfDxAx28gpeKP+hxsPBjvybL4.m4a',
     banner: 'assets/images/audiobooks/book_04.jpg',
@@ -5261,12 +5265,13 @@ const OST_TRACKS = [
     durationSec: 4362,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Inner Clarity — Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+    desc: 'Think Like a Monk by Jay Shetty — Train your mind for peace and purpose (1h 13m).'
   },
   {
     id: 310,
-    title: 'Path of Dharma',
-    artist: 'Sandify Audiobooks',
+    title: 'How to Talk to the Universe',
+    artist: 'Manifestation Series',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_05.m4a',
     fallbackSrc: 'AudioBookss/2ah3SRCaNHTpK4g9TTI8+QWvBvDeB7aw.m4a',
     banner: 'assets/images/audiobooks/book_05.jpg',
@@ -5274,12 +5279,13 @@ const OST_TRACKS = [
     durationSec: 4398,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Path of Dharma — Full-length narrated audiobook (1h 13m • M4A Hi-Res).'
+    desc: 'How to Talk to the Universe — Full-length English Audiobook (1h 13m).'
   },
   {
     id: 311,
-    title: 'Awakening Mind',
-    artist: 'Sandify Audiobooks',
+    title: 'Deep Work',
+    artist: 'Cal Newport',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_06.m4a',
     fallbackSrc: 'AudioBookss/64AA9klsGcegf2YiJZzV+26kbrMfb6kg.m4a',
     banner: 'assets/images/audiobooks/book_06.jpg',
@@ -5287,12 +5293,13 @@ const OST_TRACKS = [
     durationSec: 6696,
     category: 'short',
     album: 'audiobookss',
-    desc: 'Awakening Mind — Full-length narrated audiobook (1h 52m • M4A Hi-Res).'
+    desc: 'Deep Work: Rules for Focused Success in a Distracted World by Cal Newport (1h 52m).'
   },
   {
     id: 312,
-    title: 'Eternal Chronicles',
-    artist: 'Sandify Audiobooks',
+    title: "Man's Search for Meaning",
+    artist: 'Viktor E. Frankl',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_07.m4a',
     fallbackSrc: 'AudioBookss/HXscVzfxBzRP8RuZBLpH+AHlSuYkNgm8.m4a',
     banner: 'assets/images/audiobooks/book_07.jpg',
@@ -5300,12 +5307,13 @@ const OST_TRACKS = [
     durationSec: 8214,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Eternal Chronicles — Full-length narrated audiobook (2h 17m • M4A Hi-Res).'
+    desc: "Man's Search for Meaning by Viktor E. Frankl — Hindi Audiobook (2h 17m)."
   },
   {
     id: 313,
-    title: 'Ancient Heritage',
-    artist: 'Sandify Audiobooks',
+    title: 'Communication Mastery',
+    artist: 'Psychology & Influence',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_08.m4a',
     fallbackSrc: 'AudioBookss/27itz9rHzg1AcV2IzOjO+-FIcgjCHR_o.m4a',
     banner: 'assets/images/audiobooks/book_08.jpg',
@@ -5313,12 +5321,13 @@ const OST_TRACKS = [
     durationSec: 8850,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Ancient Heritage — Full-length narrated audiobook (2h 28m • M4A Hi-Res).'
+    desc: 'Communication Mastery: The Psychology of Influence & Persuasion (2h 28m).'
   },
   {
     id: 314,
-    title: 'Legends & Lore',
-    artist: 'Sandify Audiobooks',
+    title: 'Ikigai: The Japanese Secret to a Long and Happy Life',
+    artist: 'Hector Garcia & Francesc Miralles',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_09.m4a',
     fallbackSrc: 'AudioBookss/b4q6xkl0IZicg9oAV9Yt+G4f7R7LQUJY.m4a',
     banner: 'assets/images/audiobooks/book_09.jpg',
@@ -5326,12 +5335,13 @@ const OST_TRACKS = [
     durationSec: 11658,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Legends & Lore — Full-length narrated audiobook (3h 14m • M4A Hi-Res).'
+    desc: 'Ikigai: The Japanese Secret to a Long and Happy Life — Hindi Audiobook (3h 14m).'
   },
   {
     id: 315,
-    title: 'Voices of History',
-    artist: 'Sandify Audiobooks',
+    title: 'Atomic Habits',
+    artist: 'James Clear',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_10.m4a',
     fallbackSrc: 'AudioBookss/2XuxvMqbMWWvvs8IpUBD+r0GUxrLFo9E.m4a',
     banner: 'assets/images/audiobooks/book_10.jpg',
@@ -5339,12 +5349,13 @@ const OST_TRACKS = [
     durationSec: 12450,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Voices of History — Full-length narrated audiobook (3h 28m • M4A Hi-Res).'
+    desc: 'Atomic Habits by James Clear — Tiny Changes, Remarkable Results (3h 28m).'
   },
   {
     id: 316,
-    title: 'Deep Philosophy',
-    artist: 'Sandify Audiobooks',
+    title: 'The Power of Habit',
+    artist: 'Charles Duhigg',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_11.m4a',
     fallbackSrc: 'AudioBookss/JnNTjS6UGpkooW6yhpZy+kzgEEYnd5Fk.m4a',
     banner: 'assets/images/audiobooks/book_11.jpg',
@@ -5352,12 +5363,13 @@ const OST_TRACKS = [
     durationSec: 12738,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Deep Philosophy — Full-length narrated audiobook (3h 32m • M4A Hi-Res).'
+    desc: 'The Power of Habit by Charles Duhigg — Why We Do What We Do (3h 32m).'
   },
   {
     id: 317,
-    title: 'Soulful Journey',
-    artist: 'Sandify Audiobooks',
+    title: 'The Psychology of Money',
+    artist: 'Morgan Housel',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_12.m4a',
     fallbackSrc: 'AudioBookss/ZVhUlEpULhah1s4454He+GrleebzYOl8.m4a',
     banner: 'assets/images/audiobooks/book_12.jpg',
@@ -5365,12 +5377,13 @@ const OST_TRACKS = [
     durationSec: 13608,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Soulful Journey — Full-length narrated audiobook (3h 47m • M4A Hi-Res).'
+    desc: 'The Psychology of Money by Morgan Housel — Timeless Lessons on Wealth (3h 47m).'
   },
   {
     id: 318,
-    title: 'Rise of Destiny',
-    artist: 'Sandify Audiobooks',
+    title: 'How to Win Friends and Influence People',
+    artist: 'Dale Carnegie',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_13.m4a',
     fallbackSrc: 'AudioBookss/d2zCN0WIs0KfWnspXzsE+0LWBcZEqepA.m4a',
     banner: 'assets/images/audiobooks/book_13.jpg',
@@ -5378,12 +5391,13 @@ const OST_TRACKS = [
     durationSec: 14292,
     category: 'medium',
     album: 'audiobookss',
-    desc: 'Rise of Destiny — Full-length narrated audiobook (3h 58m • M4A Hi-Res).'
+    desc: 'How to Win Friends and Influence People by Dale Carnegie — Hindi Audiobook (3h 58m).'
   },
   {
     id: 319,
-    title: 'Grand Saga Vol. I',
-    artist: 'Sandify Audiobooks',
+    title: 'Shrimad Bhagwat Mahapuran',
+    artist: 'Maharishi Vedavyasa',
+    origin: 'indian',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_14.m4a',
     fallbackSrc: 'AudioBookss/k4Wy3chsAsGDfTT37bGa+1dX4sL9wWpM.m4a',
     banner: 'assets/images/audiobooks/book_14.jpg',
@@ -5391,12 +5405,13 @@ const OST_TRACKS = [
     durationSec: 20256,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Grand Saga Vol. I — Epic narrated audiobook (5h 38m • M4A Hi-Res).'
+    desc: 'Shrimad Bhagwat Mahapuran (Bhagavatam Mahatmya) — Hindi Devotional Audiobook (5h 38m).'
   },
   {
     id: 320,
-    title: 'Grand Saga Vol. II',
-    artist: 'Sandify Audiobooks',
+    title: 'Rich Dad Poor Dad',
+    artist: 'Robert T. Kiyosaki',
+    origin: 'foreign',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_15.m4a',
     fallbackSrc: 'AudioBookss/Cu4q3qBSxPeWS4VOlwAO+wp7Lz1svVro.m4a',
     banner: 'assets/images/audiobooks/book_15.jpg',
@@ -5404,12 +5419,13 @@ const OST_TRACKS = [
     durationSec: 22068,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Grand Saga Vol. II — Epic narrated audiobook (6h 08m • M4A Hi-Res).'
+    desc: 'Rich Dad Poor Dad by Robert T. Kiyosaki — Unabridged Audiobook (6h 08m).'
   },
   {
     id: 321,
-    title: 'Complete Master Edition',
-    artist: 'Sandify Audiobooks',
+    title: 'Bhagavad Gita (Geeta Saar)',
+    artist: 'Shailendra Bharti',
+    origin: 'indian',
     src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-audiobooks/audiobook_16.m4a',
     fallbackSrc: 'AudioBookss/VaLZIm4xporEqY3BmVAx+28sptQICKCk.m4a',
     banner: 'assets/images/audiobooks/book_16.jpg',
@@ -5417,17 +5433,12 @@ const OST_TRACKS = [
     durationSec: 51396,
     category: 'epic',
     album: 'audiobookss',
-    desc: 'Complete Master Edition — Unabridged audiobook (14h 17m • M4A Hi-Res).'
+    desc: 'Shrimad Bhagavad Gita (Geeta Saar) by Shailendra Bharti — Complete Unabridged Edition (14h 17m).'
   }
 ];
 
-function renderAudiobooksList(filterKey) {
-  const container = document.getElementById('audiobooksTracklist');
-  if (!container) return;
-  filterKey = filterKey || 'all';
-
-  const books = OST_TRACKS.filter(t => t.album === 'audiobookss' && (filterKey === 'all' || t.category === filterKey));
-  container.innerHTML = books.map((book) => `
+function renderAudiobookCardsHtml(books) {
+  return books.map((book) => `
     <article class="spotify-music-card audiobook-card" id="abCard${book.id}" onclick="playOSTTrack(${book.id})" title="Play ${book.title}">
       <div class="spotify-card-img-wrap">
         <img src="${book.banner}" alt="${book.title}" class="spotify-card-img" loading="lazy" decoding="async">
@@ -5437,10 +5448,51 @@ function renderAudiobooksList(filterKey) {
       </div>
       <div class="spotify-card-body">
         <h3 class="spotify-card-title">${book.title}</h3>
-        <p class="spotify-card-sub">${book.title} &bull; ${book.duration}</p>
+        <p class="spotify-card-sub">${book.artist} &bull; ${book.duration}</p>
       </div>
     </article>
   `).join('');
+}
+
+function renderAudiobooksList(filterKey) {
+  const container = document.getElementById('audiobooksTracklist');
+  if (!container) return;
+  filterKey = filterKey || 'all';
+
+  const allBooks = OST_TRACKS.filter(t => {
+    if (t.album !== 'audiobookss') return false;
+    if (filterKey === 'all') return true;
+    if (filterKey === 'indian' || filterKey === 'foreign') return t.origin === filterKey;
+    return t.category === filterKey;
+  });
+
+  const indianBooks = allBooks.filter(b => b.origin === 'indian');
+  const foreignBooks = allBooks.filter(b => b.origin === 'foreign');
+
+  let html = '';
+  if (indianBooks.length) {
+    html += `
+      <section class="audiobooks-section-block" aria-label="Indian Audiobooks">
+        <div class="audiobooks-section-header">
+          <h3 class="audiobooks-section-title">Indian Audiobooks</h3>
+          <span class="audiobooks-section-count">${indianBooks.length} Books</span>
+        </div>
+        <div class="audiobooks-cards-grid">${renderAudiobookCardsHtml(indianBooks)}</div>
+      </section>
+    `;
+  }
+  if (foreignBooks.length) {
+    html += `
+      <section class="audiobooks-section-block" aria-label="Foreign Audiobooks">
+        <div class="audiobooks-section-header">
+          <h3 class="audiobooks-section-title">Foreign Audiobooks</h3>
+          <span class="audiobooks-section-count">${foreignBooks.length} Books</span>
+        </div>
+        <div class="audiobooks-cards-grid">${renderAudiobookCardsHtml(foreignBooks)}</div>
+      </section>
+    `;
+  }
+  container.innerHTML = html;
 }
 
 function filterAudiobooks(filterKey, btnEl) {

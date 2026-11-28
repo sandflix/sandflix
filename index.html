@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261128_v186_audiobook_cards_live_play">
+  <link rel="stylesheet" href="css/style.css?v=20261128_v187_audiobooks_indian_foreign">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1631,13 +1631,15 @@
 
       <div class="sandify-hub-chips" id="audiobooksFilterChips">
         <button class="sandify-s-chip active" onclick="filterAudiobooks('all', this)">All Audiobooks</button>
+        <button class="sandify-s-chip" onclick="filterAudiobooks('indian', this)">Indian Audiobooks</button>
+        <button class="sandify-s-chip" onclick="filterAudiobooks('foreign', this)">Foreign Audiobooks</button>
         <button class="sandify-s-chip" onclick="filterAudiobooks('short', this)">Short (&lt; 2h)</button>
         <button class="sandify-s-chip" onclick="filterAudiobooks('medium', this)">Medium (2h &ndash; 4h)</button>
         <button class="sandify-s-chip" onclick="filterAudiobooks('epic', this)">Epic (4h+)</button>
       </div>
 
-      <!-- Audiobooks Cards Grid (Proper Audiobook Posters + Book Names) -->
-      <div class="audiobooks-cards-grid" id="audiobooksTracklist">
+      <!-- Audiobooks Sections: Indian & Foreign Audiobooks -->
+      <div class="audiobooks-sections-wrap" id="audiobooksTracklist">
         <!-- Rendered dynamically by renderAudiobooksList() -->
       </div>
     </div>
@@ -2236,9 +2238,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261128_v186_audiobook_cards_live_play"></script>
-  <script src="js/tracks-data.js?v=20261128_v186_audiobook_cards_live_play"></script>
-  <script src="js/app.js?v=20261128_v186_audiobook_cards_live_play"></script>
+  <script src="js/movies-rows-data.js?v=20261128_v187_audiobooks_indian_foreign"></script>
+  <script src="js/tracks-data.js?v=20261128_v187_audiobooks_indian_foreign"></script>
+  <script src="js/app.js?v=20261128_v187_audiobooks_indian_foreign"></script>
 </body>
 
 </html>
