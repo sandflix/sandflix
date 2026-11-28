@@ -8458,7 +8458,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'man_with_the_bag': {
       title: 'THE MAN WITH THE BAG',
-      hero: 'assets/images/man_with_the_bag_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/man_with_the_bag_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 13+',
       dur: '1h 58m',
@@ -8469,7 +8469,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'violent_night_2': {
       title: 'VIOLENT NIGHT 2',
-      hero: 'assets/images/violent_night_2_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/violent_night_2_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'A 18+',
       dur: '2h 02m',
@@ -8480,7 +8480,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'jumanji_open_world': {
       title: 'JUMANJI: OPEN WORLD',
-      hero: 'assets/images/jumanji_open_world_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/jumanji_open_world_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 06m',
@@ -8491,7 +8491,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'avengers_doomsday': {
       title: 'AVENGERS: DOOMSDAY',
-      hero: 'assets/images/avengers_doomsday_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/avengers_doomsday_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 45m',
@@ -8502,7 +8502,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'dune_part_three': {
       title: 'DUNE: PART THREE',
-      hero: 'assets/images/dune_part_three_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/dune_part_three_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 46m',
@@ -8513,7 +8513,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'angry_birds_3': {
       title: 'THE ANGRY BIRDS MOVIE 3',
-      hero: 'assets/images/angry_birds_3_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/angry_birds_3_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U',
       dur: '1h 38m',
@@ -8524,7 +8524,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'artificial': {
       title: 'ARTIFICIAL',
-      hero: 'assets/images/artificial_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/artificial_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 04m',
@@ -8535,7 +8535,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'mr_irrelevant': {
       title: 'MR. IRRELEVANT',
-      hero: 'assets/images/mr_irrelevant_landscape.jpg?v=20261128_v182',
+      hero: 'assets/images/mr_irrelevant_landscape.jpg?v=20261128_v183',
       year: '2026',
       age: 'U/A 13+',
       dur: '1h 56m',
@@ -10671,8 +10671,8 @@ const sandflixCatalog = [
     "age": "U/A 13+",
     "dur": "1h 58m",
     "desc": "Santa teams up with a former thief to pull off the greatest heist of his life and save Christmas. Starring Arnold Schwarzenegger, Alan Ritchson, Awkwafina. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v183",
     "genres": ["Action", "Comedies"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10684,8 +10684,8 @@ const sandflixCatalog = [
     "age": "A 18+",
     "dur": "2h 02m",
     "desc": "Santa Claus returns for another brutal holiday showdown. Starring David Harbour and Kristen Bell. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/violent_night_2_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/violent_night_2_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/violent_night_2_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/violent_night_2_landscape.jpg?v=20261128_v183",
     "genres": ["Action", "Thrillers", "Comedies"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10697,8 +10697,8 @@ const sandflixCatalog = [
     "age": "U/A 13+",
     "dur": "2h 06m",
     "desc": "The Jumanji crew enters a sprawling new open-world realm. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v183",
     "genres": ["Action", "Comedies", "Fantasy"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10710,8 +10710,8 @@ const sandflixCatalog = [
     "age": "U/A 13+",
     "dur": "2h 45m",
     "desc": "Earth's Mightiest Heroes unite across the multiverse to face Victor Von Doom. Directed by the Russo Brothers. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v183",
     "genres": ["Action", "Sci-Fi"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10723,8 +10723,8 @@ const sandflixCatalog = [
     "age": "U/A 13+",
     "dur": "2h 46m",
     "desc": "Denis Villeneuve concludes the Arrakis saga starring Timothée Chalamet and Zendaya. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/dune_part_three_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/dune_part_three_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/dune_part_three_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/dune_part_three_landscape.jpg?v=20261128_v183",
     "genres": ["Sci-Fi", "Dramas"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10736,8 +10736,8 @@ const sandflixCatalog = [
     "age": "U",
     "dur": "1h 38m",
     "desc": "Red, Chuck, and Bomb embark on a brand-new animated family adventure. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v183",
     "genres": ["Anime", "Children & Family", "Comedies"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10749,8 +10749,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 04m",
     "desc": "A gripping tech drama directed by Luca Guadagnino starring Andrew Garfield. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/artificial_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/artificial_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/artificial_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/artificial_landscape.jpg?v=20261128_v183",
     "genres": ["Dramas", "Thrillers"],
     "industry": "Hollywood",
     "quality": "4K UHD"
@@ -10762,8 +10762,8 @@ const sandflixCatalog = [
     "age": "U/A 13+",
     "dur": "1h 56m",
     "desc": "The inspiring underdog sports drama starring David Corenswet. Streamed in 4K UHD via Peachify.",
-    "hero": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v182",
-    "poster": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v182",
+    "hero": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v183",
+    "poster": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v183",
     "genres": ["Sports", "Dramas"],
     "industry": "Hollywood",
     "quality": "4K UHD"
