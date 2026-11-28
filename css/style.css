@@ -14407,3 +14407,32 @@ video {
     gap: 12px;
   }
 }
+
+/* Podcasts Cards Grid (16:9 YouTube Podcast Posters) */
+.podcasts-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 22px;
+  padding-bottom: 48px;
+}
+
+.podcast-card .spotify-card-img-wrap {
+  aspect-ratio: 16 / 9;
+}
+
+.podcast-card .spotify-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+@media (max-width: 768px) {
+  .podcasts-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}

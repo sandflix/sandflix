@@ -1,6 +1,7 @@
 # Video & Audiobook media files (too large for GitHub > 100MB)
 *.mkv
 AudioBookss/*.m4a
+Poadcasts/*.m4a
 *.mp4
 !move trailer.mp4
 !move_trailer.mp4

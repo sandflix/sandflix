@@ -5434,6 +5434,72 @@ const OST_TRACKS = [
     category: 'epic',
     album: 'audiobookss',
     desc: 'Shrimad Bhagavad Gita (Geeta Saar) by Shailendra Bharti — Complete Unabridged Edition (14h 17m).'
+  },
+  // --- POADCASTS LIBRARY (Backend Folder: Poadcasts/ + GitHub Release v2.0-podcasts) ---
+  {
+    id: 322,
+    title: 'Horror & Science Of Indian Jungles ft. Vivek Awasthi',
+    artist: 'The Ranveer Show (TRS)',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-podcasts/podcast_01.m4a',
+    fallbackSrc: 'Poadcasts/ECeWvLZg1kplLFjuAaWy+qJ1BEL1KQew.m4a',
+    banner: 'assets/images/podcasts/pod_01.jpg',
+    duration: '1h 44m',
+    durationSec: 6271,
+    category: 'society',
+    album: 'poadcasts',
+    desc: 'Vivek Awasthi on The Ranveer Show — Secrets of Indian Jungles, Night Safaris & Wildlife.'
+  },
+  {
+    id: 323,
+    title: 'Next Big Business Idea & Making Money | Udit Chawla',
+    artist: 'Figuring Out with Raj Shamani',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-podcasts/podcast_02.m4a',
+    fallbackSrc: 'Poadcasts/Sl39ofWmCnsRgviI3lwu+KmZKA_DG4-0.m4a',
+    banner: 'assets/images/podcasts/pod_02.jpg',
+    duration: '1h 31m',
+    durationSec: 5459,
+    category: 'business',
+    album: 'poadcasts',
+    desc: 'Udit Chawla on Figuring Out — How to find market gaps and build a category-king business.'
+  },
+  {
+    id: 324,
+    title: "Billionaire Brain Secrets & Rewiring Your Mind | Dr. Sweta Adatia",
+    artist: 'Figuring Out with Raj Shamani',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-podcasts/podcast_03.m4a',
+    fallbackSrc: 'Poadcasts/ll0xfl2sAtZFxGPhH1aL+fHBR1j1kJ1I.m4a',
+    banner: 'assets/images/podcasts/pod_03.jpg',
+    duration: '1h 45m',
+    durationSec: 6309,
+    category: 'business',
+    album: 'poadcasts',
+    desc: 'Neurologist Dr. Sweta Adatia shares brain-rewiring habits, morning routines, and focus science.'
+  },
+  {
+    id: 325,
+    title: "Inside India's Bureaucracy: UPSC, IAS & Corruption | Amit Kilhor",
+    artist: 'Figuring Out with Raj Shamani',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-podcasts/podcast_04.m4a',
+    fallbackSrc: 'Poadcasts/uEttPxwsXCqwUDyTYlkO+6FNRVY2vYXw.m4a',
+    banner: 'assets/images/podcasts/pod_04.jpg',
+    duration: '1h 34m',
+    durationSec: 5642,
+    category: 'society',
+    album: 'poadcasts',
+    desc: "Amit Kilhor reveals the untold reality of UPSC coaching, IAS power, and India's bureaucracy."
+  },
+  {
+    id: 326,
+    title: 'Vijay & Rashmika Unfiltered: Love Story & Cinema',
+    artist: 'The Prakhar Gupta Experience (PGX)',
+    src: 'https://github.com/sandflix/sandflix/releases/download/v2.0-podcasts/podcast_05.m4a',
+    fallbackSrc: 'Poadcasts/wbQBSIQ97G4NY5RBr908+5jlDBdjz_3w.m4a',
+    banner: 'assets/images/podcasts/pod_05.jpg',
+    duration: '1h 05m',
+    durationSec: 3909,
+    category: 'cinema',
+    album: 'poadcasts',
+    desc: 'Vijay Deverakonda and Rashmika Mandanna open up about their journey, love story, and cinema.'
   }
 ];
 
@@ -5506,6 +5572,41 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => renderAudiobooksList('all'));
 } else {
   renderAudiobooksList('all');
+}
+
+function renderPodcastsList(filterKey) {
+  const container = document.getElementById('podcastsTracklist');
+  if (!container) return;
+  filterKey = filterKey || 'all';
+
+  const pods = OST_TRACKS.filter(t => t.album === 'poadcasts' && (filterKey === 'all' || t.category === filterKey));
+  container.innerHTML = pods.map((pod) => `
+    <article class="spotify-music-card podcast-card" id="podCard${pod.id}" onclick="playOSTTrack(${pod.id})" title="Play ${pod.title}">
+      <div class="spotify-card-img-wrap">
+        <img src="${pod.banner}" alt="${pod.title}" class="spotify-card-img" loading="lazy" decoding="async">
+        <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(${pod.id});" aria-label="Play ${pod.title}">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+        </button>
+      </div>
+      <div class="spotify-card-body">
+        <h3 class="spotify-card-title">${pod.title}</h3>
+        <p class="spotify-card-sub">${pod.artist} &bull; ${pod.duration}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+function filterPodcasts(filterKey, btnEl) {
+  document.querySelectorAll('#podcastsFilterChips .sandify-s-chip').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  renderPodcastsList(filterKey);
+}
+window.renderPodcastsList = renderPodcastsList;
+window.filterPodcasts = filterPodcasts;
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => renderPodcastsList('all'));
+} else {
+  renderPodcastsList('all');
 }
 
 let ostAudio = new Audio();

@@ -54,6 +54,29 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // REST API: Local Poadcasts Library Endpoint
+  if (reqPath === '/api/podcasts') {
+    const podDir = path.join(ROOT_DIR, 'Poadcasts');
+    fs.readdir(podDir, (err, files) => {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      });
+      if (err || !Array.isArray(files)) {
+        return res.end(JSON.stringify({ success: true, folder: 'Poadcasts', files: [] }));
+      }
+      const list = files
+        .filter(f => /\.(m4a|mp3|wav|ogg)$/i.test(f))
+        .map((f, idx) => ({
+          id: 322 + idx,
+          filename: f,
+          src: `Poadcasts/${f}`
+        }));
+      return res.end(JSON.stringify({ success: true, folder: 'Poadcasts', files: list }));
+    });
+    return;
+  }
+
   // REST API: Peachify TMDB Movie Stream Endpoint
   if (reqPath.startsWith('/api/stream/movie/')) {
     const tmdbId = reqPath.replace('/api/stream/movie/', '').trim();
