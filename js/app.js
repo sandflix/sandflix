@@ -5749,8 +5749,9 @@ async function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
     }
   } catch (_) {}
 
-  const title = decodeURIComponent(encodedTitle || 'Raj Shamani Podcast');
-  const artist = decodeURIComponent(encodedArtist || 'Raj Shamani');
+  const epMatch = RAJ_SHAMANI_YT_PODCASTS.find(e => e.videoId === videoId);
+  const title = encodedTitle ? decodeURIComponent(encodedTitle) : (epMatch ? epMatch.title : 'Raj Shamani Podcast');
+  const artist = encodedArtist ? decodeURIComponent(encodedArtist) : (epMatch ? epMatch.artist : 'Raj Shamani');
   if (titleEl) titleEl.textContent = title;
   if (subEl) subEl.textContent = `${artist} • Sandify Podcast Stream`;
 
@@ -5953,11 +5954,13 @@ async function fetchLatestYouTubePodcasts() {
 }
 
 function renderYouTubePodcastCardsHtml(episodes) {
-  return episodes.map((ep) => `
-    <article class="spotify-music-card podcast-card" onclick="playYouTubePodcast('${ep.videoId}', '${encodeURIComponent(ep.title)}', '${encodeURIComponent(ep.artist)}')" title="Play ${ep.title.replace(/"/g, '&quot;')}">
+  return episodes.map((ep) => {
+    const safeAttr = String(ep.title || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    return `
+    <article class="spotify-music-card podcast-card" onclick="playYouTubePodcast('${ep.videoId}')" title="Play ${safeAttr}">
       <div class="spotify-card-img-wrap">
-        <img src="${ep.banner}" alt="${ep.title.replace(/"/g, '&quot;')}" class="spotify-card-img" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${ep.videoId}/hqdefault.jpg';">
-        <button class="spotify-card-play" onclick="event.stopPropagation(); playYouTubePodcast('${ep.videoId}', '${encodeURIComponent(ep.title)}', '${encodeURIComponent(ep.artist)}');" aria-label="Play ${ep.title.replace(/"/g, '&quot;')}">
+        <img src="${ep.banner}" alt="${safeAttr}" class="spotify-card-img" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${ep.videoId}/hqdefault.jpg';">
+        <button class="spotify-card-play" onclick="event.stopPropagation(); playYouTubePodcast('${ep.videoId}');" aria-label="Play ${safeAttr}">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
         </button>
       </div>
@@ -5966,7 +5969,8 @@ function renderYouTubePodcastCardsHtml(episodes) {
         <p class="spotify-card-sub">${ep.artist}${ep.published ? ' &bull; ' + ep.published : ''}</p>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderPodcastsList(filterKey) {
