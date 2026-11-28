@@ -5579,98 +5579,98 @@ let RAJ_SHAMANI_YT_PODCASTS = [
   {
     videoId: 'S3HBv7aFrjc',
     title: "What's Next For The World: Heatwaves, Water Crisis & Pollution | Sunita Narain | FO593",
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-26',
     banner: 'https://i.ytimg.com/vi/S3HBv7aFrjc/maxresdefault.jpg'
   },
   {
     videoId: 'KmZKA_DG4-0',
     title: 'How To Find Business Ideas, Identify Market Gaps & Make Money | Udit Chawla | FO592',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-24',
     banner: 'https://i.ytimg.com/vi/KmZKA_DG4-0/maxresdefault.jpg'
   },
   {
     videoId: '8C32XBcvfh8',
     title: 'How Shadow Economy Shapes Trade, Politics, Money & Power | Mariana Van Zeller | FO591',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-21',
     banner: 'https://i.ytimg.com/vi/8C32XBcvfh8/maxresdefault.jpg'
   },
   {
     videoId: '8ETRd0mgWAI',
     title: 'How Successful People Train Their Brain Differently | Dr. Daniel Amen | FO590',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-19',
     banner: 'https://i.ytimg.com/vi/8ETRd0mgWAI/maxresdefault.jpg'
   },
   {
     videoId: '8ol3j7o1U7o',
     title: 'Why AI Will Replace These Jobs: The Skills You Need Next | Sachin Puri | FO589',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-16',
     banner: 'https://i.ytimg.com/vi/8ol3j7o1U7o/maxresdefault.jpg'
   },
   {
     videoId: 'BgeNDG5jD60',
     title: 'Why People Ignore You: The Communication Mistakes You Need To Fix | Vinh Giang | FO588',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-14',
     banner: 'https://i.ytimg.com/vi/BgeNDG5jD60/maxresdefault.jpg'
   },
   {
     videoId: 'n26Q0SA7z5c',
     title: 'How To Market Anything In 2027: Creators, Triggers & Communities | Kent Yoshimura | FO587',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-12',
     banner: 'https://i.ytimg.com/vi/n26Q0SA7z5c/maxresdefault.jpg'
   },
   {
     videoId: 'g9zGQdrAlMw',
     title: 'Psychology Of Billionaires, Extreme Ambition & Secrets Of Success | Joe Hudson | FO586',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-11-09',
     banner: 'https://i.ytimg.com/vi/g9zGQdrAlMw/maxresdefault.jpg'
   },
   {
     videoId: '6FNRVY2vYXw',
     title: "Inside India's Bureaucracy: UPSC, IAS, Corruption & Political Power | Amit Kilhor | FO520",
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2026-09-18',
     banner: 'https://i.ytimg.com/vi/6FNRVY2vYXw/maxresdefault.jpg'
   },
   {
     videoId: 'fHBR1j1kJ1I',
     title: "Billionaire's Brain vs Your Brain: Morning Routine, Focus & Addiction | Dr. Sweta Adatia | FO403",
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2025-11-10',
     banner: 'https://i.ytimg.com/vi/fHBR1j1kJ1I/maxresdefault.jpg'
   },
   {
     videoId: 'gHQo3UafM54',
     title: 'Sunil Chhetri On Indian Football, Retirement, Love Life, Family & Virat Kohli | FO223',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2024-07-04',
     banner: 'https://i.ytimg.com/vi/gHQo3UafM54/maxresdefault.jpg'
   },
   {
     videoId: 'k7EJ_9gaWPA',
     title: 'Diljit Dosanjh On Music, Love Life, Childhood, Bollywood, Money & India | FO215',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2024-06-15',
     banner: 'https://i.ytimg.com/vi/k7EJ_9gaWPA/maxresdefault.jpg'
   },
   {
     videoId: 'oxhs_C9yPhs',
     title: 'Kartik Aaryan On His Dating Life, Money, Cars, Bollywood & Chandu Champion | FO213',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2024-06-11',
     banner: 'https://i.ytimg.com/vi/oxhs_C9yPhs/maxresdefault.jpg'
   },
   {
     videoId: 'X5Re2M9Lcq8',
     title: 'The Chainsmokers On Music, Love, Money, Coldplay & India | FO211',
-    artist: 'Raj Shamani (@rajshamani)',
+    artist: 'Raj Shamani',
     published: '2024-06-06',
     banner: 'https://i.ytimg.com/vi/X5Re2M9Lcq8/maxresdefault.jpg'
   }
@@ -5692,6 +5692,8 @@ function formatYtSec(sec) {
 
 function updateSandifyYtPlayIcon(isPlaying) {
   const icon = document.getElementById('sandifyYtPlayIcon');
+  const shell = document.getElementById('sandifyWatchPlayerShell');
+  if (shell) shell.classList.toggle('is-paused', !isPlaying);
   if (!icon) return;
   icon.innerHTML = isPlaying
     ? '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>'
@@ -5709,7 +5711,11 @@ function startSandifyYtProgressLoop() {
     const progEl = document.getElementById('sandifyYtProgress');
     if (curEl) curEl.textContent = formatYtSec(cur);
     if (durEl) durEl.textContent = formatYtSec(dur);
-    if (progEl && dur > 0) progEl.value = ((cur / dur) * 100).toFixed(2);
+    if (progEl && dur > 0) {
+      const pct = ((cur / dur) * 100).toFixed(2);
+      progEl.value = pct;
+      progEl.style.setProperty('--yt-prog', `${pct}%`);
+    }
   }, 500);
 }
 
@@ -5744,7 +5750,7 @@ async function playYouTubePodcast(videoId, encodedTitle, encodedArtist) {
   } catch (_) {}
 
   const title = decodeURIComponent(encodedTitle || 'Raj Shamani Podcast');
-  const artist = decodeURIComponent(encodedArtist || 'Raj Shamani (@rajshamani)');
+  const artist = decodeURIComponent(encodedArtist || 'Raj Shamani');
   if (titleEl) titleEl.textContent = title;
   if (subEl) subEl.textContent = `${artist} • Sandify Podcast Stream`;
 
@@ -5858,6 +5864,35 @@ function toggleSandifyYtFullscreen() {
   }
 }
 
+const SANDIFY_YT_SPEEDS = [1, 1.25, 1.5, 2, 0.75];
+let sandifyYtSpeedIdx = 0;
+
+function setSandifyYtVolume(val) {
+  if (!sandifyYtPlayer || typeof sandifyYtPlayer.setVolume !== 'function') return;
+  const v = parseInt(val, 10);
+  sandifyYtPlayer.setVolume(v);
+  if (v > 0 && sandifyYtPlayer.isMuted()) sandifyYtPlayer.unMute();
+  const icon = document.getElementById('sandifyYtVolIcon');
+  if (icon) icon.style.opacity = v === 0 ? '0.45' : '1';
+}
+
+function cycleSandifyYtSpeed() {
+  sandifyYtSpeedIdx = (sandifyYtSpeedIdx + 1) % SANDIFY_YT_SPEEDS.length;
+  const rate = SANDIFY_YT_SPEEDS[sandifyYtSpeedIdx];
+  if (sandifyYtPlayer && typeof sandifyYtPlayer.setPlaybackRate === 'function') {
+    sandifyYtPlayer.setPlaybackRate(rate);
+  }
+  const btn = document.getElementById('sandifyYtSpeedBtn');
+  if (btn) btn.textContent = `${rate}x`;
+}
+
+function playNextSandifyYtEpisode() {
+  if (!RAJ_SHAMANI_YT_PODCASTS.length) return;
+  const idx = RAJ_SHAMANI_YT_PODCASTS.findIndex(e => e.videoId === sandifyYtPendingVideoId);
+  const next = RAJ_SHAMANI_YT_PODCASTS[(idx + 1) % RAJ_SHAMANI_YT_PODCASTS.length];
+  if (next) playYouTubePodcast(next.videoId, encodeURIComponent(next.title), encodeURIComponent(next.artist));
+}
+
 window.playYouTubePodcast = playYouTubePodcast;
 window.closeYouTubePodcast = closeYouTubePodcast;
 window.toggleSandifyYtPlay = toggleSandifyYtPlay;
@@ -5865,6 +5900,9 @@ window.seekSandifyYtBy = seekSandifyYtBy;
 window.seekSandifyYtPercent = seekSandifyYtPercent;
 window.toggleSandifyYtMute = toggleSandifyYtMute;
 window.toggleSandifyYtFullscreen = toggleSandifyYtFullscreen;
+window.setSandifyYtVolume = setSandifyYtVolume;
+window.cycleSandifyYtSpeed = cycleSandifyYtSpeed;
+window.playNextSandifyYtEpisode = playNextSandifyYtEpisode;
 
 async function fetchLatestYouTubePodcasts() {
   try {
@@ -5895,7 +5933,7 @@ async function fetchLatestYouTubePodcasts() {
               return vid ? {
                 videoId: vid,
                 title: (item.title || '').replace(/\s*\|\s*Raj Shamani$/i, '').trim(),
-                artist: 'Raj Shamani (@rajshamani)',
+                artist: 'Raj Shamani',
                 published: (item.pubDate || '').slice(0, 10),
                 banner: `https://i.ytimg.com/vi/${vid}/maxresdefault.jpg`
               } : null;
@@ -5943,7 +5981,7 @@ function renderPodcastsList(filterKey) {
     html += `
       <section class="audiobooks-section-block" aria-label="Latest from Raj Shamani">
         <div class="audiobooks-section-header">
-          <h3 class="audiobooks-section-title">Latest from Raj Shamani (@rajshamani)</h3>
+          <h3 class="audiobooks-section-title">Latest from Raj Shamani</h3>
           <span class="audiobooks-section-count">YouTube Live Sync &bull; ${RAJ_SHAMANI_YT_PODCASTS.length} Episodes</span>
         </div>
         <div class="podcasts-cards-grid">${renderYouTubePodcastCardsHtml(RAJ_SHAMANI_YT_PODCASTS)}</div>

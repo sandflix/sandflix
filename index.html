@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261128_v190_podcast_watch_page_14eps">
+  <link rel="stylesheet" href="css/style.css?v=20261128_v191_yt_clone_player">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
 
@@ -1690,13 +1690,13 @@
       </div>
       <div class="sandify-hub-chips" id="podcastsFilterChips">
         <button class="sandify-s-chip active" onclick="filterPodcasts('all', this)">All Podcasts</button>
-        <button class="sandify-s-chip" onclick="filterPodcasts('rajshamani', this)">Raj Shamani (@rajshamani)</button>
+        <button class="sandify-s-chip" onclick="filterPodcasts('rajshamani', this)">Raj Shamani</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('business', this)">Business &amp; Brain</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('society', this)">Society &amp; Wildlife</button>
         <button class="sandify-s-chip" onclick="filterPodcasts('cinema', this)">Cinema &amp; Love</button>
       </div>
 
-      <!-- Podcasts Sections: Latest from Raj Shamani (@rajshamani) & Featured Audio Podcasts -->
+      <!-- Podcasts Sections: Latest from Raj Shamani & Featured Audio Podcasts -->
       <div class="audiobooks-sections-wrap" id="podcastsTracklist">
         <!-- Rendered dynamically by renderPodcastsList() -->
       </div>
@@ -1714,41 +1714,56 @@
         <span class="yt-live-badge">SANDIFY PODCAST STREAM</span>
       </div>
 
-      <div class="sandify-watch-player-shell" id="sandifyWatchPlayerShell">
+      <div class="sandify-watch-player-shell is-paused" id="sandifyWatchPlayerShell">
         <div class="sandify-watch-video-stage">
           <div id="sandifyYtPlayerMount"></div>
-          <!-- Clean click-to-toggle overlay + blocks YouTube corner logo/links -->
-          <div class="sandify-yt-click-overlay" onclick="toggleSandifyYtPlay()" title="Play / Pause"></div>
-          <div class="sandify-yt-corner-mask-top" aria-hidden="true"></div>
-          <div class="sandify-yt-corner-mask-bottom" aria-hidden="true"></div>
-        </div>
+          <!-- Click to play/pause, double-click for fullscreen -->
+          <div class="sandify-yt-click-overlay" onclick="toggleSandifyYtPlay()" ondblclick="toggleSandifyYtFullscreen()" title="Play / Pause"></div>
+          <!-- Centered YouTube-style Play Button when paused -->
+          <button class="sandify-yt-center-play" id="sandifyYtCenterBtn" onclick="toggleSandifyYtPlay()" aria-label="Play Video">
+            <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#ff0033"></path><path d="M 45,24 27,14 27,34" fill="#ffffff"></path></svg>
+          </button>
 
-        <div class="sandify-watch-controls">
-          <button class="sandify-wc-btn" id="sandifyYtPlayBtn" onclick="toggleSandifyYtPlay()" aria-label="Play or Pause">
-            <svg id="sandifyYtPlayIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-          </button>
-          <button class="sandify-wc-btn sandify-wc-skip" onclick="seekSandifyYtBy(-10)" title="Rewind 10s">-10s</button>
-          <button class="sandify-wc-btn sandify-wc-skip" onclick="seekSandifyYtBy(10)" title="Forward 10s">+10s</button>
-          <span class="sandify-wc-time" id="sandifyYtCurTime">0:00</span>
-          <input type="range" class="sandify-watch-progress" id="sandifyYtProgress" min="0" max="100" value="0" step="0.1" oninput="seekSandifyYtPercent(this.value)" aria-label="Seek video">
-          <span class="sandify-wc-time" id="sandifyYtDurTime">0:00</span>
-          <button class="sandify-wc-btn" id="sandifyYtMuteBtn" onclick="toggleSandifyYtMute()" aria-label="Mute or Unmute">
-            <svg id="sandifyYtVolIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-          </button>
-          <button class="sandify-wc-btn" onclick="toggleSandifyYtFullscreen()" aria-label="Fullscreen" title="Fullscreen">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-          </button>
+          <!-- YouTube-style Bottom Overlay Controls -->
+          <div class="sandify-yt-controls-overlay">
+            <div class="sandify-yt-progress-row">
+              <input type="range" class="sandify-watch-progress" id="sandifyYtProgress" min="0" max="100" value="0" step="0.1" oninput="seekSandifyYtPercent(this.value)" aria-label="Seek video">
+            </div>
+            <div class="sandify-yt-controls-bar">
+              <div class="sandify-yt-controls-left">
+                <button class="sandify-yt-icon-btn" id="sandifyYtPlayBtn" onclick="toggleSandifyYtPlay()" aria-label="Play or Pause" title="Play / Pause">
+                  <svg id="sandifyYtPlayIcon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+                </button>
+                <button class="sandify-yt-icon-btn" onclick="playNextSandifyYtEpisode()" aria-label="Next Episode" title="Next Episode">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><rect x="17" y="5" width="2.5" height="14"></rect></svg>
+                </button>
+                <div class="sandify-yt-vol-group">
+                  <button class="sandify-yt-icon-btn" id="sandifyYtMuteBtn" onclick="toggleSandifyYtMute()" aria-label="Mute or Unmute" title="Mute">
+                    <svg id="sandifyYtVolIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
+                  </button>
+                  <input type="range" class="sandify-yt-vol-slider" id="sandifyYtVolSlider" min="0" max="100" value="100" oninput="setSandifyYtVolume(this.value)" aria-label="Volume">
+                </div>
+                <span class="sandify-yt-time-label"><span id="sandifyYtCurTime">0:00</span> / <span id="sandifyYtDurTime">0:00</span></span>
+              </div>
+              <div class="sandify-yt-controls-right">
+                <button class="sandify-yt-speed-btn" id="sandifyYtSpeedBtn" onclick="cycleSandifyYtSpeed()" title="Playback Speed">1x</button>
+                <button class="sandify-yt-icon-btn" onclick="toggleSandifyYtFullscreen()" aria-label="Fullscreen" title="Fullscreen">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="sandify-watch-info">
         <h2 class="sandify-watch-title" id="ytPodcastPlayerTitle">Raj Shamani Podcast</h2>
-        <p class="sandify-watch-sub" id="ytPodcastPlayerSub">Raj Shamani (@rajshamani)</p>
+        <p class="sandify-watch-sub" id="ytPodcastPlayerSub">Raj Shamani</p>
       </div>
 
       <div class="audiobooks-section-block sandify-watch-upnext-block">
         <div class="audiobooks-section-header">
-          <h3 class="audiobooks-section-title">More Episodes from Raj Shamani (@rajshamani)</h3>
+          <h3 class="audiobooks-section-title">More Episodes from Raj Shamani</h3>
         </div>
         <div class="podcasts-cards-grid" id="sandifyWatchUpNext"></div>
       </div>
@@ -2287,9 +2302,9 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/movies-rows-data.js?v=20261128_v190_podcast_watch_page_14eps"></script>
-  <script src="js/tracks-data.js?v=20261128_v190_podcast_watch_page_14eps"></script>
-  <script src="js/app.js?v=20261128_v190_podcast_watch_page_14eps"></script>
+  <script src="js/movies-rows-data.js?v=20261128_v191_yt_clone_player"></script>
+  <script src="js/tracks-data.js?v=20261128_v191_yt_clone_player"></script>
+  <script src="js/app.js?v=20261128_v191_yt_clone_player"></script>
 </body>
 
 </html>
