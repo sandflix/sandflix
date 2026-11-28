@@ -6660,6 +6660,16 @@ const SANDFLIX_EMBED_MOVIES = {
   'wuthering_heights': { title: 'Wuthering Heights (2026)', tmdb: '1316092' },
   'scream_7': { title: 'Scream 7 (2026)', tmdb: '1159559' },
 
+  // --- ROW 10: UPCOMING HOLLYWOOD MOVIES ---
+  'man_with_the_bag': { title: 'The Man with the Bag (2026)', tmdb: '1137888' },
+  'violent_night_2': { title: 'Violent Night 2 (2026)', tmdb: '1078446' },
+  'jumanji_open_world': { title: 'Jumanji: Open World (2026)', tmdb: '1260649' },
+  'avengers_doomsday': { title: 'Avengers: Doomsday (2026)', tmdb: '1003596' },
+  'dune_part_three': { title: 'Dune: Part Three (2026)', tmdb: '1170608' },
+  'angry_birds_3': { title: 'The Angry Birds Movie 3 (2026)', tmdb: '1300926' },
+  'artificial': { title: 'Artificial (2026)', tmdb: '1492198' },
+  'mr_irrelevant': { title: 'Mr. Irrelevant (2026)', tmdb: '1372443' },
+
   // --- ROWS 1-8 & GLOBAL CATALOG MOVIES ---
   'ranabaali': { title: 'Ranabaali (2026)', tmdb: '1389379' },
   'never_surrender': { title: 'Never Surrender (2026) • A Netflix Original Film', tmdb: '1616687' },
@@ -8445,6 +8455,94 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       director: 'Vivek Das Chaudhary (Produced by Patralekhaa)',
       music: 'Sachin-Jigar',
       genres: 'Dark Comedy, Crime, Mystery'
+    },
+    'man_with_the_bag': {
+      title: 'THE MAN WITH THE BAG',
+      hero: 'assets/images/man_with_the_bag_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '1h 58m',
+      desc: "When Santa's magic bag is stolen, he turns to his naughty list to find Vance, a former thief, to help him get it back. Alongside his daughter, Santa, and a group of misfits, Vance will have to pull off the greatest heist of his life to save Christmas. Directed by Adam Shankman. Starring Arnold Schwarzenegger, Alan Ritchson, Awkwafina. Streamed in 4K UHD via Peachify.",
+      cast: 'Arnold Schwarzenegger, Alan Ritchson, Awkwafina, Ken Jeong',
+      director: 'Adam Shankman',
+      genres: 'Action, Holiday Comedy, Heist'
+    },
+    'violent_night_2': {
+      title: 'VIOLENT NIGHT 2',
+      hero: 'assets/images/violent_night_2_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'A 18+',
+      dur: '2h 02m',
+      desc: 'Santa Claus returns for another brutal, high-octane holiday showdown when a ruthless new syndicate threatens Christmas Eve. Directed by Tommy Wirkola. Starring David Harbour, Kristen Bell, Jared Harris. Streamed in 4K UHD via Peachify.',
+      cast: 'David Harbour, Kristen Bell, Jared Harris, Daniela Melchior',
+      director: 'Tommy Wirkola',
+      genres: 'Action, Dark Comedy, Thriller'
+    },
+    'jumanji_open_world': {
+      title: 'JUMANJI: OPEN WORLD',
+      hero: 'assets/images/jumanji_open_world_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 06m',
+      desc: 'The Jumanji crew is pulled into a sprawling open-world realm where the rules of the game have evolved beyond anything they have ever survived. Streamed in 4K UHD via Peachify.',
+      cast: 'Dwayne Johnson, Jack Black, Kevin Hart, Karen Gillan',
+      director: 'Jake Kasdan',
+      genres: 'Action, Adventure, Comedy'
+    },
+    'avengers_doomsday': {
+      title: 'AVENGERS: DOOMSDAY',
+      hero: 'assets/images/avengers_doomsday_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 45m',
+      desc: 'Earth’s Mightiest Heroes, the Fantastic Four, and allies across the multiverse unite to confront Victor Von Doom in an unprecedented cinematic event. Directed by Anthony and Joe Russo. Starring Robert Downey Jr., Pedro Pascal, Chris Hemsworth. Streamed in 4K UHD via Peachify.',
+      cast: 'Robert Downey Jr., Pedro Pascal, Vanessa Kirby, Chris Hemsworth, Anthony Mackie',
+      director: 'Anthony & Joe Russo',
+      genres: 'Action, Sci-Fi, Superhero Epic'
+    },
+    'dune_part_three': {
+      title: 'DUNE: PART THREE',
+      hero: 'assets/images/dune_part_three_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 46m',
+      desc: 'Denis Villeneuve concludes the monumental Arrakis saga as Emperor Paul Atreides faces political conspiracy, religious fervor, and the devastating consequences of his prescient vision. Starring Timothée Chalamet, Zendaya, Florence Pugh, Robert Pattinson. Streamed in 4K UHD via Peachify.',
+      cast: 'Timothée Chalamet, Zendaya, Florence Pugh, Jason Momoa, Robert Pattinson',
+      director: 'Denis Villeneuve',
+      genres: 'Sci-Fi, Epic, Drama'
+    },
+    'angry_birds_3': {
+      title: 'THE ANGRY BIRDS MOVIE 3',
+      hero: 'assets/images/angry_birds_3_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U',
+      dur: '1h 38m',
+      desc: 'Red, Chuck, Bomb, and a new generation of feathered heroes embark on their wildest island-hopping adventure yet. Directed by John Rice. Featuring Jason Sudeikis, Josh Gad, Rachel Bloom, Emma Myers. Streamed in 4K UHD via Peachify.',
+      cast: 'Jason Sudeikis, Josh Gad, Rachel Bloom, Danny McBride, Emma Myers',
+      director: 'John Rice',
+      genres: 'Animation, Family, Comedy'
+    },
+    'artificial': {
+      title: 'ARTIFICIAL',
+      hero: 'assets/images/artificial_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 04m',
+      desc: 'A razor-sharp tech drama directed by Luca Guadagnino exploring ambition, betrayal, and the race to control artificial intelligence. Starring Andrew Garfield, Yura Borisov, Monica Barbaro. Streamed in 4K UHD via Peachify.',
+      cast: 'Andrew Garfield, Yura Borisov, Monica Barbaro, Mark Rylance',
+      director: 'Luca Guadagnino',
+      genres: 'Drama, Tech Thriller'
+    },
+    'mr_irrelevant': {
+      title: 'MR. IRRELEVANT',
+      hero: 'assets/images/mr_irrelevant_landscape.jpg?v=20261128_v181',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '1h 56m',
+      desc: 'The inspiring true underdog story of the final pick in the NFL Draft who defied every expectation. Directed by Jonathan Levine. Starring David Corenswet, Isabel May, Michael Shannon. Streamed in 4K UHD via Peachify.',
+      cast: 'David Corenswet, Isabel May, Michael Shannon, David Krumholtz',
+      director: 'Jonathan Levine',
+      genres: 'Sports, Biography, Drama'
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
@@ -10563,6 +10661,110 @@ const sandflixCatalog = [
       "Mystery",
       "Crime"
     ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "man_with_the_bag",
+    "title": "The Man with the Bag",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 58m",
+    "desc": "Santa teams up with a former thief to pull off the greatest heist of his life and save Christmas. Starring Arnold Schwarzenegger, Alan Ritchson, Awkwafina. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/man_with_the_bag_landscape.jpg?v=20261128_v181",
+    "genres": ["Action", "Comedies"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "violent_night_2",
+    "title": "Violent Night 2",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 02m",
+    "desc": "Santa Claus returns for another brutal holiday showdown. Starring David Harbour and Kristen Bell. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/violent_night_2_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/violent_night_2_landscape.jpg?v=20261128_v181",
+    "genres": ["Action", "Thrillers", "Comedies"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "jumanji_open_world",
+    "title": "Jumanji: Open World",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 06m",
+    "desc": "The Jumanji crew enters a sprawling new open-world realm. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/jumanji_open_world_landscape.jpg?v=20261128_v181",
+    "genres": ["Action", "Comedies", "Fantasy"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "avengers_doomsday",
+    "title": "Avengers: Doomsday",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 45m",
+    "desc": "Earth's Mightiest Heroes unite across the multiverse to face Victor Von Doom. Directed by the Russo Brothers. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/avengers_doomsday_landscape.jpg?v=20261128_v181",
+    "genres": ["Action", "Sci-Fi"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "dune_part_three",
+    "title": "Dune: Part Three",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 46m",
+    "desc": "Denis Villeneuve concludes the Arrakis saga starring Timothée Chalamet and Zendaya. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/dune_part_three_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/dune_part_three_landscape.jpg?v=20261128_v181",
+    "genres": ["Sci-Fi", "Dramas"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "angry_birds_3",
+    "title": "The Angry Birds Movie 3",
+    "year": "2026",
+    "age": "U",
+    "dur": "1h 38m",
+    "desc": "Red, Chuck, and Bomb embark on a brand-new animated family adventure. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/angry_birds_3_landscape.jpg?v=20261128_v181",
+    "genres": ["Anime", "Children & Family", "Comedies"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "artificial",
+    "title": "Artificial",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 04m",
+    "desc": "A gripping tech drama directed by Luca Guadagnino starring Andrew Garfield. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/artificial_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/artificial_landscape.jpg?v=20261128_v181",
+    "genres": ["Dramas", "Thrillers"],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "mr_irrelevant",
+    "title": "Mr. Irrelevant",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 56m",
+    "desc": "The inspiring underdog sports drama starring David Corenswet. Streamed in 4K UHD via Peachify.",
+    "hero": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v181",
+    "poster": "assets/images/mr_irrelevant_landscape.jpg?v=20261128_v181",
+    "genres": ["Sports", "Dramas"],
     "industry": "Hollywood",
     "quality": "4K UHD"
   }
